@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this.error = false;
     if (this.email && this.password) {
       await this.auth
-        .emailLogin(this.email, this.password)
+        .emailLogin(this.email.trim(), this.password)
         .catch(err => this.handleError());
       if (this.userType === "plucky") {
         this.router.navigateByUrl("/employee");
