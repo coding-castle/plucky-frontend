@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "plucky-backend": {
+      "hosting": {
+        "plucky-frontend": [
+          "plucky-backend"
+        ]
+      }
+    }
+  }
+}
