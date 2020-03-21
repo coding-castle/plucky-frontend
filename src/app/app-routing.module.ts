@@ -9,11 +9,11 @@ import { LandingComponent } from "./pages/landing/landing.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
 import { ChatComponent } from "./pages/chat/chat.component";
-import { TodoComponent } from "./pages/todo/todo.component";
 import { FarmerHomeComponent } from "./pages/farmer-home/farmer-home.component";
 import { EmployeeHomeComponent } from "./pages/employee-home/employee-home.component";
 import { AuthGuard } from "./services/auth.guard";
 import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
+import { WikiComponent } from "./pages/wiki/wiki.component";
 
 const routes: Routes = [
   {
@@ -68,8 +68,8 @@ const routes: Routes = [
     component: ChatComponent
   },
   {
-    path: "todo",
-    component: TodoComponent
+    path: "wiki",
+    component: WikiComponent
   }
 ];
 

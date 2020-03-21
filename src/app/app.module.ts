@@ -25,11 +25,11 @@ import { BottomNavComponent } from "./components/bottom-nav/bottom-nav.component
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
 import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 import { ChatComponent } from "./pages/chat/chat.component";
-import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { FarmComponent } from "./components/farm/farm.component";
 import { GaleryComponent } from "./components/galery/galery.component";
 import { ChecklistComponent } from "./components/checklist/checklist.component";
+import { WikiComponent } from "./pages/wiki/wiki.component";
 
 @NgModule({
   declarations: [
@@ -47,11 +47,11 @@ import { ChecklistComponent } from "./components/checklist/checklist.component";
     FarmerProfileComponent,
     EmployeeProfileComponent,
     ChatComponent,
-    TodoComponent,
     NavComponent,
     FarmComponent,
     GaleryComponent,
-    ChecklistComponent
+    ChecklistComponent,
+    WikiComponent
   ],
   imports: [
     BrowserModule,

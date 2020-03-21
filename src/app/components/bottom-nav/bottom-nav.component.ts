@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import {
   faHome,
-  faUser,
-  faCheck,
-  faEnvelope
+  faUserCircle,
+  faBook,
+  faComments
 } from "@fortawesome/free-solid-svg-icons";
 import { MatIconRegistry } from "@angular/material/icon";
 import { EmployeeFeedComponent } from "src/app/pages/employee-feed/employee-feed.component";
@@ -22,19 +22,19 @@ export class BottomNavComponent implements OnInit {
       routerLink: ["/farmer"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
-      icon: faUser,
+      icon: faUserCircle,
       name: "Profile",
       routerLink: ["/farmer-profile"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
-      icon: faEnvelope,
+      icon: faComments,
       name: "Chat",
       routerLink: ["/chat"]
     },
     {
-      icon: faCheck,
-      name: "Todo",
-      routerLink: ["/todo"]
+      icon: faBook,
+      name: "Wiki",
+      routerLink: ["/wiki"]
     }
   ];
 
@@ -45,19 +45,19 @@ export class BottomNavComponent implements OnInit {
       routerLink: ["/employee"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
-      icon: faUser,
+      icon: faUserCircle,
       name: "Profile",
-      routerLink: ["/farmer-profile"] // TODO Adjust route according to user type (farmer/employee)
+      routerLink: ["/employee-profile"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
-      icon: faEnvelope,
+      icon: faComments,
       name: "Chat",
       routerLink: ["/chat"]
     },
     {
-      icon: faCheck,
-      name: "Todo",
-      routerLink: ["/todo"]
+      icon: faBook,
+      name: "Wiki",
+      routerLink: ["/wiki"]
     }
   ];
 
