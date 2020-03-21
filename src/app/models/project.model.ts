@@ -5,5 +5,5 @@ export interface Project {
   startDate: Date;
   endDate: Date;
   farmerId: string;
-  employees: string[];
+  applicants: string[];
 }

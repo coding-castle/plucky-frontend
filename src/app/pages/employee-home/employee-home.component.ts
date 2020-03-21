@@ -13,7 +13,7 @@ export class EmployeeHomeComponent implements OnInit {
   constructor(public api: ApiService) {}
 
   ngOnInit(): void {
-    this.projects$ = this.api.getProjects();
+    this.projects$ = this.api.getAppliedProjectList();
   }
 
   addTest() {
@@ -24,7 +24,7 @@ export class EmployeeHomeComponent implements OnInit {
       endDate: new Date(),
       maxEmployees: 4,
       farmerId: "X5MA1furiLNY7aVu6JI4BV1UoTg1",
-      employees: []
+      applicants: []
     });
   }
 }

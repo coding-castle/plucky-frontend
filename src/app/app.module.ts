@@ -26,8 +26,9 @@ import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.co
 import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 import { ChatComponent } from "./pages/chat/chat.component";
 import { TodoComponent } from "./pages/todo/todo.component";
-import { NavComponent } from './components/nav/nav.component';
-import { ProjectComponent } from './components/project/project.component';
+import { NavComponent } from "./components/nav/nav.component";
+import { ProjectComponent } from "./components/project/project.component";
+import { GaleryComponent } from "./components/galery/galery.component";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ProjectComponent } from './components/project/project.component';
     ChatComponent,
     TodoComponent,
     NavComponent,
-    ProjectComponent
+    ProjectComponent,
+    GaleryComponent
   ],
   imports: [
     BrowserModule,
