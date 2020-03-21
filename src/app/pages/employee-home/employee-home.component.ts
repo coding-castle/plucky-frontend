@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ApiService } from "src/app/services/api.service";
 import { Observable } from "rxjs";
-import { Project } from "src/app/models/project.model";
+import { Farm } from "src/app/models/farm.model";
+import * as firebase from "firebase";
 
 @Component({
   selector: "app-employee-home",
@@ -9,21 +10,25 @@ import { Project } from "src/app/models/project.model";
   styleUrls: ["./employee-home.component.scss"]
 })
 export class EmployeeHomeComponent implements OnInit {
-  projects$: Observable<Project[]>;
+  farm$: Observable<Farm[]>;
   constructor(public api: ApiService) {}
 
   ngOnInit(): void {
-    this.projects$ = this.api.getAppliedProjectList();
+    this.farm$ = this.api.getFarms();
   }
 
   addTest() {
-    this.api.addProject({
-      displayName: "From Frontend",
-      description: "Sample Description",
-      startDate: new Date(),
-      endDate: new Date(),
-      maxEmployees: 4,
-      farmerId: "X5MA1furiLNY7aVu6JI4BV1UoTg1",
+    this.api.addFarm({
+      id: null,
+      confirmedApplicants: [],
+      description: "This is a sample farm",
+      name: "Sample Farm",
+      farmTags: [],
+      location: new firebase.firestore.GeoPoint(10, 10),
+      member: [],
+      months: [],
+      productTags: [],
+      tasks: [],
       applicants: []
     });
   }

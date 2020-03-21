@@ -1,9 +1,6 @@
 <h1>Employee Home</h1>
-<ng-container *ngIf="projects$ | async as projects; else loading">
-  <app-project
-    *ngFor="let project of projects"
-    [project]="project"
-  ></app-project>
+<ng-container *ngIf="farm$ | async as farms; else loading">
+  <app-project *ngFor="let farm of farms" [farm]="farm"></app-project>
 </ng-container>
 <ng-template #loading>
   Projekte laden...
