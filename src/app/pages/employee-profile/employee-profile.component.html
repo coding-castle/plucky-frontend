@@ -64,5 +64,9 @@
     </div>
   </div>
 
+  <div class="month-overview">
+    <div class="month-overview-title">Wann kannst du helfen?</div>
+    <app-month-overview [editable]="editMode"></app-month-overview>
+  </div>
   <button mat-button color="warn" (click)="auth.signOut()">Logout</button>
 </div>
