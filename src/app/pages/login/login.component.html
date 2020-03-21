@@ -1,0 +1,98 @@
+<mat-card class="card-wrapper">
+  <ng-container *ngIf="registerActive">
+    <ng-container *ngTemplateOutlet="registerForm"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="!registerActive">
+    <ng-container *ngTemplateOutlet="loginForm"></ng-container>
+  </ng-container>
+</mat-card>
+
+<ng-template #loginForm>
+  <div class="login-form-container">
+    <h2>Einloggen</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>E-Mail</mat-label>
+      <input
+        [(ngModel)]="email"
+        matInput
+        placeholder="Maxmustermann@email.com"
+      />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Passwort</mat-label>
+      <input
+        [(ngModel)]="password"
+        matInput
+        placeholder="**********"
+        type="password"
+      />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="login-button"
+      (click)="login()"
+    >
+      Einloggen
+    </button>
+    <button mat-button (click)="registerActive = true">
+      Stattdessen Registrieren?
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #registerForm>
+  <div class="login-form-container">
+    <h2>Registrieren</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>E-Mail</mat-label>
+      <input
+        [(ngModel)]="email"
+        matInput
+        placeholder="Maxmustermann@email.com"
+      />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input [(ngModel)]="name" matInput placeholder="Max Mustermann" />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Passwort</mat-label>
+      <input
+        [(ngModel)]="password"
+        matInput
+        placeholder="**********"
+        type="password"
+      />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Passwort wiederholen</mat-label>
+      <input
+        [(ngModel)]="confirmPassword"
+        matInput
+        placeholder="**********"
+        type="password"
+      />
+      <!-- <mat-hint>Hint</mat-hint> -->
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="privacyChecked"
+      >Datenschutz geht klar.</mat-checkbox
+    >
+    <button
+      mat-raised-button
+      color="primary"
+      class="register-button"
+      (click)="register()"
+    >
+      Registrieren
+    </button>
+    <button mat-button (click)="registerActive = false">
+      Stattdessen Einloggen?
+    </button>
+  </div>
+</ng-template>

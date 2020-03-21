@@ -5,11 +5,22 @@ import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.compo
 import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
+import { LandingComponent } from "./pages/landing/landing.component";
+import { LoginComponent } from "./pages/login/login.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    redirectTo: "/landing",
+    pathMatch: "full"
+  },
+  {
+    path: "landing",
+    component: LandingComponent
+  },
+  {
+    path: "landing/:type",
+    component: LoginComponent
   },
   {
     path: "register-farmer",

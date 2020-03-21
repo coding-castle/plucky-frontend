@@ -16,6 +16,9 @@ import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer
 import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
+import { LoginComponent } from "./pages/login/login.component";
+import { FormsModule } from "@angular/forms";
+import { LandingComponent } from "./pages/landing/landing.component";
 
 @NgModule({
   declarations: [
@@ -24,11 +27,14 @@ import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
     RegisterFarmerComponent,
     RegisterEmployeeComponent,
     EmployeeFeedComponent,
-    FarmerFeedComponent
+    FarmerFeedComponent,
+    LoginComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     FontAwesomeModule,

@@ -32,12 +32,28 @@ export class AuthService {
   }
 
   async emailLogin(email, password) {
-    const provider = new auth.EmailAuthProvider();
     const credential = await this.afAuth.signInWithEmailAndPassword(
       email,
       password
     );
-    return this.updateUserData(credential.user);
+    // return this.updateUserData({
+    //   uid: credential.user.uid,
+    //   displayName: name,
+    //   email: credential.user.email
+    // });
+  }
+
+  async emailRegister(email, name, password, type) {
+    const credential = await this.afAuth.createUserWithEmailAndPassword(
+      email,
+      password
+    );
+    return this.updateUserData({
+      uid: credential.user.uid,
+      displayName: name,
+      email: credential.user.email,
+      type: type
+    });
   }
 
   async signOut() {
@@ -45,7 +61,7 @@ export class AuthService {
     return this.router.navigateByUrl("/");
   }
 
-  private updateUserData(user: User) {
+  private updateUserData(user) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(
       `users/${user.uid}`
     );
@@ -54,7 +70,7 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoUrl: user.photoUrl || ""
+      type: user.type
     };
 
     return userRef.set(data, { merge: true });

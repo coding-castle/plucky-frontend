@@ -1,0 +1,26 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .card-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    .login-form-container {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      mat-form-field {
+        width: 100%;
+      }
+      .register-button {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      .login-button {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
