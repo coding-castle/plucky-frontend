@@ -30,7 +30,8 @@ import { FarmComponent } from "./components/farm/farm.component";
 import { GaleryComponent } from "./components/galery/galery.component";
 import { ChecklistComponent } from "./components/checklist/checklist.component";
 import { WikiComponent } from "./pages/wiki/wiki.component";
-import { FarmDetailComponent } from './pages/farm-detail/farm-detail.component';
+import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
+import { MonthOverviewComponent } from "./components/month-overview/month-overview.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { FarmDetailComponent } from './pages/farm-detail/farm-detail.component';
     GaleryComponent,
     ChecklistComponent,
     WikiComponent,
-    FarmDetailComponent
+    FarmDetailComponent,
+    GaleryComponent,
+    MonthOverviewComponent
   ],
   imports: [
     BrowserModule,
