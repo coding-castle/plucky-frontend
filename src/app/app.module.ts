@@ -19,6 +19,13 @@ import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { FormsModule } from "@angular/forms";
 import { LandingComponent } from "./pages/landing/landing.component";
+import { EmployeeHomeComponent } from "./pages/employee-home/employee-home.component";
+import { FarmerHomeComponent } from "./pages/farmer-home/farmer-home.component";
+import { BottomNavComponent } from "./components/bottom-nav/bottom-nav.component";
+import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
+import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
+import { ChatComponent } from "./pages/chat/chat.component";
+import { TodoComponent } from "./pages/todo/todo.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +36,14 @@ import { LandingComponent } from "./pages/landing/landing.component";
     EmployeeFeedComponent,
     FarmerFeedComponent,
     LoginComponent,
-    LandingComponent
+    LandingComponent,
+    EmployeeHomeComponent,
+    FarmerHomeComponent,
+    BottomNavComponent,
+    FarmerProfileComponent,
+    EmployeeProfileComponent,
+    ChatComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
