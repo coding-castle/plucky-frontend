@@ -12,9 +12,20 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { environment } from "../environments/environment";
+import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer.component";
+import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
+import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
+import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    RegisterFarmerComponent,
+    RegisterEmployeeComponent,
+    EmployeeFeedComponent,
+    FarmerFeedComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
