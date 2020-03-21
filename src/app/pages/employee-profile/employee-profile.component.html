@@ -29,7 +29,14 @@
     <div class="flex-col-edit">
       <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
 
-      <div class="edit-profile-image-button" (click)="onEditImageClicked()">
+      <input
+        #imageInput
+        type="file"
+        accept="image/*"
+        hidden
+        (change)="onImageChanged($event)"
+      />
+      <div class="edit-profile-image-button" (click)="imageInput.click()">
         <fa-icon [icon]="cameraIcon"></fa-icon>
         <div>Bild bearbeiten</div>
       </div>
