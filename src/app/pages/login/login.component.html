@@ -10,6 +10,7 @@
 <ng-template #loginForm>
   <div class="login-form-container">
     <h2>Einloggen</h2>
+    <h3>{{ userType === "plucky" ? "Plucky" : "Farmer" }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>E-Mail</mat-label>
       <input
@@ -46,6 +47,7 @@
 <ng-template #registerForm>
   <div class="login-form-container">
     <h2>Registrieren</h2>
+    <h3>{{ userType === "plucky" ? "Plucky" : "Farmer" }}</h3>
     <mat-form-field appearance="outline">
       <mat-label>E-Mail</mat-label>
       <input

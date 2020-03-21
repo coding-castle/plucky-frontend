@@ -35,7 +35,11 @@ export class LoginComponent implements OnInit {
     console.log("logging in...");
     if (this.email && this.password) {
       await this.auth.emailLogin(this.email, this.password);
-      this.router.navigateByUrl("/register-employee");
+      if (this.userType === "plucky") {
+        this.router.navigateByUrl("/employee");
+      } else if (this.userType === "farmer") {
+        this.router.navigateByUrl("/farmer");
+      }
     } else {
       console.log("Check Credentials...");
     }
@@ -51,18 +55,19 @@ export class LoginComponent implements OnInit {
       this.privacyChecked &&
       this.password === this.confirmPassword
     ) {
+      await this.auth.emailRegister(
+        this.email,
+        this.name,
+        this.password,
+        this.userType
+      );
       if (this.userType === "plucky") {
-        // pluckies
-        await this.auth.emailRegister(
-          this.email,
-          this.name,
-          this.password,
-          this.userType
-        );
-        this.router.navigateByUrl("/register-employee");
+        this.router.navigateByUrl("/employee");
       } else if (this.userType === "farmer") {
-        // farmer
+        this.router.navigateByUrl("/farmer");
       }
+    } else {
+      console.log("check credentials");
     }
   }
 }

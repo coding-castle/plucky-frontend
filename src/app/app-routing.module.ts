@@ -10,6 +10,9 @@ import { LoginComponent } from "./pages/login/login.component";
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
 import { ChatComponent } from "./pages/chat/chat.component";
 import { TodoComponent } from "./pages/todo/todo.component";
+import { FarmerHomeComponent } from "./pages/farmer-home/farmer-home.component";
+import { EmployeeHomeComponent } from "./pages/employee-home/employee-home.component";
+import { AuthGuard } from "./services/auth.guard";
 
 const routes: Routes = [
   {
@@ -28,6 +31,16 @@ const routes: Routes = [
   {
     path: "register-farmer",
     component: RegisterFarmerComponent
+  },
+  {
+    path: "farmer",
+    component: FarmerHomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "employee",
+    component: EmployeeHomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "register-employee",

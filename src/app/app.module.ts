@@ -26,6 +26,7 @@ import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.co
 import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 import { ChatComponent } from "./pages/chat/chat.component";
 import { TodoComponent } from "./pages/todo/todo.component";
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { TodoComponent } from "./pages/todo/todo.component";
     FarmerProfileComponent,
     EmployeeProfileComponent,
     ChatComponent,
-    TodoComponent
+    TodoComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
