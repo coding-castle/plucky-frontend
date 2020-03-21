@@ -16,6 +16,8 @@ import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer
 import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
+import { EmployeeHomeComponent } from './pages/employee-home/employee-home.component';
+import { FarmerHomeComponent } from './pages/farmer-home/farmer-home.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
     RegisterFarmerComponent,
     RegisterEmployeeComponent,
     EmployeeFeedComponent,
-    FarmerFeedComponent
+    FarmerFeedComponent,
+    EmployeeHomeComponent,
+    FarmerHomeComponent
   ],
   imports: [
     BrowserModule,
