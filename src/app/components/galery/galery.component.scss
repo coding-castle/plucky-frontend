@@ -1,0 +1,20 @@
+.galery-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.galery-list {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.galery-link {
+  padding-top: 15px;
+  text-align: end;
+}
+
+.galery-image {
+  border-radius: 50%;
+}
