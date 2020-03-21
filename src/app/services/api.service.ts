@@ -4,9 +4,11 @@ import {
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
 import { switchMap } from "rxjs/operators";
-import { Observable } from "rxjs";
-import { Project } from "../models/project.model";
+import { Observable, combineLatest } from "rxjs";
+import { Farm } from "../models/farm.model";
 import { AuthService } from "./auth.service";
+import { User } from "../models/user.model";
+import * as firebase from "firebase";
 
 @Injectable({
   providedIn: "root"
@@ -14,37 +16,81 @@ import { AuthService } from "./auth.service";
 export class ApiService {
   constructor(private afs: AngularFirestore, private auth: AuthService) {}
 
-  /**
-   * FARMER
-   */
-
-  public addProject(project: Project) {
-    return this.afs.collection("projects").add(project);
-  }
-  public removeProject(id: string) {}
-  public updateProject(id: string, project: Project) {}
-
-  /**
-   * STUDENTEN
-   */
-
-  public getProjects() {
-    return this.afs.collection<Project>("projects").valueChanges();
+  async addFarm(farm: Farm): Promise<void> {
+    const done = await this.afs.collection<Farm>("farms").add(farm);
+    return this.afs.doc(`farms/${done.id}`).update({ id: done.id });
   }
 
-  public applyForProject() {
-    // add employee id to project member list
+  updateFarm(farmId: string, farm: Partial<Farm>): Promise<void> {
+    return this.afs.doc<Farm>(`farms/${farmId}`).update(farm);
   }
 
-  public unapplyForProject() {
-    // remove employee from project member list
+  getProfile(uid: string): Observable<User> {
+    // get applicant profile
+    return this.afs.doc<User>(`users/${uid}`).valueChanges();
   }
 
-  public getAppliedProjectList() {
-    return this.afs
-      .collection<Project>("projects", ref =>
-        ref.where("applicants", "array-contains", this.auth.user.uid)
+  getFarm(farmId: string): Observable<Farm> {
+    // get farm from farm members
+    return this.afs.doc<Farm>(`farms/${farmId}`).valueChanges();
+  }
+
+  acceptApplicant(applicantUid: string, farmId: string): Promise<void> {
+    // accept an applicant into confirmed applicants
+    return this.afs.doc(`farms/${farmId}`).update({
+      confirmedApplicants: firebase.firestore.FieldValue.arrayUnion(
+        applicantUid
       )
-      .valueChanges();
+    });
   }
+
+  removeApplicant(applicantUid: string, farmId: string): Promise<void> {
+    return this.afs.doc(`farms/${farmId}`).update({
+      confirmedApplicants: firebase.firestore.FieldValue.arrayRemove(
+        applicantUid
+      )
+    });
+  }
+
+  getFarms(): Observable<Farm[]> {
+    // add filters like months, name, location radius
+    return this.afs.collection<Farm>("farms").valueChanges();
+  }
+
+  applyToFarm(farmId: string): Promise<void> {
+    // add employee id to applicants
+    return this.afs.doc(`farms/${farmId}`).update({
+      applicants: firebase.firestore.FieldValue.arrayUnion(this.auth.user.uid)
+    });
+  }
+
+  unapplyForProject(farmId: string): Promise<void> {
+    // remove employee from applicants or confirmedApplicants
+    return this.afs.doc(`farms/${farmId}`).update({
+      applicants: firebase.firestore.FieldValue.arrayRemove(this.auth.user.uid)
+    });
+  }
+
+  // Get list of applications for farms for current authenticated user
+  getAppliedFarmList(): Observable<[Farm[], Farm[]]> {
+    return combineLatest(
+      this.afs
+        .collection<Farm>("farms", ref =>
+          ref.where("applicants", "array-contains", this.auth.user.uid)
+        )
+        .valueChanges(),
+      this.afs
+        .collection<Farm>("farms", ref =>
+          ref.where("confirmedApplicants", "array-contains", this.auth.user.uid)
+        )
+        .valueChanges()
+    );
+  }
+
+  updateProfile(user: User): Promise<void> {
+    return this.afs.doc(`users/${this.auth.user.uid}`).update({ user });
+  }
+
+  // TODO
+  listPluckies() {}
 }

@@ -25,12 +25,15 @@ import { BottomNavComponent } from "./components/bottom-nav/bottom-nav.component
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
 import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 import { ChatComponent } from "./pages/chat/chat.component";
-import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from "./components/nav/nav.component";
-import { ProjectComponent } from "./components/project/project.component";
+import { FarmComponent } from "./components/farm/farm.component";
 import { GaleryComponent } from "./components/galery/galery.component";
+import { ChecklistComponent } from "./components/checklist/checklist.component";
+import { WikiComponent } from "./pages/wiki/wiki.component";
+import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
+import { MonthOverviewComponent } from "./components/month-overview/month-overview.component";
 import { MapComponent } from "./components/map/map.component";
-import {AgmCoreModule} from "@agm/core";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -48,9 +51,14 @@ import {AgmCoreModule} from "@agm/core";
     FarmerProfileComponent,
     EmployeeProfileComponent,
     ChatComponent,
-    TodoComponent,
     NavComponent,
-    ProjectComponent,
+    FarmComponent,
+    GaleryComponent,
+    ChecklistComponent,
+    WikiComponent,
+    FarmDetailComponent,
+    GaleryComponent,
+    MonthOverviewComponent,
     GaleryComponent,
     MapComponent
   ],
