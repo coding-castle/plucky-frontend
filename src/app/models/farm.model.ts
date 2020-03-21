@@ -1,5 +1,6 @@
 export interface Farm {
   id: string;
+  image?: string;
   applicants: string[];
   confirmedApplicants: string[];
   description: string;

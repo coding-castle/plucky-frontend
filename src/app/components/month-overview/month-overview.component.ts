@@ -8,26 +8,27 @@ import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 })
 export class MonthOverviewComponent implements OnInit {
   @Input() editable = false;
-  @Output() table = [
+  @Input() months: number[] = [];
+  table = [
     [
-      { text: "Januar", active: false },
-      { text: "Februar", active: false },
-      { text: "März", active: false }
+      { text: "Januar", active: false, index: 1 },
+      { text: "Februar", active: false, index: 2 },
+      { text: "März", active: false, index: 3 }
     ],
     [
-      { text: "April", active: false },
-      { text: "Mai", active: false },
-      { text: "Juni", active: false }
+      { text: "April", active: false, index: 4 },
+      { text: "Mai", active: false, index: 5 },
+      { text: "Juni", active: false, index: 6 }
     ],
     [
-      { text: "Juli", active: false },
-      { text: "August", active: false },
-      { text: "September", active: false }
+      { text: "Juli", active: false, index: 7 },
+      { text: "August", active: false, index: 8 },
+      { text: "September", active: false, index: 9 }
     ],
     [
-      { text: "Oktober", active: false },
-      { text: "November", active: false },
-      { text: "Dezember", active: false }
+      { text: "Oktober", active: false, index: 10 },
+      { text: "November", active: false, index: 11 },
+      { text: "Dezember", active: false, index: 12 }
     ]
   ];
 
@@ -36,9 +37,22 @@ export class MonthOverviewComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    for (let i = 0; i < this.months.length; i++) {
+      const monthIndex = this.months[i];
+      for (let row = 0; row < this.table.length; row++) {
+        for (let col = 0; col < this.table[row].length; col++) {
+          if (this.table[row][col].index === monthIndex) {
+            this.table[row][col].active = true;
+          }
+        }
+      }
+    }
+  }
 
   toggleActive(item) {
-    item.active = !item.active;
+    if (this.editable) {
+      item.active = !item.active;
+    }
   }
 }

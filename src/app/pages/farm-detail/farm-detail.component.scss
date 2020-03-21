@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  mat-divider {
+    margin: 1rem;
+  }
+  .image-container {
+    padding: 0;
+    display: flex;
+    width: fit-content;
+    align-self: center;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+}

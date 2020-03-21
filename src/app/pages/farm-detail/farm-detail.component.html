@@ -1,22 +1,35 @@
 <ng-container *ngIf="farm$ | async as farm; else loading">
-  <h1>{{ farm.name }}</h1>
-  <p>{{ farm.description }}</p>
-  <div>Applied: {{ applied() }}</div>
-  <button
-    mat-raised-button
-    color="primary"
-    *ngIf="!applied()"
-    (click)="apply()"
-  >
-    Bewerben
-  </button>
-  <button
-    mat-raised-button
-    color="warning"
-    *ngIf="applied()"
-    (click)="deregister()"
-  >
-    Abmelden
-  </button>
+  <div class="wrapper">
+    <mat-card class="image-container" *ngIf="farm.image">
+      <img src="https://picsum.photos/200" />
+    </mat-card>
+    <h1>{{ farm.name }}</h1>
+    <p>{{ farm.description }}</p>
+    <mat-divider></mat-divider>
+    <h3>Wir brauchen Hilfskräfte für:</h3>
+    <app-month-overview
+      [editable]="false"
+      [months]="farm.months"
+    ></app-month-overview>
+
+    <mat-divider></mat-divider>
+    <div>Applied: {{ applied() }}</div>
+    <button
+      mat-raised-button
+      color="primary"
+      *ngIf="!applied()"
+      (click)="apply()"
+    >
+      Bewerben
+    </button>
+    <button
+      mat-raised-button
+      color="warning"
+      *ngIf="applied()"
+      (click)="deregister()"
+    >
+      Abmelden
+    </button>
+  </div>
 </ng-container>
 <ng-template #loading>Loading Farm...</ng-template>
