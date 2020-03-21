@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-employee-profile",
@@ -14,7 +15,7 @@ export class EmployeeProfileComponent implements OnInit {
   editMode = false;
   cameraIcon = faCamera;
 
-  constructor() {}
+  constructor(public auth: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -22,7 +23,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.editMode = !this.editMode;
   }
 
-  onEditImageClicked() {
-    alert("Change Image");
+  onImageChanged(event) {
+    alert(event.target.files);
   }
 }

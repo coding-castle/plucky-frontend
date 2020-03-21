@@ -29,7 +29,14 @@
     <div class="flex-col-edit">
       <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
 
-      <div class="edit-profile-image-button" (click)="onEditImageClicked()">
+      <input
+        #imageInput
+        type="file"
+        accept="image/*"
+        hidden
+        (change)="onImageChanged($event)"
+      />
+      <div class="edit-profile-image-button" (click)="imageInput.click()">
         <fa-icon [icon]="cameraIcon"></fa-icon>
         <div>Bild bearbeiten</div>
       </div>
@@ -56,4 +63,10 @@
       <div class="slider-unit">in kilometer</div>
     </div>
   </div>
+
+  <div class="month-overview">
+    <div class="month-overview-title">Wann kannst du helfen?</div>
+    <app-month-overview [editable]="editMode"></app-month-overview>
+  </div>
+  <button mat-button color="warn" (click)="auth.signOut()">Logout</button>
 </div>

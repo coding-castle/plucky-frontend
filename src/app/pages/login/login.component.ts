@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   confirmPassword = "";
   registerActive = true;
   index = 0;
+  error = false;
+  loading = false;
 
   constructor(
     private auth: AuthService,
@@ -25,28 +27,44 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
+  toggleLogin() {
+    this.error = false;
+    this.registerActive = !this.registerActive;
+  }
+
   ngOnInit(): void {
     this.userType = this.route.snapshot.paramMap.get("type") as
       | "farmer"
       | "plucky";
   }
 
+  handleError() {
+    this.error = true;
+    this.loading = false;
+  }
+
   async login() {
+    this.loading = true;
     console.log("logging in...");
+    this.error = false;
     if (this.email && this.password) {
-      await this.auth.emailLogin(this.email, this.password);
+      await this.auth
+        .emailLogin(this.email.trim(), this.password)
+        .catch(err => this.handleError());
       if (this.userType === "plucky") {
         this.router.navigateByUrl("/employee");
       } else if (this.userType === "farmer") {
         this.router.navigateByUrl("/farmer");
       }
     } else {
-      console.log("Check Credentials...");
+      this.handleError();
     }
   }
 
   async register() {
+    this.loading = true;
     console.log("registering...");
+    this.error = false;
     if (
       this.email &&
       this.password &&
@@ -55,12 +73,9 @@ export class LoginComponent implements OnInit {
       this.privacyChecked &&
       this.password === this.confirmPassword
     ) {
-      await this.auth.emailRegister(
-        this.email,
-        this.name,
-        this.password,
-        this.userType
-      );
+      await this.auth
+        .emailRegister(this.email, this.name, this.password, this.userType)
+        .catch(err => this.handleError());
       if (this.userType === "plucky") {
         this.router.navigateByUrl("/employee");
       } else if (this.userType === "farmer") {
@@ -68,6 +83,7 @@ export class LoginComponent implements OnInit {
       }
     } else {
       console.log("check credentials");
+      this.handleError();
     }
   }
 }

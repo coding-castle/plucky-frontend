@@ -5,6 +5,7 @@ import {
   faTree,
   faLeaf
 } from "@fortawesome/free-solid-svg-icons";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-farmer-profile",
@@ -33,7 +34,7 @@ export class FarmerProfileComponent implements OnInit {
       { icon: faWineGlassAlt, name: "Weinbau" }
     ]
   };
-  constructor() {}
+  constructor(public auth: AuthService) {}
   ngOnInit(): void {}
   changeEditState = () => {
     if (this.editState === true) {

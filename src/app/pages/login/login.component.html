@@ -16,6 +16,7 @@
       <input
         [(ngModel)]="email"
         matInput
+        (keydown.enter)="login()"
         placeholder="Maxmustermann@email.com"
       />
       <!-- <mat-hint>Hint</mat-hint> -->
@@ -25,6 +26,7 @@
       <input
         [(ngModel)]="password"
         matInput
+        (keydown.enter)="login()"
         placeholder="**********"
         type="password"
       />
@@ -38,7 +40,9 @@
     >
       Einloggen
     </button>
-    <button mat-button (click)="registerActive = true">
+    <mat-spinner [diameter]="25" *ngIf="loading"></mat-spinner>
+    <p class="error" *ngIf="error">Überprüfe deine Eingaben</p>
+    <button mat-button (click)="toggleLogin()">
       Stattdessen Registrieren?
     </button>
   </div>
@@ -53,13 +57,19 @@
       <input
         [(ngModel)]="email"
         matInput
+        (keydown.enter)="register()"
         placeholder="Maxmustermann@email.com"
       />
       <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
-      <input [(ngModel)]="name" matInput placeholder="Max Mustermann" />
+      <input
+        [(ngModel)]="name"
+        matInput
+        placeholder="Max Mustermann"
+        (keydown.enter)="register()"
+      />
       <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -67,6 +77,7 @@
       <input
         [(ngModel)]="password"
         matInput
+        (keydown.enter)="register()"
         placeholder="**********"
         type="password"
       />
@@ -77,6 +88,7 @@
       <input
         [(ngModel)]="confirmPassword"
         matInput
+        (keydown.enter)="register()"
         placeholder="**********"
         type="password"
       />
@@ -93,7 +105,9 @@
     >
       Registrieren
     </button>
-    <button mat-button (click)="registerActive = false">
+    <mat-spinner [diameter]="25" *ngIf="loading"></mat-spinner>
+    <p class="error" *ngIf="error">Überprüfe deine Eingaben</p>
+    <button mat-button (click)="toggleLogin()">
       Stattdessen Einloggen?
     </button>
   </div>

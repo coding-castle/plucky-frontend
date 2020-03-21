@@ -1,0 +1,40 @@
+@import "../../../variables.scss";
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.flex-col {
+  flex: 1 1 0px;
+  display: flex;
+}
+
+.month-pill-button {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 5px 10px;
+  margin: 2.5px;
+  text-align: center;
+  background: darkgray;
+  color: black;
+  border-radius: 15px;
+
+  fa-icon {
+    font-size: 1em;
+    padding-right: 5px;
+  }
+}
+
+.state-active {
+  background: $button-active-background;
+  color: $button-active-text;
+}
+
+.state-disabled {
+  background: $button-disabled-background;
+  color: $button-disabled-text;
+}

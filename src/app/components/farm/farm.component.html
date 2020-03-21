@@ -1,0 +1,13 @@
+<mat-card (click)="goToDetail()">
+  <mat-card-header>
+    <mat-card-title>{{ farm.name }}</mat-card-title>
+    <mat-card-subtitle>{{ farm.location.latitude }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ farm.description }}
+    </p>
+  </mat-card-content>
+  <!-- <h3>{{ farm.name }}</h3>
+  <p>{{ farm.description }}</p> -->
+</mat-card>
