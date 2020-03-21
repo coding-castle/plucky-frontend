@@ -29,6 +29,8 @@ import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { ProjectComponent } from "./components/project/project.component";
 import { GaleryComponent } from "./components/galery/galery.component";
+import { MapComponent } from "./components/map/map.component";
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { GaleryComponent } from "./components/galery/galery.component";
     TodoComponent,
     NavComponent,
     ProjectComponent,
-    GaleryComponent
+    GaleryComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import { GaleryComponent } from "./components/galery/galery.component";
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AgmCoreModule.forRoot(environment.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]
