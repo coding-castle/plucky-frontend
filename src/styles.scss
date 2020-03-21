@@ -1,87 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-// @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "~@angular/material/theming";
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+@import "./variables.scss";
 @include mat-core();
+$plucky-app-primary: mat-palette($custom-primary-map);
+$plucky-app-accent: mat-palette($custom-accent-map);
 
-$custom-primary: (
-  50: #e0ede0,
-  100: #b3d1b3,
-  200: #80b380,
-  300: #4d944d,
-  400: #267d26,
-  500: #006600,
-  600: #005e00,
-  700: #005300,
-  800: #004900,
-  900: #003800,
-  A100: #6eff6e,
-  A200: #3bff3b,
-  A400: #08ff08,
-  A700: #00ee00,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #ffffff,
-    400: #ffffff,
-    500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
-    800: #ffffff,
-    900: #ffffff,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000
-  )
-);
-
-$custom-accent: (
-  50: #fefbe1,
-  100: #fdf4b3,
-  200: #fced80,
-  300: #fae64d,
-  400: #f9e027,
-  500: #f8db01,
-  600: #f7d701,
-  700: #f6d201,
-  800: #f5cd01,
-  900: #f3c400,
-  A100: #ffffff,
-  A200: #fffae6,
-  A400: #ffeeb3,
-  A700: #ffe99a,
-  contrast: (
-    50: #000000,
-    100: #000000,
-    200: #000000,
-    300: #000000,
-    400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
-    900: #000000,
-    A100: #000000,
-    A200: #000000,
-    A400: #000000,
-    A700: #000000
-  )
-);
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-//$plucky-app-primary: mat-palette($mat-green, 900);
-$plucky-app-primary: mat-palette($custom-primary);
-$plucky-app-accent: mat-palette($custom-accent);
-
-// Create the theme object (a Sass map containing all of the palettes).
 $plucky-app-theme: mat-light-theme($plucky-app-primary, $plucky-app-accent);
 
 $custom-typography: mat-typography-config(
@@ -90,14 +12,9 @@ $custom-typography: mat-typography-config(
   $title: mat-typography-level(22px, 25px, 600),
   $subheading-2: mat-typography-level(20px, 22px, 400)
 );
-@include angular-material-typography($custom-typography);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+@include angular-material-typography($custom-typography);
 @include angular-material-theme($plucky-app-theme);
-// These are the colors from the stylesheet
-// Angular only allows material colors...
 
 html,
 body {
