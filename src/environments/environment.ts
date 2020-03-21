@@ -13,6 +13,9 @@ export const environment = {
     messagingSenderId: "86359356199",
     appId: "1:86359356199:web:46d4df7e72756f09542f02"
   },
+  googleMaps: {
+    apiKey: "AIzaSyC9uC0iF7HgUf5JUSl5iMkqMM1NbH2xVTc"
+  },
   smtp: {
     host: "smtp.strato.de",
     email: "notification@myplucky.eu",
