@@ -1,10 +1,9 @@
 export interface Project {
-  description: string;
   displayName: string;
-  employees: [];
-  endDate: Date;
-  farmerId: string;
+  description: string;
   maxEmployees: number;
   startDate: Date;
-  uid: string;
+  endDate: Date;
+  farmerId: string;
+  employees: string[];
 }
