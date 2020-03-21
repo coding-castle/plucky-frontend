@@ -12,6 +12,11 @@ export const environment = {
     storageBucket: "plucky-backend.appspot.com",
     messagingSenderId: "86359356199",
     appId: "1:86359356199:web:46d4df7e72756f09542f02"
+  },
+  smtp: {
+    host: "smtp.strato.de",
+    email: "notification@myplucky.eu",
+    pass: ""
   }
 };
 
