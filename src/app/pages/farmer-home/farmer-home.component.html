@@ -1,13 +1,15 @@
-<h1>Hallo Farmer</h1>
-<h2>Schön, dass du da bist!</h2>
+<div class="container">
+  <h1>Hallo Farmer</h1>
+  <h2>Schön, dass du da bist!</h2>
+  <p>MyPlucky ist eine Initiative, die während des wirvsvirus Hackathons der Deutschen Bundesregierung gestartet wurde.
+  </p>
+  <mat-divider></mat-divider>
+  <app-galery [title]="title"> </app-galery>
+  <mat-divider></mat-divider>
+  <p class="noProfile"> Wir haben festgestellt, dass du noch kein Profil hast.
+    Click unten in der Leiste auf Profil und leg ein Projekt an, um
+    Pluckies für deinen Hof zu finden.</p>
+  <mat-divider></mat-divider>
+  <app-checklist [title]="nextStepTitle" [listItems]="nexStepBody"></app-checklist>
 
-<p>MyPlucky ist eine Initiative, die während des wirvsvirus Hackathons der Deutschen Bundesregierung gestartet wurde.
-</p>
-<mat-divider></mat-divider>
-
-<p> Wir haben festgestellt, dass du noch kein Profil hast.
-  Click unten in der Leiste auf Profil und leg ein Projekt an, um
-  Pluckies für deinen Hof zu finden.</p>
-<mat-divider></mat-divider>
-<mat-divider></mat-divider>
-<h3>Nächste Schritte</h3>
+</div>
