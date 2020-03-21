@@ -27,6 +27,7 @@ import { EmployeeProfileComponent } from "./pages/employee-profile/employee-prof
 import { ChatComponent } from "./pages/chat/chat.component";
 import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from './components/nav/nav.component';
+import { ProjectComponent } from './components/project/project.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NavComponent } from './components/nav/nav.component';
     EmployeeProfileComponent,
     ChatComponent,
     TodoComponent,
-    NavComponent
+    NavComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
