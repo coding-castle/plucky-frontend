@@ -1,10 +1,9 @@
 <div>
   <mat-toolbar color="primary">
     <a
-      class="bottom-nav-button"
-      *ngFor="let option of options"
+      *ngFor="let option of activeOptions"
       [routerLink]="option.routerLink"
-      routerLinkActive="active-option"
+      routerLinkActive="active"
     >
       <fa-icon [icon]="option.icon"></fa-icon>
       <div>{{ option.name }}</div>
