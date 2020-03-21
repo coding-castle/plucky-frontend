@@ -22,7 +22,7 @@ export class EmployeeProfileComponent implements OnInit {
     this.editMode = !this.editMode;
   }
 
-  onEditImageClicked() {
-    alert("Change Image");
+  onImageChanged(event) {
+    alert(event.target.files);
   }
 }
