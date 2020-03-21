@@ -5,6 +5,9 @@ import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.compo
 import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
+import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
+import { ChatComponent } from "./pages/chat/chat.component";
+import { TodoComponent } from "./pages/todo/todo.component";
 
 const routes: Routes = [
   {
@@ -26,6 +29,22 @@ const routes: Routes = [
   {
     path: "employee-feed",
     component: EmployeeFeedComponent
+  },
+  {
+    path: "farmer-profile",
+    component: FarmerProfileComponent
+  },
+  {
+    path: "employee-profile",
+    component: FarmerProfileComponent
+  },
+  {
+    path: "chat",
+    component: ChatComponent
+  },
+  {
+    path: "todo",
+    component: TodoComponent
   }
 ];
 
