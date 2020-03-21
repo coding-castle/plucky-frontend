@@ -3,6 +3,7 @@ import { ApiService } from "src/app/services/api.service";
 import { Observable } from "rxjs";
 import { Farm } from "src/app/models/farm.model";
 import * as firebase from "firebase";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-employee-home",
@@ -11,7 +12,7 @@ import * as firebase from "firebase";
 })
 export class EmployeeHomeComponent implements OnInit {
   farm$: Observable<Farm[]>;
-  constructor(public api: ApiService) {}
+  constructor(public api: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.farm$ = this.api.getFarms();
@@ -31,5 +32,9 @@ export class EmployeeHomeComponent implements OnInit {
       tasks: [],
       applicants: []
     });
+  }
+
+  goToDetail(farm: Farm) {
+    this.router.navigateByUrl(`/farm-detail/${farm.id}`);
   }
 }

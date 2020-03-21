@@ -1,6 +1,10 @@
 <h1>Employee Home</h1>
 <ng-container *ngIf="farm$ | async as farms; else loading">
-  <app-project *ngFor="let farm of farms" [farm]="farm"></app-project>
+  <app-farm
+    *ngFor="let farm of farms"
+    [farm]="farm"
+    (clickEvent)="goToDetail(farm)"
+  ></app-farm>
 </ng-container>
 <ng-template #loading>
   Projekte laden...

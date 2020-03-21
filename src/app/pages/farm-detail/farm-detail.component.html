@@ -1,0 +1,22 @@
+<ng-container *ngIf="farm$ | async as farm; else loading">
+  <h1>{{ farm.name }}</h1>
+  <p>{{ farm.description }}</p>
+  <div>Applied: {{ applied() }}</div>
+  <button
+    mat-raised-button
+    color="primary"
+    *ngIf="!applied()"
+    (click)="apply()"
+  >
+    Bewerben
+  </button>
+  <button
+    mat-raised-button
+    color="warning"
+    *ngIf="applied()"
+    (click)="deregister()"
+  >
+    Abmelden
+  </button>
+</ng-container>
+<ng-template #loading>Loading Farm...</ng-template>
