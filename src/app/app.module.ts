@@ -16,6 +16,7 @@ import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer
 import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
+import { BottomNavComponent } from "./components/bottom-nav/bottom-nav.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
     RegisterFarmerComponent,
     RegisterEmployeeComponent,
     EmployeeFeedComponent,
-    FarmerFeedComponent
+    FarmerFeedComponent,
+    BottomNavComponent
   ],
   imports: [
     BrowserModule,
