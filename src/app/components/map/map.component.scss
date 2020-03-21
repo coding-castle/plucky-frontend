@@ -1,0 +1,8 @@
+.map-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  agm-map {
+    height: 300px;
+  }
+}

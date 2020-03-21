@@ -32,6 +32,8 @@ import { ChecklistComponent } from "./components/checklist/checklist.component";
 import { WikiComponent } from "./pages/wiki/wiki.component";
 import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
 import { MonthOverviewComponent } from "./components/month-overview/month-overview.component";
+import { MapComponent } from "./components/map/map.component";
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -56,7 +58,9 @@ import { MonthOverviewComponent } from "./components/month-overview/month-overvi
     WikiComponent,
     FarmDetailComponent,
     GaleryComponent,
-    MonthOverviewComponent
+    MonthOverviewComponent,
+    GaleryComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,8 @@ import { MonthOverviewComponent } from "./components/month-overview/month-overvi
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AgmCoreModule.forRoot(environment.googleMaps)
   ],
   providers: [],
   bootstrap: [AppComponent]
