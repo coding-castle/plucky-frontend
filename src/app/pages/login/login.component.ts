@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   async login() {
     console.log("logging in...");
     if (this.email && this.password) {
-      await this.auth.emailLogin(this.email, this.password);
+      await this.auth.emailLogin(this.email.trim(), this.password);
       if (this.userType === "plucky") {
         this.router.navigateByUrl("/employee");
       } else if (this.userType === "farmer") {
