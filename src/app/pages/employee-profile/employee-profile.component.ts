@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-employee-profile",
@@ -10,8 +11,18 @@ export class EmployeeProfileComponent implements OnInit {
   email = "lorem@ipsum.de";
   phone = "+49 1234 5678910";
   location = "Deutschland";
+  editMode = false;
+  cameraIcon = faCamera;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onToggleEditMode() {
+    this.editMode = !this.editMode;
+  }
+
+  onEditImageClicked() {
+    alert("Change Image");
+  }
 }

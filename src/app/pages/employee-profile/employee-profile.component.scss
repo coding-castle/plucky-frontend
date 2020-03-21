@@ -8,11 +8,18 @@
   padding-bottom: 5px;
 }
 
-.flex-col {
+.flex-col-no-edit {
   display: flex;
   flex-direction: column;
   padding-left: 10px;
   align-items: center;
+}
+
+.flex-col-edit {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  align-items: stretch;
 }
 
 .edit-profile-button {
@@ -22,4 +29,23 @@
 
 .profile-image {
   border-radius: 50%;
+  align-self: center;
+}
+
+.slider-label {
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+.slider-unit {
+  font-size: 0.75em;
+  margin-top: -10px;
+}
+
+.edit-profile-image-button {
+  padding: 10px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

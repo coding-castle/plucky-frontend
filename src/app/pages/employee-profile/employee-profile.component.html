@@ -1,12 +1,59 @@
 <div class="container">
   <h1 class="hello-message">Hallo {{ name }}</h1>
   <h2>Dies ist dein Profil!</h2>
-  <div class="edit-profile-button">Profil bearbeiten</div>
-  <div class="flex-col">
-    <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
-    <div>{{ name }}</div>
-    <div>{{ email }}</div>
-    <div>{{ phone }}</div>
-    <div>{{ location }}</div>
+  <div
+    class="edit-profile-button"
+    (click)="onToggleEditMode()"
+    *ngIf="!editMode"
+  >
+    Profil bearbeiten
+  </div>
+  <div
+    class="edit-profile-button"
+    (click)="onToggleEditMode()"
+    *ngIf="editMode"
+  >
+    Bearbeiten beenden
+  </div>
+  <div *ngIf="!editMode">
+    <div class="flex-col-no-edit">
+      <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
+      <div>{{ name }}</div>
+      <div>{{ email }}</div>
+      <div>{{ phone }}</div>
+      <div>{{ location }}</div>
+    </div>
+  </div>
+
+  <div *ngIf="editMode">
+    <div class="flex-col-edit">
+      <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
+
+      <div class="edit-profile-image-button" (click)="onEditImageClicked()">
+        <fa-icon [icon]="cameraIcon"></fa-icon>
+        <div>Bild bearbeiten</div>
+      </div>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [(ngModel)]="name" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" [(ngModel)]="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Telefon</mat-label>
+        <input matInput type="text" [(ngModel)]="phone" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Ort</mat-label>
+        <input matInput type="text" [(ngModel)]="location" />
+      </mat-form-field>
+      <mat-label class="slider-label"
+        >Wie weit bist du gewillt zu reisen?</mat-label
+      >
+      <mat-slider thumbLabel tickInterval="10" min="10" max="50"></mat-slider>
+      <div class="slider-unit">in kilometer</div>
+    </div>
   </div>
 </div>
