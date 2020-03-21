@@ -28,6 +28,8 @@ import { ChatComponent } from "./pages/chat/chat.component";
 import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { FarmComponent } from "./components/farm/farm.component";
+import { GaleryComponent } from "./components/galery/galery.component";
+import { ChecklistComponent } from "./components/checklist/checklist.component";
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { FarmComponent } from "./components/farm/farm.component";
     ChatComponent,
     TodoComponent,
     NavComponent,
-    FarmComponent
+    FarmComponent,
+    GaleryComponent,
+    ChecklistComponent
   ],
   imports: [
     BrowserModule,
