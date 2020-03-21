@@ -13,22 +13,22 @@ export class BottomNavComponent implements OnInit {
     {
       icon: faAmbulance,
       name: "Feed",
-      routerLink: ["/"]
+      routerLink: ["/farmer-feed"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
       icon: faAmbulance,
       name: "Profile",
-      routerLink: ["/register-farmer"]
+      routerLink: ["/farmer-profile"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
       icon: faAmbulance,
       name: "Chat",
-      routerLink: ["/register-employee"]
+      routerLink: ["/chat"]
     },
     {
       icon: faAmbulance,
       name: "Todo",
-      routerLink: ["/farmer-feed"]
+      routerLink: ["/todo"]
     }
   ];
 
