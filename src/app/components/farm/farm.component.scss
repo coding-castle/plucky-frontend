@@ -1,6 +1,11 @@
+@import "../../../variables.scss";
 :host {
   width: 100%;
   mat-card {
+    ::ng-deep .mat-card-header-text {
+      margin: 0;
+    }
+    background-color: $custom-accent;
     cursor: pointer;
     transition: transform 0.1s ease-in;
     &:hover {
