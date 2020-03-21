@@ -17,6 +17,10 @@ import { RegisterEmployeeComponent } from "./pages/register-employee/register-em
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { BottomNavComponent } from "./components/bottom-nav/bottom-nav.component";
+import { FarmerProfileComponent } from './pages/farmer-profile/farmer-profile.component';
+import { EmployeeProfileComponent } from './pages/employee-profile/employee-profile.component';
+import { ChatComponent } from './pages/chat/chat.component';
+import { TodoComponent } from './pages/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { BottomNavComponent } from "./components/bottom-nav/bottom-nav.component
     RegisterEmployeeComponent,
     EmployeeFeedComponent,
     FarmerFeedComponent,
-    BottomNavComponent
+    BottomNavComponent,
+    FarmerProfileComponent,
+    EmployeeProfileComponent,
+    ChatComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
