@@ -1,10 +1,12 @@
-<h1>Hallo Farmer</h1>
-<h2>Dies ist dein Profil!</h2>
-Profil bearbeiten
-<mat-divider></mat-divider>
-<img class="roundavatar" src="https://i.picsum.photos/id/362/200/300.jpg">
-<mat-divider></mat-divider>
-<h3> Was macht unser Betrieb</h3>
-<mat-divider></mat-divider>
-<h3> Es wird produziert</h3>
-<app-bottom-nav></app-bottom-nav>
+<div class="container">
+  <h1>Hallo Farmer</h1>
+  <h2>Dies ist dein Profil!</h2>
+  <div *ngIf="editState; else elseBlock">
+    <div class="profileShow" (click)="changeEditState()">Profil bearbeiten</div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="profileEdit" (click)="changeEditState()">Bearbeiten beenden</div>
+  </ng-template>
+  <app-profile-farm [editState]="editState" [profile]="profile" [farm]="farm"></app-profile-farm>
+  <app-bottom-nav></app-bottom-nav>
+</div>

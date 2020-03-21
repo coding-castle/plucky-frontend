@@ -10,6 +10,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatSliderModule } from "@angular/material/slider";
+import { MatChipsModule } from "@angular/material/chips";
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,8 @@ import { MatSliderModule } from "@angular/material/slider";
     MatCheckboxModule,
     MatToolbarModule,
     MatDividerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatChipsModule
   ],
   exports: [
     MatIconModule,
@@ -36,7 +38,8 @@ import { MatSliderModule } from "@angular/material/slider";
     MatCheckboxModule,
     MatToolbarModule,
     MatDividerModule,
-    MatSliderModule
+    MatSliderModule,
+    MatChipsModule
   ]
 })
 export class MaterialModule {}

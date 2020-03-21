@@ -29,7 +29,8 @@ import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { ProjectComponent } from "./components/project/project.component";
 import { GaleryComponent } from "./components/galery/galery.component";
-import { ChecklistComponent } from './components/checklist/checklist.component';
+import { ChecklistComponent } from "./components/checklist/checklist.component";
+import { ProfileFarmComponent } from "./components/profile-farm/profile-farm.component";
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ChecklistComponent } from './components/checklist/checklist.component';
     NavComponent,
     ProjectComponent,
     GaleryComponent,
-    ChecklistComponent
+    ChecklistComponent,
+    ProfileFarmComponent
   ],
   imports: [
     BrowserModule,
