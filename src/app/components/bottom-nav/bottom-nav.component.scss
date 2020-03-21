@@ -13,12 +13,6 @@ a {
   transition: opacity 0.1s ease-in;
   opacity: 0.7;
 
-  div {
-    max-height: 0;
-    transition: max-height 0.1s ease-in;
-    overflow: hidden;
-  }
-
   fa-icon {
     padding-top: 5px;
   }
@@ -26,7 +20,4 @@ a {
 
 .active {
   opacity: 1;
-  div {
-    max-height: 50px;
-  }
 }
