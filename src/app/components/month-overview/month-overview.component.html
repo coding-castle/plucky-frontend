@@ -1,0 +1,10 @@
+<div class="flex-row" *ngFor="let row of table">
+  <div class="flex-col" *ngFor="let col of row" (click)="toggleActive(col)">
+    <sup *ngIf="!col.active" class="month-pill-button state-disabled">
+      {{ col.text }}
+    </sup>
+    <sup *ngIf="col.active" class="month-pill-button state-active">
+      {{ col.text }}
+    </sup>
+  </div>
+</div>

@@ -29,6 +29,7 @@ import { TodoComponent } from "./pages/todo/todo.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { ProjectComponent } from "./components/project/project.component";
 import { GaleryComponent } from "./components/galery/galery.component";
+import { MonthOverviewComponent } from './components/month-overview/month-overview.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { GaleryComponent } from "./components/galery/galery.component";
     TodoComponent,
     NavComponent,
     ProjectComponent,
-    GaleryComponent
+    GaleryComponent,
+    MonthOverviewComponent
   ],
   imports: [
     BrowserModule,
