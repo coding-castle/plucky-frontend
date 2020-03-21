@@ -13,6 +13,7 @@ import { TodoComponent } from "./pages/todo/todo.component";
 import { FarmerHomeComponent } from "./pages/farmer-home/farmer-home.component";
 import { EmployeeHomeComponent } from "./pages/employee-home/employee-home.component";
 import { AuthGuard } from "./services/auth.guard";
+import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 
 const routes: Routes = [
   {
@@ -60,7 +61,7 @@ const routes: Routes = [
   },
   {
     path: "employee-profile",
-    component: FarmerProfileComponent
+    component: EmployeeProfileComponent
   },
   {
     path: "chat",

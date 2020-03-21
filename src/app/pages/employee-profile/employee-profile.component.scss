@@ -1,0 +1,25 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.hello-message {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  align-items: center;
+}
+
+.edit-profile-button {
+  text-align: end;
+  padding-bottom: 15px;
+}
+
+.profile-image {
+  border-radius: 50%;
+}
