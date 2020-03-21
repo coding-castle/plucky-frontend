@@ -1,1 +1,11 @@
 <h1>Employee Home</h1>
+<ng-container *ngIf="projects$ | async as projects; else loading">
+  <app-project
+    *ngFor="let project of projects"
+    [project]="project"
+  ></app-project>
+</ng-container>
+<ng-template #loading>
+  Projekte laden...
+</ng-template>
+<button mat-button (click)="addTest()">Add Project</button>

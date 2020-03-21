@@ -1,2 +1,5 @@
-<app-nav></app-nav>
-<router-outlet></router-outlet>
+<div class="padding">
+  <router-outlet></router-outlet>
+</div>
+
+<app-bottom-nav *ngIf="showNav"></app-bottom-nav>
