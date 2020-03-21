@@ -23,7 +23,7 @@ export class BottomNavComponent implements OnInit {
     },
     {
       icon: faUserCircle,
-      name: "Profile",
+      name: "Profil",
       routerLink: ["/farmer-profile"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
@@ -46,7 +46,7 @@ export class BottomNavComponent implements OnInit {
     },
     {
       icon: faUserCircle,
-      name: "Profile",
+      name: "Profil",
       routerLink: ["/employee-profile"] // TODO Adjust route according to user type (farmer/employee)
     },
     {
