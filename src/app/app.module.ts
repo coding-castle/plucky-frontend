@@ -38,6 +38,8 @@ import { ChatBubbleComponent } from "./components/chat-bubble/chat-bubble.compon
 import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
 import { ChatListComponent } from "./pages/chat-list/chat-list.component";
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { ImprintComponent } from "./pages/imprint/imprint.component";
+import { PrivacyComponent } from "./pages/privacy/privacy.component";
 
 @NgModule({
   declarations: [
@@ -68,7 +70,10 @@ import { ComingSoonComponent } from './components/coming-soon/coming-soon.compon
     MapAutocompleteComponent,
     ChatBubbleComponent,
     ChatListComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    ChatBubbleComponent,
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
