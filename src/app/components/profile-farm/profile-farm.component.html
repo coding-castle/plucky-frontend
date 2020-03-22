@@ -164,7 +164,7 @@
         <div class="contact">
           <div class="contact-name">
             <h3>{{ owner.displayName }}</h3>
-            <span>Direkt kontaktieren</span>
+            <a [href]="'mailto:' + owner.email">Direkt kontaktieren</a>
           </div>
           <img *ngIf="owner.photoUrl" class="avatar" [src]="owner.photoUrl" />
         </div>
