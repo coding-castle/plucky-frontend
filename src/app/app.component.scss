@@ -2,3 +2,46 @@
   padding: 1rem;
   margin-bottom: 64px;
 }
+.topBoxContainer {
+  width: 100%;
+  height: 4rem;
+}
+.topBoxPrimary {
+  width: 100%;
+  height: 2rem;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0%;
+  background-color: #006600;
+}
+.topBoxSecond {
+  width: 100%;
+  height: 2rem;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0%;
+  background-color: #7bc623;
+}
+
+.bottomBoxContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7rem;
+}
+.bottomBoxPrimary {
+  width: 100%;
+  height: 4rem;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0%;
+  background-color: #f8db01;
+}
+.bottomBoxSecond {
+  width: 100%;
+  height: 3rem;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 0%;
+  background-color: #f88d01;
+}

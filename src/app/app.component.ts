@@ -8,6 +8,9 @@ import {
   faLemon,
   faTree,
   faLeaf,
+  faCarrot,
+  faTractor,
+  faInfoCircle,
   faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -19,8 +22,17 @@ import {
 export class AppComponent {
   faCoffee = faAmbulance;
   showNav = false;
+  showTopBox = false;
+  showBotBox = false;
   // Dont show bottom navigation if any of these routes are active
   dontShowRoutes = ["/landing", "/landing/plucky", "/landing/farmer"];
+
+  // Show Top box in these routes
+  topShowRoutes = ["/landing", "/landing/plucky", "/landing/farmer"];
+
+  // Show Bottom box in these routes
+  botShowRoutes = ["/landing/plucky", "/landing/farmer"];
+
   constructor(private library: FaIconLibrary, private router: Router) {
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -29,10 +41,31 @@ export class AppComponent {
         } else {
           this.showNav = true;
         }
+
+        if (this.topShowRoutes.includes(router.url)) {
+          this.showTopBox = true;
+        } else {
+          this.showTopBox = false;
+        }
+
+        if (this.botShowRoutes.includes(router.url)) {
+          this.showBotBox = true;
+        } else {
+          this.showBotBox = false;
+        }
       }
     });
 
     // Import all needed icons here
-    library.addIcons(faWineGlassAlt, faLemon, faTree, faLeaf, faArrowRight);
+    library.addIcons(
+      faWineGlassAlt,
+      faLemon,
+      faTree,
+      faLeaf,
+      faCarrot,
+      faTractor,
+      faInfoCircle,
+      faArrowRight
+    );
   }
 }
