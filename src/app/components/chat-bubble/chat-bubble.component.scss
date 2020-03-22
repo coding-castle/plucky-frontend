@@ -1,0 +1,50 @@
+@import "../../../variables.scss";
+
+.speech-bubble {
+  position: relative;
+  border-radius: 0.4em;
+  background: $custom-primary;
+  color: white;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.speech-bubble-left {
+  @extend .speech-bubble;
+  margin-bottom: 35px;
+  align-self: flex-start;
+}
+
+.speech-bubble-right {
+  @extend .speech-bubble;
+  margin-bottom: 35px;
+  align-self: flex-end;
+}
+
+%speech-bubble-after-content {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  margin-bottom: -20px;
+  border: 20px solid transparent;
+  border-top-color: $custom-primary;
+}
+
+.speech-bubble-left::after {
+  @extend %speech-bubble-after-content;
+  left: 10%;
+  border-bottom: 0;
+}
+
+.speech-bubble-right::after {
+  @extend %speech-bubble-after-content;
+  right: 10%;
+  border-bottom: 0;
+}
+
+.speech-bubble-title {
+  padding-bottom: 10px;
+}
