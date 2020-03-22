@@ -40,8 +40,9 @@ export class MapAutocompleteComponent implements OnInit {
 
     if (this.farm) {
       console.log("got farm as input");
-      this.lat = this.farm.location.latitude;
-      this.lng = this.farm.location.longitude;
+      // fallback if a new farm has no location yet, defaults to Lampertheim
+      this.lat = this.farm.location?.latitude || 49.594879;
+      this.lng = this.farm.location?.longitude || 8.46876;
     } else {
       this.lat = 48.7791242;
       this.lng = 9.0371322;

@@ -21,8 +21,8 @@ export class ApiService {
     return this.afs.doc(`farms/${done.id}`).update({ id: done.id });
   }
 
-  updateFarm(farmId: string, farm: Partial<Farm>): Promise<void> {
-    return this.afs.doc<Farm>(`farms/${farmId}`).update(farm);
+  updateFarm(farmId: string, farm: Farm): Promise<void> {
+    return this.afs.doc<Farm>(`farms/${farmId}`).set(farm, { merge: true });
   }
 
   getProfile(uid: string): Observable<User> {
@@ -67,9 +67,15 @@ export class ApiService {
   }
 
   getApplicantsForFarm(farm: Farm) {
-    return this.afs
-      .collection<User>("users", ref => ref.where("uid", "in", farm.applicants))
-      .valueChanges();
+    if (farm.applicants.length > 0) {
+      return this.afs
+        .collection<User>("users", ref =>
+          ref.where("uid", "in", farm.applicants)
+        )
+        .valueChanges();
+    } else {
+      return of(null);
+    }
   }
 
   removeApplicant(applicantUid: string, farmId: string): Promise<void> {
