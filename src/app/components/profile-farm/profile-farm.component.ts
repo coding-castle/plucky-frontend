@@ -19,15 +19,12 @@ export class ProfileFarmComponent implements OnInit {
   faTimes = faTimes;
   @Input() editState: boolean;
   @Input() farm: Farm;
-  profile: User;
+  @Input() owner: User;
+  @Input() showContact: boolean;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   farmTags$: Observable<FarmTag[]>;
   allTags$: Observable<FarmTag[]>;
-  constructor(private auth: AuthService, private api: ApiService) {
-    auth.user$.subscribe(data => {
-      this.profile = data;
-    });
-  }
+  constructor(private auth: AuthService, private api: ApiService) {}
 
   ngOnInit(): void {
     console.log(this.farm);
@@ -35,8 +32,24 @@ export class ProfileFarmComponent implements OnInit {
     this.allTags$ = this.api.getAllTags();
   }
 
-  onImageChanged(event) {
-    alert(event.target.files);
+  async onImageChanged(event) {
+    try {
+      const file = event.target.files[0];
+      const url = await this.api.uploadImage(file);
+      this.farm.image = url;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async onImageChangedOwner(event) {
+    try {
+      const file = event.target.files[0];
+      const url = await this.api.uploadImage(file);
+      this.owner.photoUrl = url;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   removeTag(tag: string) {

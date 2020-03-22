@@ -11,38 +11,67 @@
   }
   .logo {
     display: flex;
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    border: 1px solid #006600;
-    background-image: url("/assets/plucky-03.svg");
+    width: 175px;
+    height: 175px;
+    margin-top: 10px;
+    background-image: url("/assets/logo.svg");
     background-position: center;
     background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .hackathon_logo {
+    display: flex;
+    width: 300px;
+    height: 150px;
+    background-image: url("/assets/Logo_Hackathon.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   .action-container {
     display: flex;
     justify-content: space-between;
     padding: 0px;
+    margin-top: 30px;
     width: 100%;
     .sub-action-container {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
-    .action {
-      width: 100px;
-      height: 100px;
+    .actionFarmer {
+      width: 130px;
+      height: 79px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      background-color: orange;
       cursor: pointer;
-      padding: 15px;
-      background-color: #7bc623;
       border-radius: 5px;
+      background-image: url("/assets/farmerButton.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .actionPlucky {
+      width: 130px;
+      height: 79px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: orange;
+      cursor: pointer;
+      border-radius: 5px;
+      background-image: url("/assets/pluckyButton.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     .infoText {
-      font-size: 8px;
+      font-size: 10px;
       line-height: 1.5;
+      opacity: 1;
     }
   }
 }
@@ -68,7 +97,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  max-width: 320px;
+  max-width: 300px;
   margin: 0px;
   padding: 0px;
   border-radius: 0%;
@@ -78,7 +107,7 @@
 
 .icon {
   margin-top: 10px;
-  color: #006600;
+  color: white;
 }
 
 .info-icon {

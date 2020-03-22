@@ -3,15 +3,15 @@
     <h1>Profil Plucky</h1>
     <h2>Profile der Pluckies</h2>
     <mat-divider></mat-divider>
-    <div class="flex-row">
+    <div class="flex-col">
       <img class="profile-image" src="{{ user.photoUrl }}" />
-      <div class="profile-name">{{ user.displayName }}</div>
+      <h3 class="profile-name">{{ user.displayName }}</h3>
     </div>
     <mat-divider></mat-divider>
     <h3>Hier komme ich her:</h3>
     <div class="flex-row">
       <fa-icon [icon]="locationIcon"></fa-icon>
-      <div>{{ user.location }}</div>
+      <div>{{ user.city }}</div>
     </div>
     <div class="flex-row">
       <div class="travel-range-text">
@@ -21,15 +21,15 @@
     </div>
     <mat-divider></mat-divider>
     <h3>Du kannst mich erreichen unter:</h3>
-    <div class="flex-row">
+    <a class="flex-row contact-link" [href]="'tel:' + user.phone">
       <fa-icon class="icon-with-background" [icon]="phoneIcon"></fa-icon>
       <div>{{ user.phone }}</div>
-    </div>
-    <div class="flex-row">
+    </a>
+    <a class="flex-row contact-link" [href]="'mailto:' + user.email">
       <fa-icon class="icon-with-background" [icon]="mailIcon"></fa-icon>
       <div>{{ user.email }}</div>
-    </div>
-    <a href="#">Oder direkt zum Chat</a>
+    </a>
+    <a class="chat-link" routerLink="/chat">Oder direkt zum Chat</a>
     <mat-divider></mat-divider>
     <h3>In diesen Monaten kann ich helfen:</h3>
     <app-month-overview

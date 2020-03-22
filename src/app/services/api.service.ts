@@ -3,7 +3,11 @@ import {
   AngularFirestore,
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
-import { switchMap } from "rxjs/operators";
+import {
+  AngularFireStorage,
+  AngularFireStorageReference
+} from "@angular/fire/storage";
+import { switchMap, tap, finalize } from "rxjs/operators";
 import { Observable, combineLatest, of } from "rxjs";
 import { Farm, FarmTag } from "../models/farm.model";
 import { AuthService } from "./auth.service";
@@ -14,15 +18,19 @@ import * as firebase from "firebase";
   providedIn: "root"
 })
 export class ApiService {
-  constructor(private afs: AngularFirestore, private auth: AuthService) {}
+  constructor(
+    private afs: AngularFirestore,
+    private auth: AuthService,
+    private storage: AngularFireStorage
+  ) {}
 
   async addFarm(farm: Farm): Promise<void> {
     const done = await this.afs.collection<Farm>("farms").add(farm);
     return this.afs.doc(`farms/${done.id}`).update({ id: done.id });
   }
 
-  updateFarm(farmId: string, farm: Partial<Farm>): Promise<void> {
-    return this.afs.doc<Farm>(`farms/${farmId}`).update(farm);
+  updateFarm(farmId: string, farm: Farm): Promise<void> {
+    return this.afs.doc<Farm>(`farms/${farmId}`).set(farm, { merge: true });
   }
 
   getProfile(uid: string): Observable<User> {
@@ -67,9 +75,15 @@ export class ApiService {
   }
 
   getApplicantsForFarm(farm: Farm) {
-    return this.afs
-      .collection<User>("users", ref => ref.where("uid", "in", farm.applicants))
-      .valueChanges();
+    if (farm.applicants.length > 0) {
+      return this.afs
+        .collection<User>("users", ref =>
+          ref.where("uid", "in", farm.applicants)
+        )
+        .valueChanges();
+    } else {
+      return of(null);
+    }
   }
 
   removeApplicant(applicantUid: string, farmId: string): Promise<void> {
@@ -117,6 +131,14 @@ export class ApiService {
 
   updateProfile(user: Partial<User>): Promise<void> {
     return this.afs.doc(`users/${this.auth.user.uid}`).update(user);
+  }
+
+  async uploadImage(file) {
+    const path = `assets/${Date.now()}_${file.name}`;
+    const ref = this.storage.ref(path);
+    const result = await ref.put(file);
+    const url = await result.ref.getDownloadURL();
+    return url;
   }
 
   // TODO

@@ -18,22 +18,6 @@ export class EmployeeHomeComponent implements OnInit {
     this.farm$ = this.api.getFarms();
   }
 
-  addTest() {
-    this.api.addFarm({
-      id: null,
-      confirmedApplicants: [],
-      description: "This is a sample farm",
-      name: "Sample Farm",
-      farmTags: [],
-      location: new firebase.firestore.GeoPoint(10, 10),
-      member: [],
-      months: [],
-      productTags: [],
-      tasks: [],
-      applicants: []
-    });
-  }
-
   goToDetail(farm: Farm) {
     this.router.navigateByUrl(`/farm-detail/${farm.id}`);
   }

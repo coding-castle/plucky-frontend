@@ -5,6 +5,7 @@ import { ApiService } from "src/app/services/api.service";
 import { Observable } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { User } from "src/app/models/user.model";
 
 @Component({
   selector: "app-farm-detail",
@@ -14,6 +15,8 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 export class FarmDetailComponent implements OnInit {
   farm$: Observable<Farm>;
   farm: Farm;
+  owner$: Observable<User>;
+  owner: User;
   faArrowRight = faArrowRight;
 
   constructor(
@@ -31,6 +34,13 @@ export class FarmDetailComponent implements OnInit {
     this.farm$ = this.api.getFarm(id);
     this.farm$.subscribe(data => {
       this.farm = data;
+      // Get the Owner of the farm for contact infos
+      if (this.farm) {
+        this.owner$ = this.api.getProfile(this.farm.member[0]);
+        this.owner$.subscribe(o => {
+          this.owner = o;
+        });
+      }
     });
   }
 

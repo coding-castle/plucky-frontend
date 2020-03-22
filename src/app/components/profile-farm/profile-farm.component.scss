@@ -77,8 +77,12 @@ mat-divider {
     display: flex;
     flex-direction: column;
     margin-right: 1rem;
-    span {
+    a {
       color: $custom-blue;
     }
   }
+}
+
+.edit-profile-image-button {
+  color: #707070;
 }

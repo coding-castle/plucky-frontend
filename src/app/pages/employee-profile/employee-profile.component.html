@@ -16,7 +16,7 @@
     Profil lädt...
   </ng-template>
   <div class="flex-col-edit" *ngIf="editUser; else loading">
-    <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
+    <img class="profile-image" [src]="editUser.photoUrl" />
 
     <input
       #imageInput
@@ -65,7 +65,7 @@
       <input
         matInput
         type="text"
-        [(ngModel)]="editUser.location"
+        [(ngModel)]="editUser.city"
         [readonly]="!editMode"
       />
     </mat-form-field>
@@ -86,6 +86,13 @@
       [editable]="editMode"
       [months]="editUser.months"
     ></app-month-overview>
-    <button mat-button color="warn" (click)="auth.signOut()">Logout</button>
+    <button
+      class="logout-button"
+      mat-button
+      color="warn"
+      (click)="auth.signOut()"
+    >
+      Logout
+    </button>
   </div>
 </div>

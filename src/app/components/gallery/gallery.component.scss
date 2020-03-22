@@ -6,7 +6,6 @@
 
 .gallery-list {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
 }
@@ -14,6 +13,7 @@
 .gallery-element {
   text-align: center;
   cursor: pointer;
+  margin: 0.5rem;
   div {
     margin-top: 0.5rem;
   }

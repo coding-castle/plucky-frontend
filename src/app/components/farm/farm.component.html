@@ -1,12 +1,25 @@
 <mat-card (click)="goToDetail()">
   <mat-card-header>
     <mat-card-title>{{ farm.name }}</mat-card-title>
-    <mat-card-subtitle>{{ farm.location.latitude }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>
-      {{ farm.description }}
-    </p>
+    <div class="card-content-container">
+      <img [src]="farm.image" *ngIf="farm.image" />
+      <div class="image-placeholder" *ngIf="!farm.image"></div>
+      <div>
+        <p>
+          {{ farm.description }}
+        </p>
+        <mat-chip-list *ngIf="farm.productTags.length > 0">
+          <mat-chip
+            [selectable]="false"
+            color="primary"
+            *ngFor="let tag of farm.productTags"
+            >{{ tag }}</mat-chip
+          >
+        </mat-chip-list>
+      </div>
+    </div>
   </mat-card-content>
   <!-- <h3>{{ farm.name }}</h3>
   <p>{{ farm.description }}</p> -->

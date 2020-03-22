@@ -12,10 +12,21 @@
       Verwerfen
     </button>
   </div>
+  <span class="error-message" *ngIf="error">{{ error }}</span>
   <ng-container *ngIf="editFarm">
     <app-profile-farm
       [editState]="editState"
+      [showContact]="false"
       [farm]="editFarm"
+      [owner]="editOwner"
     ></app-profile-farm>
   </ng-container>
+  <button
+    class="logout-button"
+    mat-button
+    color="warn"
+    (click)="auth.signOut()"
+  >
+    Logout
+  </button>
 </div>

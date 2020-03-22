@@ -5,15 +5,13 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./material.module";
-import { HomeComponent } from "./pages/home/home.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import "firebase/firestore";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from "../environments/environment";
-import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer.component";
-import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LoginComponent } from "./pages/login/login.component";
@@ -38,15 +36,14 @@ import { MapComponent } from "./components/map/map.component";
 import { MapAutocompleteComponent } from "./components/map-autocomplete/map-autocomplete.component";
 import { ChatBubbleComponent } from "./components/chat-bubble/chat-bubble.component";
 import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
+import { ChatListComponent } from "./pages/chat-list/chat-list.component";
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { ImprintComponent } from "./pages/imprint/imprint.component";
 import { PrivacyComponent } from "./pages/privacy/privacy.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    RegisterFarmerComponent,
-    RegisterEmployeeComponent,
     EmployeeFeedComponent,
     FarmerFeedComponent,
     LoginComponent,
@@ -72,6 +69,9 @@ import { PrivacyComponent } from "./pages/privacy/privacy.component";
     EmployeeDetailComponent,
     MapAutocompleteComponent,
     ChatBubbleComponent,
+    ChatListComponent,
+    ComingSoonComponent
+    ChatBubbleComponent,
     ImprintComponent,
     PrivacyComponent
   ],
@@ -84,6 +84,7 @@ import { PrivacyComponent } from "./pages/privacy/privacy.component";
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AgmCoreModule.forRoot(environment.googleMaps),
     ReactiveFormsModule

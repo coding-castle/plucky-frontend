@@ -11,6 +11,10 @@
   </ng-container>
 </div>
 <ng-container *ngIf="farm$ | async as farm; else loading">
-  <app-profile-farm [farm]="farm"></app-profile-farm>
+  <app-profile-farm
+    [showContact]="true"
+    [owner]="owner"
+    [farm]="farm"
+  ></app-profile-farm>
 </ng-container>
 <ng-template #loading>Loading Farm...</ng-template>

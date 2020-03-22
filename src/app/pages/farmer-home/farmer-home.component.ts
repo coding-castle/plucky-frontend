@@ -15,7 +15,7 @@ export class FarmerHomeComponent implements OnInit {
   faArrowRight = faArrowRight;
   public title = "Bewerber:innen";
   public nextStepTitle = "Nächste Schritte";
-  newFarmer = true;
+  newFarmer = false;
   public newTodos = [
     { state: false, text: "Leg dein Profil an" },
     { state: false, text: "Finde Pluckies in deiner Nähe" },

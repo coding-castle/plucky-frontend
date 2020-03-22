@@ -9,6 +9,7 @@ import { AuthService } from "src/app/services/auth.service";
 import { FarmTag, Farm } from "src/app/models/farm.model";
 import { ApiService } from "src/app/services/api.service";
 import { Observable } from "rxjs";
+import { User } from "src/app/models/user.model";
 
 @Component({
   selector: "app-farmer-profile",
@@ -19,6 +20,10 @@ export class FarmerProfileComponent implements OnInit {
   public editState = false;
   editFarm: Farm;
   resetFarm: Farm;
+  editOwner: User;
+  resetOwner: User;
+  error = "";
+  isNewFarm;
 
   public farmTags: FarmTag[] = [
     { icon: faLemon.iconName.toString(), name: "Obstbau", id: "obstbau" },
@@ -31,21 +36,24 @@ export class FarmerProfileComponent implements OnInit {
   constructor(public auth: AuthService, private api: ApiService) {}
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
-      if (user.uid) {
+      if (user && user.uid) {
         this.farms$ = this.api.getFarmByUser(this.auth.user?.uid);
-
+        // In this component Farmer Profile the authenticated user is also the owner of the farm
+        this.editOwner = Object.assign({}, user);
+        this.resetOwner = Object.assign({}, user);
         this.farms$.subscribe(data => {
           if (data && data.length > 0) {
             this.editFarm = data[0];
-            this.resetFarm = data[0];
+            this.resetFarm = Object.assign({}, data[0]);
+            this.isNewFarm = false;
           } else if (data && data.length === 0) {
             // create a new farm
             // add the current uid to the new farm members
             const farm: Farm = {
               applicants: [],
               confirmedApplicants: [],
-              description: "Hier kannst du eine Beschreibung einfügen",
-              name: "Gib deiner Farm einen Namen",
+              description: "",
+              name: "",
               farmTags: [],
               member: [user.uid],
               productTags: [],
@@ -55,7 +63,9 @@ export class FarmerProfileComponent implements OnInit {
               location: null,
               id: null
             };
-            this.api.addFarm(farm);
+            this.editFarm = farm;
+            this.resetFarm = Object.assign({}, farm);
+            this.isNewFarm = true;
             this.editState = true;
           }
         });
@@ -65,13 +75,34 @@ export class FarmerProfileComponent implements OnInit {
   reset() {
     // deep copy
     this.editFarm = Object.assign({}, this.resetFarm);
+    this.editOwner = Object.assign({}, this.resetOwner);
+    this.error = "";
     this.setEditMode(false);
   }
 
   async update() {
-    console.log(this.editFarm);
+    this.error = "";
+    if (!this.editFarm.name) {
+      // error
+      this.error = "Der Name darf nicht leer sein";
+      return;
+    }
+    if (!this.editFarm.description) {
+      // error
+      this.error = "Die Beschreibung darf nicht leer sein";
+      return;
+    }
+    if (!this.editFarm.location) {
+      this.error = "Der Ort muss definiert werden";
+      return;
+    }
     try {
-      await this.api.updateFarm(this.editFarm.id, this.editFarm);
+      if (this.isNewFarm) {
+        await this.api.addFarm(this.editFarm);
+      } else {
+        await this.api.updateFarm(this.editFarm.id, this.editFarm);
+      }
+      await this.api.updateProfile(this.editOwner);
     } catch (error) {
       console.log(error);
     }
