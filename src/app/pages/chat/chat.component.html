@@ -1,11 +1,11 @@
 <div class="container">
-  <h1>Hallo Plucky</h1>
+  <h1>Hallo {{ user }}</h1>
   <h2>Bewerbung</h2>
 
   <div class="chat-container">
-    <div class="farmer-header">
-      <img class="farmer-image" src="https://picsum.photos/id/237/100/100" />
-      <div class="farmer-name">Lorem Ipsum</div>
+    <div class="chat-header">
+      <img class="chat-header-image" src="https://picsum.photos/id/237/80/80" />
+      <div class="chat-header-name">Lorem Ipsum</div>
     </div>
     <app-chat-bubble
       *ngFor="let item of chat"
@@ -13,17 +13,18 @@
       type="{{ item.type }}"
       time="{{ item.time }}"
     ></app-chat-bubble>
-    <mat-form-field>
-      <mat-label>Antworten</mat-label>
-      <textarea
-        #messageInput
-        matInput
-        placeholder="Sende eine Nachricht..."
-      ></textarea>
-      <mat-icon matSuffix (click)="onSendMessage(messageInput.value)"
-        ><fa-icon class="message-input-icon" [icon]="sendIcon"></fa-icon
-      ></mat-icon>
-    </mat-form-field>
   </div>
+  <div class="flex-grow-1"></div>
+  <mat-form-field>
+    <mat-label>Antworten</mat-label>
+    <textarea
+      #messageInput
+      matInput
+      placeholder="Sende eine Nachricht..."
+    ></textarea>
+    <mat-icon matSuffix (click)="onSendMessage(messageInput.value)"
+      ><fa-icon class="message-input-icon" [icon]="sendIcon"></fa-icon
+    ></mat-icon>
+  </mat-form-field>
 </div>
 <app-bottom-nav></app-bottom-nav>

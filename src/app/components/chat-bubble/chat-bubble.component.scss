@@ -5,20 +5,20 @@
   border-radius: 0.4em;
   padding: 15px;
   padding-bottom: 5px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .chat-bubble-left {
   @extend .chat-bubble;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   align-self: flex-start;
   background-color: #f8db01;
 }
 
 .chat-bubble-right {
   @extend .chat-bubble;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   align-self: flex-end;
   background-color: #7bc623;
 }

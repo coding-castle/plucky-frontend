@@ -8,6 +8,7 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 })
 export class ChatComponent implements OnInit {
   sendIcon = faPaperPlane;
+  user = "User";
   chat = [
     {
       message: "This is a test message",
