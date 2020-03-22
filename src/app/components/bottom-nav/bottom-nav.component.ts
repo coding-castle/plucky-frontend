@@ -52,7 +52,7 @@ export class BottomNavComponent implements OnInit {
     {
       icon: faComments,
       name: "Chat",
-      routerLink: ["/chat"]
+      routerLink: ["/chat-list"]
     },
     {
       icon: faBook,
