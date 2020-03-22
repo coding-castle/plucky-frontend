@@ -3,6 +3,9 @@
 .container {
   margin: 15px;
   margin-bottom: 56px + 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .chat-container {
@@ -13,17 +16,18 @@
   padding: 10px;
 }
 
-.farmer-header {
+.chat-header {
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 15px;
 }
 
-.farmer-image {
+.chat-header-image {
   border-radius: 50%;
 }
 
-.farmer-name {
+.chat-header-name {
   margin-left: 15px;
   font-size: 1.5em;
 }
@@ -31,4 +35,16 @@
 .message-input-icon {
   font-size: 0.8em;
   color: gray;
+}
+
+mat-form-field {
+  position: fixed;
+  background: white;
+  left: 0;
+  right: 0;
+  bottom: 56px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }

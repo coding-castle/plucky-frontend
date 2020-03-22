@@ -15,6 +15,7 @@ import { AuthGuard } from "./services/auth.guard";
 import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 import { WikiComponent } from "./pages/wiki/wiki.component";
 import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
+import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
 
 const routes: Routes = [
   {
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: "employee-profile",
     component: EmployeeProfileComponent
+  },
+  {
+    path: "employee-detail/:uid",
+    component: EmployeeDetailComponent
   },
   {
     path: "chat",
