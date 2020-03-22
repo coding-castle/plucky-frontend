@@ -8,6 +8,7 @@ import {
 import { MatIconRegistry } from "@angular/material/icon";
 import { EmployeeFeedComponent } from "src/app/pages/employee-feed/employee-feed.component";
 import { AuthService } from "src/app/services/auth.service";
+import { Role } from "src/app/models/role.enum";
 
 @Component({
   selector: "app-bottom-nav",
@@ -71,9 +72,9 @@ export class BottomNavComponent implements OnInit {
     iconRegistry.setDefaultFontSetClass("fa");
     auth.user$.subscribe(user => {
       console.log(user);
-      if (user && user.type === "farmer") {
+      if (user && user.type === Role.Farmer) {
         this.activeOptions = this.farmerOptions;
-      } else if (user && user.type === "plucky") {
+      } else if (user && user.type === Role.Plucky) {
         this.activeOptions = this.employeeOptions;
       }
     });
