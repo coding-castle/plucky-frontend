@@ -8,7 +8,7 @@ import { faCheckCircle, faCircle } from "@fortawesome/free-regular-svg-icons";
 })
 export class ChecklistComponent implements OnInit {
   @Input() title: String;
-  @Input() listItems: Array<String>;
+  @Input() listItems: Array<{ state: boolean; text: string }>;
   public circle = faCircle;
   public circleCheck = faCheckCircle;
   constructor() {}

@@ -1,13 +1,8 @@
 <div class="list-container">
   <h3 class="list-title">{{ title }}</h3>
-  <div *ngFor="let item of listItems">
-    <div class="list-element">
-      <div *ngIf="item.state; else elseBlock">
-        <fa-icon [icon]="circleCheck" size="xs"></fa-icon>{{ item.text }}
-      </div>
-      <ng-template #elseBlock>
-        <fa-icon [icon]="circle" size="xs"></fa-icon>{{ item.text }}
-      </ng-template>
-    </div>
+  <div *ngFor="let item of listItems" class="list-element">
+    <fa-icon [icon]="circleCheck" size="xs" *ngIf="item.state"></fa-icon>
+    <fa-icon [icon]="circle" size="xs" *ngIf="!item.state"></fa-icon>
+    <span>{{ item.text }}</span>
   </div>
 </div>

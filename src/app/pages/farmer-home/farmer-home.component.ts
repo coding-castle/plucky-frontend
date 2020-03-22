@@ -12,7 +12,7 @@ export class FarmerHomeComponent implements OnInit {
     { state: true, text: "Leg dein Profil an" },
     { state: true, text: "Finde Pluckies in deiner Nähe" },
     { state: true, text: "Schreibe einem Plucky im Chat" },
-    { state: false, text: "Informiere dich über unsere initiative" }
+    { state: false, text: "Informiere dich über unsere Initiative" }
   ];
   constructor() {}
 
