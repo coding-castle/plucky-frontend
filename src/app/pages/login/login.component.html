@@ -57,7 +57,11 @@
         type="password" />
       <!-- <mat-hint>Hint</mat-hint> -->
     </mat-form-field>
-    <mat-checkbox [(ngModel)]="privacyChecked">Datenschutz geht klar.</mat-checkbox>
+    <mat-checkbox [(ngModel)]="privacyChecked">
+      Hiermit akzeptiere <br>
+      ich die <a href="/privacy" target="_blank">Datenschutzerklärung</a> <br>
+      und den Eintrag in den Newsletter.
+    </mat-checkbox>
     <button mat-raised-button color="primary" class="register-button" (click)="register()">
       Registrieren
     </button>
