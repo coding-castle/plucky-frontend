@@ -1,7 +1,5 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
-import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
@@ -16,74 +14,78 @@ import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail
 import { ImprintComponent } from "./pages/imprint/imprint.component";
 import { PrivacyComponent } from "./pages/privacy/privacy.component";
 import { ChatListComponent } from "./pages/chat-list/chat-list.component";
+import { LoginGuard } from "./services/login.guard";
+import { Role } from "./models/role.enum";
 
 const routes: Routes = [
   {
     path: "",
     redirectTo: "/landing",
-    pathMatch: "full"
+    pathMatch: "full",
+    canActivate: [LoginGuard]
   },
   {
     path: "landing",
-    component: LandingComponent
+    component: LandingComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: "landing/:type",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: "farm-detail/:id",
-    component: FarmDetailComponent
+    component: FarmDetailComponent,
+    data: { roles: [Role.Plucky] }
   },
   {
     path: "farmer",
     component: FarmerHomeComponent,
+    data: { roles: [Role.Farmer] },
     canActivate: [AuthGuard]
   },
   {
     path: "employee",
     component: EmployeeHomeComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "farmer-feed",
-    component: FarmerFeedComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: "employee-feed",
-    component: EmployeeFeedComponent,
+    data: { roles: [Role.Plucky] },
     canActivate: [AuthGuard]
   },
   {
     path: "farmer-profile",
     component: FarmerProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Farmer] }
   },
   {
     path: "employee-profile",
     component: EmployeeProfileComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Plucky] }
   },
   {
     path: "employee-detail/:uid",
     component: EmployeeDetailComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Farmer] }
   },
   {
     path: "chat",
     component: ChatComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Plucky, Role.Farmer] }
   },
   {
     path: "chat-list",
     component: ChatListComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Plucky, Role.Farmer] }
   },
   {
     path: "wiki",
     component: WikiComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Plucky, Role.Farmer] }
   },
   {
     path: "imprint",

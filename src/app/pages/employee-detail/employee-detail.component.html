@@ -1,42 +1,39 @@
 <ng-container *ngIf="user$ | async as user; else loading">
-  <div class="container">
-    <h1>Profil Plucky</h1>
-    <h2>Profile der Pluckies</h2>
-    <mat-divider></mat-divider>
-    <div class="flex-col">
-      <img class="profile-image" src="{{ user.photoUrl }}" />
-      <h3 class="profile-name">{{ user.displayName }}</h3>
-    </div>
-    <mat-divider></mat-divider>
-    <h3>Hier komme ich her:</h3>
-    <div class="flex-row">
-      <fa-icon [icon]="locationIcon"></fa-icon>
-      <div>{{ user.city }}</div>
-    </div>
-    <div class="flex-row">
-      <div class="travel-range-text">
-        Ich bin bereit im Umkreis von {{ user.travelRange }} Kilometern
-        anzureisen
-      </div>
-    </div>
-    <mat-divider></mat-divider>
-    <h3>Du kannst mich erreichen unter:</h3>
-    <a class="flex-row contact-link" [href]="'tel:' + user.phone">
-      <fa-icon class="icon-with-background" [icon]="phoneIcon"></fa-icon>
-      <div>{{ user.phone }}</div>
-    </a>
-    <a class="flex-row contact-link" [href]="'mailto:' + user.email">
-      <fa-icon class="icon-with-background" [icon]="mailIcon"></fa-icon>
-      <div>{{ user.email }}</div>
-    </a>
-    <a class="chat-link" routerLink="/chat">Oder direkt zum Chat</a>
-    <mat-divider></mat-divider>
-    <h3>In diesen Monaten kann ich helfen:</h3>
-    <app-month-overview
-      [editable]="false"
-      [months]="user.months"
-    ></app-month-overview>
+  <h1>Profil Plucky</h1>
+  <h2>Profile der Pluckies</h2>
+  <mat-divider></mat-divider>
+  <div class="flex-col">
+    <img class="profile-image" src="{{ user.photoUrl }}" />
+    <h3 class="profile-name">{{ user.displayName }}</h3>
   </div>
+  <mat-divider></mat-divider>
+  <h3>Hier komme ich her:</h3>
+  <div class="flex-row">
+    <fa-icon [icon]="locationIcon"></fa-icon>
+    <div>{{ user.city }}</div>
+  </div>
+  <div class="flex-row">
+    <div class="travel-range-text">
+      Ich bin bereit im Umkreis von {{ user.travelRange }} Kilometern anzureisen
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <h3>Du kannst mich erreichen unter:</h3>
+  <a class="flex-row contact-link" [href]="'tel:' + user.phone">
+    <fa-icon class="icon-with-background" [icon]="phoneIcon"></fa-icon>
+    <div>{{ user.phone }}</div>
+  </a>
+  <a class="flex-row contact-link" [href]="'mailto:' + user.email">
+    <fa-icon class="icon-with-background" [icon]="mailIcon"></fa-icon>
+    <div>{{ user.email }}</div>
+  </a>
+  <a class="chat-link" routerLink="/chat">Oder direkt zum Chat</a>
+  <mat-divider></mat-divider>
+  <h3>In diesen Monaten kann ich helfen:</h3>
+  <app-month-overview
+    [editable]="false"
+    [months]="user.months"
+  ></app-month-overview>
 </ng-container>
 <ng-template #loading>
   User wird geladen...
