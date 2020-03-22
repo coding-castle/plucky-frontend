@@ -97,6 +97,7 @@ export class MapAutocompleteComponent implements OnInit {
     );
 
     // TODO - Set place to farm
+    this.farm.location = location;
   }
 
   private setCurrentPosition() {
