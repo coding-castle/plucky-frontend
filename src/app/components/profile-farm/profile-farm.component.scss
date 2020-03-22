@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 .avatar {
   width: 100px;
   height: 100px;
@@ -45,18 +46,39 @@ mat-form-field {
 mat-divider {
   margin: 1rem 0;
 }
+.highlight {
+  background-color: $custom-accent;
+}
 
 .horizontal-container {
   display: flex;
 
   .icon-container {
     margin: 1rem 1rem 0 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
 }
 ::ng-deep.mat-chip-list-wrapper {
   padding: 0 1rem 1rem 1rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  .contact-name {
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    span {
+      color: $custom-blue;
+    }
+  }
 }
