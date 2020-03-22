@@ -59,6 +59,7 @@
       <mat-divider></mat-divider>
       <h3>Wo ist unser Betrieb gelegen</h3>
       <app-map
+        [editable]="editState"
         [lat]="farm.location.latitude"
         [lng]="farm.location.longitude"
       ></app-map>
