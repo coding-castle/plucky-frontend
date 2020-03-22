@@ -10,6 +10,7 @@ export const environment = {
     appId: "1:86359356199:web:46d4df7e72756f09542f02"
   },
   googleMaps: {
-    apiKey: "AIzaSyBXtGBW_Sgzv_tChgupOi4x0l4bCU1fRmw"
+    apiKey: "AIzaSyBXtGBW_Sgzv_tChgupOi4x0l4bCU1fRmw",
+    libraries: ["places"]
   }
 };

@@ -58,6 +58,11 @@
       ></app-month-overview>
       <mat-divider></mat-divider>
       <h3>Wo ist unser Betrieb gelegen</h3>
+      <app-map
+        [editable]="editState"
+        [lat]="farm.location.latitude"
+        [lng]="farm.location.longitude"
+      ></app-map>
       <mat-divider></mat-divider>
       <div>
         <h3 style="margin-bottom: 0.25rem;">Was macht unser Betrieb</h3>
@@ -69,7 +74,12 @@
           </div>
         </div>
         <div class="horizontal-container" *ngIf="editState">
-          <div *ngFor="let tag of allTags$ | async" class="icon-container">
+          <div
+            *ngFor="let tag of allTags$ | async"
+            class="icon-container"
+            [class.highlight]="farm.farmTags.includes(tag.id)"
+            (click)="modifyFarmTag(tag.id)"
+          >
             <fa-icon [icon]="['fas', tag.icon]" size="xl"></fa-icon
             >{{ tag.name }}
           </div>
@@ -107,9 +117,9 @@
         </mat-form-field>
       </div>
       <mat-divider></mat-divider>
-      <div class="element">
-        <div class="text">
-          <span>Ansprechpartner Placeholder</span>
+      <div class="contact">
+        <div class="contact-name">
+          <h3>{{ profile?.displayName }}</h3>
           <span>Direkt kontaktieren</span>
         </div>
         <img class="avatar" [src]="profile?.photoUrl" />
