@@ -17,7 +17,7 @@ import { RegisterEmployeeComponent } from "./pages/register-employee/register-em
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LoginComponent } from "./pages/login/login.component";
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { EmployeeHomeComponent } from "./pages/employee-home/employee-home.component";
 import { FarmerHomeComponent } from "./pages/farmer-home/farmer-home.component";
@@ -33,8 +33,9 @@ import { ProfileFarmComponent } from "./components/profile-farm/profile-farm.com
 import { WikiComponent } from "./pages/wiki/wiki.component";
 import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
 import { MonthOverviewComponent } from "./components/month-overview/month-overview.component";
-import { MapComponent } from "./components/map/map.component";
 import { AgmCoreModule } from "@agm/core";
+import { MapComponent } from "./components/map/map.component";
+import { MapAutocompleteComponent } from "./components/map-autocomplete/map-autocomplete.component";
 import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.component';
 
 @NgModule({
@@ -64,6 +65,7 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
     MonthOverviewComponent,
     GaleryComponent,
     MapComponent,
+    MapAutocompleteComponent,
     ChatBubbleComponent
   ],
   imports: [
@@ -76,7 +78,8 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AgmCoreModule.forRoot(environment.googleMaps)
+    AgmCoreModule.forRoot(environment.googleMaps),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

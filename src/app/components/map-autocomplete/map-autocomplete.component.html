@@ -1,0 +1,11 @@
+<div class="map-autocomplete-container">
+
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Ihre Adresse" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" [formControl]="searchControl" #search>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+    <agm-map [latitude]="lat" [longitude]="lng" [scrollwheel]="false" [zoom]="zoom">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+
+</div>

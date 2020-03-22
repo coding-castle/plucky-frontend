@@ -10,6 +10,7 @@ export class MapComponent implements OnInit {
   zoom: Number = 18;
   @Input() lat: Number = 0;
   @Input() lng: Number = 0;
+  @Input() editable = false;
 
   ngOnInit(): void {}
 }
