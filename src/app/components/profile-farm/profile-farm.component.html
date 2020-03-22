@@ -1,33 +1,110 @@
 <div>
-  <div *ngIf="editState; else elseBlock">
+  <!-- <div *ngIf="editState; else elseBlock"> -->
+  <div>
     <div>
       <mat-divider></mat-divider>
-      <div>
-        <img class="avatar" [src]="profile?.photoUrl" />
-        <h3>{{ profile?.displayName }}</h3>
-        <span>Description Placeholder</span>
+      <div class="image-title">
+        <div class="image-container">
+          <img *ngIf="farm?.image" class="avatar" [src]="farm?.image" />
+          <input
+            #imageInput
+            type="file"
+            accept="image/*"
+            hidden
+            (change)="onImageChanged($event)"
+          />
+          <button
+            mat-button
+            class="edit-profile-image-button"
+            (click)="imageInput.click()"
+            *ngIf="editState"
+          >
+            <fa-icon [icon]="faCamera"></fa-icon>
+            <div>Bild bearbeiten</div>
+          </button>
+        </div>
+        <h3 *ngIf="!editState">{{ farm.name }}</h3>
+        <mat-form-field *ngIf="editState" fullwidth>
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="farm.name"
+            [readonly]="!editState"
+          />
+        </mat-form-field>
       </div>
+      <p *ngIf="!editState">{{ farm?.description }}</p>
+      <mat-form-field *ngIf="editState" fullwidth>
+        <mat-label>Beschreibung</mat-label>
+        <textarea
+          matInput
+          [rows]="5"
+          [(ngModel)]="farm.description"
+          [readonly]="!editState"
+        ></textarea>
+        <!-- <input
+          matInput
+          type="text"
+          [(ngModel)]="farm.description"
+          [readonly]="!editState"
+        /> -->
+      </mat-form-field>
       <mat-divider></mat-divider>
       <h3>Wir brauchen Hilfskräfte für:</h3>
+      <app-month-overview
+        [editable]="editState"
+        [months]="farm.months"
+      ></app-month-overview>
       <mat-divider></mat-divider>
       <h3>Wo ist unser Betrieb gelegen</h3>
       <mat-divider></mat-divider>
       <div>
-        <h3>Was macht unser Betrieb</h3>
+        <h3 style="margin-bottom: 0.25rem;">Was macht unser Betrieb</h3>
         <span style="opacity: 0.7;">Hauptproduktionsausrichtung</span>
-        <div *ngFor="let tag of farmTags">
-          <fa-icon [icon]="['fas', tag.icon]" size="xl"></fa-icon>{{ tag.name }}
+        <div class="horizontal-container" *ngIf="!editState">
+          <div *ngFor="let tag of farmTags$ | async" class="icon-container">
+            <fa-icon [icon]="['fas', tag.icon]" size="xl"></fa-icon
+            >{{ tag.name }}
+          </div>
+        </div>
+        <div class="horizontal-container" *ngIf="editState">
+          <div *ngFor="let tag of allTags$ | async" class="icon-container">
+            <fa-icon [icon]="['fas', tag.icon]" size="xl"></fa-icon
+            >{{ tag.name }}
+          </div>
         </div>
       </div>
       <mat-divider></mat-divider>
       <div>
         <h3>Es wird produziert</h3>
-        <mat-chip-list>
-          <mat-chip>Äpfel</mat-chip>
-          <mat-chip>Birnen</mat-chip>
-          <mat-chip>Spargel</mat-chip>
-          <mat-chip>Erdbeeren</mat-chip>
+        <mat-chip-list *ngIf="!editState">
+          <mat-chip *ngFor="let tag of farm.productTags">{{ tag }}</mat-chip>
         </mat-chip-list>
+        <mat-form-field class="example-chip-list" *ngIf="editState">
+          <mat-chip-list #chipList aria-label="Product Tag Selection">
+            <mat-chip
+              *ngFor="let tag of farm.productTags"
+              [selectable]="true"
+              [removable]="true"
+              (removed)="removeTag(tag)"
+            >
+              {{ tag }}
+              <fa-icon
+                class="remove-icon"
+                [icon]="faTimes"
+                matChipRemove
+              ></fa-icon>
+            </mat-chip>
+            <input
+              placeholder="Neuer Tag"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="addToken($event)"
+            />
+          </mat-chip-list>
+        </mat-form-field>
       </div>
       <mat-divider></mat-divider>
       <div class="element">
@@ -39,28 +116,4 @@
       </div>
     </div>
   </div>
-  <ng-template #elseBlock>
-    <div>
-      <mat-divider></mat-divider>
-
-      <mat-divider></mat-divider>
-      <h3>Wir brauchen Hilfskräfte für:</h3>
-      <mat-divider></mat-divider>
-      <div>
-        <h3>Wo ist unser Betrieb gelegen</h3>
-      </div>
-      <mat-divider></mat-divider>
-      <h3>Was macht unser Betrieb</h3>
-      <mat-divider></mat-divider>
-      <div>
-        <h3>Es wird produziert</h3>
-        <mat-chip-list>
-          <mat-chip>Äpfel</mat-chip>
-          <mat-chip>Birnen</mat-chip>
-          <mat-chip>Spargel</mat-chip>
-          <mat-chip>Erdbeeren</mat-chip>
-        </mat-chip-list>
-      </div>
-    </div>
-  </ng-template>
 </div>

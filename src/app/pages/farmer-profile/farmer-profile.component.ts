@@ -6,7 +6,9 @@ import {
   faLeaf
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
-import { FarmTag } from "src/app/models/farm.model";
+import { FarmTag, Farm } from "src/app/models/farm.model";
+import { ApiService } from "src/app/services/api.service";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-farmer-profile",
@@ -14,18 +16,9 @@ import { FarmTag } from "src/app/models/farm.model";
   styleUrls: ["./farmer-profile.component.scss"]
 })
 export class FarmerProfileComponent implements OnInit {
-  public editState = true;
-  public profile = {
-    image: "https://i.picsum.photos/id/149/100/100.jpg",
-    displayName: "Gemüsehof Flotti Karotti bei Ravensburg",
-    describtion: `Wir sind ein Familienunternehmen und dies seit über 40 Jahren. Wir bauen vor allem
-    Obst und Gemüse an. Zu den beliebtesten
-    Sorten gehören Erdbeern, Spargel, Salat,
-    Mais und Getreide. Wir legen Wert auf ein
-    freundliches Miteinander und sind stolz
-    darauf Biobauern zu sein.`,
-    ansprechpartner: "Sheldon Cooper"
-  };
+  public editState = false;
+  editFarm: Farm;
+  resetFarm: Farm;
 
   public farmTags: FarmTag[] = [
     { icon: faLemon.iconName.toString(), name: "Obstbau", id: "obstbau" },
@@ -33,13 +26,40 @@ export class FarmerProfileComponent implements OnInit {
     { icon: faLeaf.iconName.toString(), name: "Biohof", id: "biohof" },
     { icon: faWineGlassAlt.iconName.toString(), name: "Weinbau", id: "weinbau" }
   ];
-  constructor(public auth: AuthService) {}
-  ngOnInit(): void {}
-  changeEditState = () => {
-    if (this.editState === true) {
-      this.editState = false;
-    } else {
-      this.editState = true;
+
+  farms$: Observable<Farm[]>;
+  constructor(public auth: AuthService, private api: ApiService) {}
+  ngOnInit(): void {
+    this.auth.user$.subscribe(user => {
+      if (user.uid) {
+        this.farms$ = this.api.getFarmByUser(this.auth.user?.uid);
+
+        this.farms$.subscribe(data => {
+          if (data && data.length > 0) {
+            this.editFarm = data[0];
+            this.resetFarm = data[0];
+          }
+        });
+      }
+    });
+  }
+  reset() {
+    // deep copy
+    this.editFarm = Object.assign({}, this.resetFarm);
+    this.setEditMode(false);
+  }
+
+  async update() {
+    console.log(this.editFarm);
+    try {
+      await this.api.updateFarm(this.editFarm.id, this.editFarm);
+    } catch (error) {
+      console.log(error);
     }
-  };
+    this.setEditMode(false);
+  }
+
+  setEditMode(edit: boolean) {
+    this.editState = edit;
+  }
 }

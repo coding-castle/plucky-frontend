@@ -1,17 +1,21 @@
 <div class="container">
-  <h1>Hallo Farmer</h1>
+  <h1>Hallo {{ (auth.user$ | async)?.displayName }}</h1>
   <h2>Dies ist dein Profil!</h2>
-  <div *ngIf="editState; else elseBlock">
-    <div class="profileShow" (click)="changeEditState()">Profil bearbeiten</div>
+  <div class="edit-profile-button">
+    <button mat-button *ngIf="!editState" (click)="setEditMode(true)">
+      Profil bearbeiten
+    </button>
+    <button mat-button color="primary" *ngIf="editState" (click)="update()">
+      Speichern
+    </button>
+    <button mat-button color="warn" *ngIf="editState" (click)="reset()">
+      Verwerfen
+    </button>
   </div>
-  <ng-template #elseBlock>
-    <div class="profileEdit" (click)="changeEditState()">
-      Bearbeiten beenden
-    </div>
-  </ng-template>
-  <app-profile-farm
-    [editState]="editState"
-    [farmTags]="farmTags"
-  ></app-profile-farm>
-  <app-bottom-nav></app-bottom-nav>
+  <ng-container *ngIf="editFarm">
+    <app-profile-farm
+      [editState]="editState"
+      [farm]="editFarm"
+    ></app-profile-farm>
+  </ng-container>
 </div>

@@ -5,7 +5,7 @@ import {
 } from "@angular/fire/firestore";
 import { switchMap } from "rxjs/operators";
 import { Observable, combineLatest } from "rxjs";
-import { Farm } from "../models/farm.model";
+import { Farm, FarmTag } from "../models/farm.model";
 import { AuthService } from "./auth.service";
 import { User } from "../models/user.model";
 import * as firebase from "firebase";
@@ -33,6 +33,24 @@ export class ApiService {
   getFarm(farmId: string): Observable<Farm> {
     // get farm from farm members
     return this.afs.doc<Farm>(`farms/${farmId}`).valueChanges();
+  }
+
+  getFarmTags(tagIds: string[]): Observable<FarmTag[]> {
+    return this.afs
+      .collection<FarmTag>("farmTags", ref => ref.where("id", "in", tagIds))
+      .valueChanges();
+  }
+
+  getAllTags(): Observable<FarmTag[]> {
+    return this.afs.collection<FarmTag>("farmTags").valueChanges();
+  }
+
+  getFarmByUser(uid: string): Observable<Farm[]> {
+    return this.afs
+      .collection<Farm>("farms", ref =>
+        ref.where("member", "array-contains", uid).limit(1)
+      )
+      .valueChanges();
   }
 
   acceptApplicant(applicantUid: string, farmId: string): Promise<void> {
