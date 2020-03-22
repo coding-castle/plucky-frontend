@@ -1,14 +1,18 @@
-<div *ngIf="showTopBox" class="topBoxContainer">
-  <div class="topBoxPrimary"></div>
-  <div class="topBoxSecond"></div>
+<div class="container">
+  <div class="background"></div>
+  <div *ngIf="showTopBox" class="topBoxContainer">
+    <div class="topBoxPrimary"></div>
+    <div class="topBoxSecond"></div>
+  </div>
+  <div class="padding appWidth">
+    <router-outlet></router-outlet>
+  </div>
+  <div *ngIf="showBotBox" class="bottomBoxContainer">
+    <div class="bottomBoxPrimary"></div>
+    <div class="bottomBoxSecond"></div>
+  </div>
 </div>
-<div class="padding appWidth">
-  <router-outlet></router-outlet>
-</div>
-<div *ngIf="showBotBox" class="bottomBoxContainer">
-  <div class="bottomBoxPrimary"></div>
-  <div class="bottomBoxSecond"></div>
-</div>
+
 
 
 

@@ -31,7 +31,7 @@ export class AppComponent {
   topShowRoutes = ["/landing", "/landing/plucky", "/landing/farmer"];
 
   // Show Bottom box in these routes
-  botShowRoutes = ["/landing/plucky", "/landing/farmer"];
+  botShowRoutes = ["/landing", "/landing/plucky", "/landing/farmer"];
 
   constructor(private library: FaIconLibrary, private router: Router) {
     router.events.subscribe(event => {

@@ -1,11 +1,11 @@
-<div class="card-wrapper">
+<mat-card class="card-wrapper">
   <ng-container *ngIf="registerActive">
     <ng-container *ngTemplateOutlet="registerForm"></ng-container>
   </ng-container>
   <ng-container *ngIf="!registerActive">
     <ng-container *ngTemplateOutlet="loginForm"></ng-container>
   </ng-container>
-</div>
+</mat-card>
 
 <ng-template #loginForm>
   <div class="login-form-container">
