@@ -6,6 +6,7 @@ import {
   faLeaf
 } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
+import { FarmTag } from "src/app/models/farm.model";
 
 @Component({
   selector: "app-farmer-profile",
@@ -26,14 +27,12 @@ export class FarmerProfileComponent implements OnInit {
     ansprechpartner: "Sheldon Cooper"
   };
 
-  public farm = {
-    products: [
-      { icon: faLemon, name: "Obstbau" },
-      { icon: faTree, name: "Gartenbau" },
-      { icon: faLeaf, name: "Biohof" },
-      { icon: faWineGlassAlt, name: "Weinbau" }
-    ]
-  };
+  public farmTags: FarmTag[] = [
+    { icon: faLemon.iconName.toString(), name: "Obstbau", id: "obstbau" },
+    { icon: faTree.iconName.toString(), name: "Gartenbau", id: "gartenbau" },
+    { icon: faLeaf.iconName.toString(), name: "Biohof", id: "biohof" },
+    { icon: faWineGlassAlt.iconName.toString(), name: "Weinbau", id: "weinbau" }
+  ];
   constructor(public auth: AuthService) {}
   ngOnInit(): void {}
   changeEditState = () => {

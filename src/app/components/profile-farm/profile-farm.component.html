@@ -3,26 +3,25 @@
     <div>
       <mat-divider></mat-divider>
       <div>
-        <img class="avatar" [src]="profile.image">
-        <h3>{{profile.displayName}}</h3>
-        <span>{{profile.describtion}}</span>
+        <img class="avatar" [src]="profile?.photoUrl" />
+        <h3>{{ profile?.displayName }}</h3>
+        <span>Description Placeholder</span>
       </div>
       <mat-divider></mat-divider>
-      <h3> Wir brauchen Hilfskräfte für:</h3>
+      <h3>Wir brauchen Hilfskräfte für:</h3>
       <mat-divider></mat-divider>
-      <h3> Wo ist unser Betrieb gelegen</h3>
+      <h3>Wo ist unser Betrieb gelegen</h3>
       <mat-divider></mat-divider>
       <div>
-        <h3> Was macht unser Betrieb</h3>
+        <h3>Was macht unser Betrieb</h3>
         <span style="opacity: 0.7;">Hauptproduktionsausrichtung</span>
-        <div *ngFor="let item of farm.products">
-          <fa-icon [icon]="item.icon" size="xl"></fa-icon>{{ item.name }}
+        <div *ngFor="let tag of farmTags">
+          <fa-icon [icon]="['fas', tag.icon]" size="xl"></fa-icon>{{ tag.name }}
         </div>
-
       </div>
       <mat-divider></mat-divider>
       <div>
-        <h3> Es wird produziert</h3>
+        <h3>Es wird produziert</h3>
         <mat-chip-list>
           <mat-chip>Äpfel</mat-chip>
           <mat-chip>Birnen</mat-chip>
@@ -33,10 +32,10 @@
       <mat-divider></mat-divider>
       <div class="element">
         <div class="text">
-          <span>{{profile.ansprechpartner}}</span>
+          <span>Ansprechpartner Placeholder</span>
           <span>Direkt kontaktieren</span>
         </div>
-        <img class="avatar" [src]="profile.image">
+        <img class="avatar" [src]="profile?.photoUrl" />
       </div>
     </div>
   </div>
@@ -45,16 +44,16 @@
       <mat-divider></mat-divider>
 
       <mat-divider></mat-divider>
-      <h3> Wir brauchen Hilfskräfte für:</h3>
+      <h3>Wir brauchen Hilfskräfte für:</h3>
       <mat-divider></mat-divider>
       <div>
-        <h3> Wo ist unser Betrieb gelegen</h3>
+        <h3>Wo ist unser Betrieb gelegen</h3>
       </div>
       <mat-divider></mat-divider>
-      <h3> Was macht unser Betrieb</h3>
+      <h3>Was macht unser Betrieb</h3>
       <mat-divider></mat-divider>
       <div>
-        <h3> Es wird produziert</h3>
+        <h3>Es wird produziert</h3>
         <mat-chip-list>
           <mat-chip>Äpfel</mat-chip>
           <mat-chip>Birnen</mat-chip>
@@ -62,7 +61,6 @@
           <mat-chip>Erdbeeren</mat-chip>
         </mat-chip-list>
       </div>
-
     </div>
   </ng-template>
 </div>
