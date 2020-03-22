@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 .container {
   margin: 15px;
 }
@@ -44,4 +45,13 @@ fa-icon.icon-with-background {
 
 .travel-range-text {
   margin-top: 10px;
+}
+
+.contact-link {
+  color: black;
+}
+
+.chat-link {
+  color: $custom-blue;
+  margin-top: 0.5rem;
 }
