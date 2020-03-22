@@ -1,9 +1,11 @@
+import { Role } from "./role.enum";
+
 export interface User {
   uid: string;
   email: string;
   photoUrl: string;
   displayName: string;
-  type: "plucky" | "farmer";
+  type: Role;
   travelRange: number;
   location: string;
   phone: string;

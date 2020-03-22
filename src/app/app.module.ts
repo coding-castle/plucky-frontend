@@ -12,8 +12,6 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from "../environments/environment";
-import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
-import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LandingComponent } from "./pages/landing/landing.component";
@@ -37,13 +35,13 @@ import { MapAutocompleteComponent } from "./components/map-autocomplete/map-auto
 import { ChatBubbleComponent } from "./components/chat-bubble/chat-bubble.component";
 import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
 import { ChatListComponent } from "./pages/chat-list/chat-list.component";
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { ComingSoonComponent } from "./components/coming-soon/coming-soon.component";
+import { ImprintComponent } from "./pages/imprint/imprint.component";
+import { PrivacyComponent } from "./pages/privacy/privacy.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeFeedComponent,
-    FarmerFeedComponent,
     LoginComponent,
     LandingComponent,
     EmployeeHomeComponent,
@@ -68,7 +66,10 @@ import { ComingSoonComponent } from './components/coming-soon/coming-soon.compon
     MapAutocompleteComponent,
     ChatBubbleComponent,
     ChatListComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    ChatBubbleComponent,
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
