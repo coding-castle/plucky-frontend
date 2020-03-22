@@ -57,6 +57,48 @@
         [months]="farm.months"
       ></app-month-overview>
       <mat-divider></mat-divider>
+
+      <ng-container *ngIf="editState">
+        <h3>Deine Informationen</h3>
+        <mat-form-field appearance="outline" fullwidth>
+          <mat-label>Dein Name</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="owner.displayName"
+            [readonly]="!editState"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline" fullwidth>
+          <mat-label>Telefonnummer</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="owner.phone"
+            [readonly]="!editState"
+          />
+        </mat-form-field>
+        <div class="image-container">
+          <img *ngIf="owner.photoUrl" class="avatar" [src]="owner.photoUrl" />
+          <input
+            #imageInputOwner
+            type="file"
+            accept="image/*"
+            hidden
+            (change)="onImageChangedOwner($event)"
+          />
+          <button
+            mat-button
+            class="edit-profile-image-button"
+            (click)="imageInputOwner.click()"
+          >
+            <fa-icon [icon]="faCamera"></fa-icon>
+            <div>Bild bearbeiten</div>
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+      </ng-container>
+
       <h3>Wo ist unser Betrieb gelegen</h3>
       <app-map
         [editable]="editState"
@@ -117,7 +159,7 @@
           </mat-chip-list>
         </mat-form-field>
       </div>
-      <ng-container *ngIf="owner$ | async as owner">
+      <ng-container *ngIf="showContact && owner">
         <mat-divider></mat-divider>
         <div class="contact">
           <div class="contact-name">

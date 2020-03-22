@@ -19,7 +19,8 @@ export class ProfileFarmComponent implements OnInit {
   faTimes = faTimes;
   @Input() editState: boolean;
   @Input() farm: Farm;
-  owner$: Observable<User>;
+  @Input() owner: User;
+  @Input() showContact: boolean;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   farmTags$: Observable<FarmTag[]>;
   allTags$: Observable<FarmTag[]>;
@@ -29,7 +30,6 @@ export class ProfileFarmComponent implements OnInit {
     console.log(this.farm);
     this.farmTags$ = this.api.getFarmTags(this.farm.farmTags);
     this.allTags$ = this.api.getAllTags();
-    this.owner$ = this.api.getProfile(this.farm.member[0]);
   }
 
   async onImageChanged(event) {
@@ -37,6 +37,16 @@ export class ProfileFarmComponent implements OnInit {
       const file = event.target.files[0];
       const url = await this.api.uploadImage(file);
       this.farm.image = url;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async onImageChangedOwner(event) {
+    try {
+      const file = event.target.files[0];
+      const url = await this.api.uploadImage(file);
+      this.owner.photoUrl = url;
     } catch (error) {
       console.log(error);
     }
