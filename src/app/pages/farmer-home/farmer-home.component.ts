@@ -1,4 +1,9 @@
 import { Component, OnInit } from "@angular/core";
+import { ApiService } from "src/app/services/api.service";
+import { AuthService } from "src/app/services/auth.service";
+import { Observable } from "rxjs";
+import { Farm } from "src/app/models/farm.model";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-farmer-home",
@@ -6,15 +11,36 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./farmer-home.component.scss"]
 })
 export class FarmerHomeComponent implements OnInit {
-  public title = "Registrierte Pluckies";
+  faArrowRight = faArrowRight;
+  public title = "Pluckies";
   public nextStepTitle = "Nächste Schritte";
-  public nexStepBody = [
-    { state: true, text: "Leg dein Profil an" },
-    { state: true, text: "Finde Pluckies in deiner Nähe" },
-    { state: true, text: "Schreibe einem Plucky im Chat" },
+  newFarmer = true;
+  public newTodos = [
+    { state: false, text: "Leg dein Profil an" },
+    { state: false, text: "Finde Pluckies in deiner Nähe" },
+    { state: false, text: "Schreibe einem Plucky im Chat" },
     { state: false, text: "Informiere dich über unsere Initiative" }
   ];
-  constructor() {}
+  public standardTodos = [
+    { state: true, text: "Leg dein Profil an" },
+    { state: true, text: "Finde Pluckies in deiner Nähe" },
+    { state: false, text: "Schreibe einem Plucky im Chat" },
+    { state: false, text: "Informiere dich über unsere Initiative" }
+  ];
+  farm$: Observable<Farm>;
+  constructor(private api: ApiService, private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.auth.user$.subscribe(user => {
+      if (user && user.uid) {
+        this.api.getFarmByUser(user.uid).subscribe(farm => {
+          if (farm) {
+            this.newFarmer = false;
+          } else {
+            this.newFarmer = true;
+          }
+        });
+      }
+    });
+  }
 }
