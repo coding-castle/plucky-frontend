@@ -1,26 +1,23 @@
 <div class="container">
-  <h1>Hallo XYZ</h1>
-  <h2>Chats</h2>
-  <div class="chat-list-container">
-    <div class="chat-item">
-      <img class="chat-image" src="https://picsum.photos/id/237/100/100" />
-      <div class="chat-name">Name</div>
-      <mat-divider></mat-divider>
+  <h1>Chats</h1>
+
+  <ng-container *ngIf="chat$ | async as chats; else loading">
+    <div class="chat-list-container" *ngFor="let chat of chats">
+      <mat-card class="chat-item">
+        <div class="chat-header">
+          <img class="chat-image" src="https://picsum.photos/id/237/100/100" />
+          <div class="chat-name">Name</div>
+        </div>
+        <div class="chat-content">
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (clickEvent)="goToDetail(chat)">ÖFFNEN</button>
+          </mat-card-actions>
+        </div>
+      </mat-card>
     </div>
-    <div class="chat-item">
-      <img class="chat-image" src="https://picsum.photos/id/237/100/100" />
-      <div class="chat-name">Name</div>
-      <mat-divider></mat-divider>
-    </div>
-    <div class="chat-item">
-      <img class="chat-image" src="https://picsum.photos/id/237/100/100" />
-      <div class="chat-name">Name</div>
-      <mat-divider></mat-divider>
-    </div>
-    <div class="chat-item">
-      <img class="chat-image" src="https://picsum.photos/id/237/100/100" />
-      <div class="chat-name">Name</div>
-      <mat-divider></mat-divider>
-    </div>
-  </div>
+  </ng-container>
+  <ng-template #loading>
+    Chats laden...
+  </ng-template>
+
 </div>

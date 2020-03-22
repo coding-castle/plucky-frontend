@@ -12,6 +12,7 @@ import { Observable, combineLatest, of } from "rxjs";
 import { Farm, FarmTag } from "../models/farm.model";
 import { AuthService } from "./auth.service";
 import { User } from "../models/user.model";
+import { Chat } from "../models/chat.model";
 import * as firebase from "firebase";
 
 @Injectable({
@@ -97,6 +98,11 @@ export class ApiService {
   getFarms(): Observable<Farm[]> {
     // add filters like months, name, location radius
     return this.afs.collection<Farm>("farms").valueChanges();
+  }
+
+  getChats(): Observable<Chat[]> {
+    // add filters like months, name, location radius
+    return this.afs.collection<Chat>("chats").valueChanges();
   }
 
   applyToFarm(farmId: string): Promise<void> {
