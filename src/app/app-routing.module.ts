@@ -16,6 +16,7 @@ import { EmployeeProfileComponent } from "./pages/employee-profile/employee-prof
 import { WikiComponent } from "./pages/wiki/wiki.component";
 import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
 import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
+import { ChatListComponent } from "./pages/chat-list/chat-list.component";
 
 const routes: Routes = [
   {
@@ -81,6 +82,11 @@ const routes: Routes = [
   {
     path: "chat",
     component: ChatComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "chat-list",
+    component: ChatListComponent,
     canActivate: [AuthGuard]
   },
   {
