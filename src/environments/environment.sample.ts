@@ -18,7 +18,7 @@ export const environmentSample = {
     apiKey: "",
     libraries: [""]
   },
-  mtp: {
+  smtp: {
     host: "",
     email: "",
     pass: ""
