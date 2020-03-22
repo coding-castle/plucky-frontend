@@ -29,6 +29,7 @@ import { NavComponent } from "./components/nav/nav.component";
 import { FarmComponent } from "./components/farm/farm.component";
 import { GaleryComponent } from "./components/galery/galery.component";
 import { ChecklistComponent } from "./components/checklist/checklist.component";
+import { ProfileFarmComponent } from "./components/profile-farm/profile-farm.component";
 import { WikiComponent } from "./pages/wiki/wiki.component";
 import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
 import { MonthOverviewComponent } from "./components/month-overview/month-overview.component";
@@ -55,6 +56,7 @@ import { AgmCoreModule } from "@agm/core";
     FarmComponent,
     GaleryComponent,
     ChecklistComponent,
+    ProfileFarmComponent,
     WikiComponent,
     FarmDetailComponent,
     GaleryComponent,
