@@ -7,7 +7,7 @@ import {
   AngularFireStorage,
   AngularFireStorageReference
 } from "@angular/fire/storage";
-import { switchMap, tap, finalize } from "rxjs/operators";
+import { switchMap, tap, finalize, map, first } from "rxjs/operators";
 import { Observable, combineLatest, of } from "rxjs";
 import { Farm, FarmTag } from "../models/farm.model";
 import { AuthService } from "./auth.service";
@@ -37,6 +37,14 @@ export class ApiService {
   getProfile(uid: string): Observable<User> {
     // get applicant profile
     return this.afs.doc<User>(`users/${uid}`).valueChanges();
+  }
+
+  getProfilePromise(uid: string) {
+    return this.afs
+      .doc<User>(`users/${uid}`)
+      .valueChanges()
+      .pipe(first())
+      .toPromise();
   }
 
   getFarm(farmId: string): Observable<Farm> {
@@ -101,8 +109,33 @@ export class ApiService {
   }
 
   getChats(): Observable<Chat[]> {
-    // add filters like months, name, location radius
     return this.afs.collection<Chat>("chats").valueChanges();
+  }
+
+  getChatList() {
+    return this.afs
+      .collection<Chat>("chats", ref =>
+        ref.where("member", "array-contains", this.auth.user.uid)
+      )
+      .valueChanges()
+      .pipe(
+        switchMap(async data => {
+          const chats: Chat[] = [];
+          for (let i = 0; i < data.length; i++) {
+            const indexOfMe = data[i].member.indexOf(this.auth.user.uid);
+            const memberCopy = Object.assign({}, data[i].member);
+            data[i].member.splice(indexOfMe, 1);
+            const partnerUid = data[i].member[0];
+            const partner = await this.getProfilePromise(partnerUid);
+            chats.push({
+              messages: data[i].messages,
+              partner,
+              member: memberCopy
+            });
+          }
+          return chats;
+        })
+      );
   }
 
   applyToFarm(farmId: string): Promise<void> {

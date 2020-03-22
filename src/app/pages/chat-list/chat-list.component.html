@@ -5,12 +5,18 @@
     <div class="chat-list-container" *ngFor="let chat of chats">
       <mat-card class="chat-item">
         <div class="chat-header">
-          <img class="chat-image" src="https://picsum.photos/id/237/100/100" />
-          <div class="chat-name">Name</div>
+          <img class="chat-image" [src]="chat.partner.photoUrl" />
+          <div class="chat-name">{{ chat.partner.displayName }}</div>
         </div>
         <div class="chat-content">
           <mat-card-actions>
-            <button mat-raised-button color="primary" (clickEvent)="goToDetail(chat)">ÖFFNEN</button>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="goToDetail(chat)"
+            >
+              ÖFFNEN
+            </button>
           </mat-card-actions>
         </div>
       </mat-card>
@@ -19,5 +25,4 @@
   <ng-template #loading>
     Chats laden...
   </ng-template>
-
 </div>
