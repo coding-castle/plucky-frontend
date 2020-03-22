@@ -8,7 +8,7 @@ import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
 })
 export class MonthOverviewComponent implements OnInit {
   @Input() editable = false;
-  @Input() months: number[] = [];
+  @Input() months: number[];
   table = [
     [
       { text: "Januar", active: false, index: 1 },
@@ -38,6 +38,7 @@ export class MonthOverviewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    console.log(this.months);
     for (let i = 0; i < this.months.length; i++) {
       const monthIndex = this.months[i];
       for (let row = 0; row < this.table.length; row++) {
@@ -53,6 +54,15 @@ export class MonthOverviewComponent implements OnInit {
   toggleActive(item) {
     if (this.editable) {
       item.active = !item.active;
+      // update input with selected items
+      if (item.active) {
+        this.months.push(item.index);
+      } else {
+        const index = this.months.indexOf(item.index);
+        if (index > -1) {
+          this.months.splice(index, 1);
+        }
+      }
     }
   }
 }

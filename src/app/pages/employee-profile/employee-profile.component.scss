@@ -19,8 +19,8 @@
 .flex-col-edit {
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
-  align-items: stretch;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .edit-profile-button {
@@ -49,11 +49,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.month-overview {
-  margin-top: 20px;
-  margin-bottom: 15px;
 }
 
 .month-overview-title {

@@ -15,7 +15,7 @@ import { User } from "../models/user.model";
 })
 export class AuthService {
   user$: Observable<User>;
-  user: firebase.User;
+  user: User;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -24,7 +24,6 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          this.user = user;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           this.user = null;
@@ -32,6 +31,9 @@ export class AuthService {
         }
       })
     );
+    this.user$.subscribe(data => {
+      this.user = data;
+    });
   }
 
   async emailLogin(email, password) {
@@ -69,11 +71,16 @@ export class AuthService {
       `users/${user.uid}`
     );
 
-    const data = {
+    const data: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      type: user.type
+      type: user.type,
+      location: "",
+      months: [],
+      phone: "",
+      photoUrl: "",
+      travelRange: 0
     };
 
     return userRef.set(data, { merge: true });

@@ -1,72 +1,91 @@
 <div class="container">
-  <h1 class="hello-message">Hallo {{ name }}</h1>
+  <h1 class="hello-message">Hallo {{ editUser?.displayName }}</h1>
   <h2>Dies ist dein Profil!</h2>
-  <div
-    class="edit-profile-button"
-    (click)="onToggleEditMode()"
-    *ngIf="!editMode"
-  >
-    Profil bearbeiten
+  <div class="edit-profile-button">
+    <button mat-button *ngIf="!editMode" (click)="toggleEditMode()">
+      Profil bearbeiten
+    </button>
+    <button mat-button color="primary" *ngIf="editMode" (click)="update()">
+      Speichern
+    </button>
+    <button mat-button color="warn" *ngIf="editMode" (click)="reset()">
+      Verwerfen
+    </button>
   </div>
-  <div
-    class="edit-profile-button"
-    (click)="onToggleEditMode()"
-    *ngIf="editMode"
-  >
-    Bearbeiten beenden
-  </div>
-  <div *ngIf="!editMode">
-    <div class="flex-col-no-edit">
-      <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
-      <div>{{ name }}</div>
-      <div>{{ email }}</div>
-      <div>{{ phone }}</div>
-      <div>{{ location }}</div>
+  <ng-template #loading>
+    Profil lädt...
+  </ng-template>
+  <div class="flex-col-edit" *ngIf="editUser; else loading">
+    <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
+
+    <input
+      #imageInput
+      type="file"
+      accept="image/*"
+      hidden
+      (change)="onImageChanged($event)"
+    />
+    <div
+      class="edit-profile-image-button"
+      (click)="imageInput.click()"
+      *ngIf="editMode"
+    >
+      <fa-icon [icon]="faCamera"></fa-icon>
+      <div>Bild bearbeiten</div>
     </div>
-  </div>
-
-  <div *ngIf="editMode">
-    <div class="flex-col-edit">
-      <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
-
+    <mat-form-field>
+      <mat-label>Name</mat-label>
       <input
-        #imageInput
-        type="file"
-        accept="image/*"
-        hidden
-        (change)="onImageChanged($event)"
+        matInput
+        type="text"
+        [(ngModel)]="editUser.displayName"
+        [readonly]="!editMode"
       />
-      <div class="edit-profile-image-button" (click)="imageInput.click()">
-        <fa-icon [icon]="cameraIcon"></fa-icon>
-        <div>Bild bearbeiten</div>
-      </div>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput type="text" [(ngModel)]="name" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput type="text" [(ngModel)]="email" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Telefon</mat-label>
-        <input matInput type="text" [(ngModel)]="phone" />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Ort</mat-label>
-        <input matInput type="text" [(ngModel)]="location" />
-      </mat-form-field>
-      <mat-label class="slider-label"
-        >Wie weit bist du gewillt zu reisen?</mat-label
-      >
-      <mat-slider thumbLabel tickInterval="10" min="10" max="50"></mat-slider>
-      <div class="slider-unit">in kilometer</div>
-    </div>
-  </div>
-
-  <div class="month-overview">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="editUser.email"
+        [readonly]="true"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefon</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="editUser.phone"
+        [readonly]="!editMode"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Ort</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="editUser.location"
+        [readonly]="!editMode"
+      />
+    </mat-form-field>
+    <mat-label class="slider-label"
+      >Wie weit bist du gewillt zu reisen?</mat-label
+    >
+    <mat-slider
+      thumbLabel
+      tickInterval="10"
+      min="10"
+      max="50"
+      [(ngModel)]="editUser.travelRange"
+      [disabled]="!editMode"
+    ></mat-slider>
+    <div class="slider-unit">{{ editUser.travelRange }} kilometer</div>
     <div class="month-overview-title">Wann kannst du helfen?</div>
-    <app-month-overview [editable]="editMode"></app-month-overview>
+    <app-month-overview
+      [editable]="editMode"
+      [months]="editUser.months"
+    ></app-month-overview>
+    <button mat-button color="warn" (click)="auth.signOut()">Logout</button>
   </div>
-  <button mat-button color="warn" (click)="auth.signOut()">Logout</button>
 </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
+import { User } from "src/app/models/user.model";
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
   selector: "app-employee-profile",
@@ -8,18 +10,43 @@ import { AuthService } from "src/app/services/auth.service";
   styleUrls: ["./employee-profile.component.scss"]
 })
 export class EmployeeProfileComponent implements OnInit {
-  name = "Lorem Ipsum";
-  email = "lorem@ipsum.de";
-  phone = "+49 1234 5678910";
-  location = "Deutschland";
+  editUser: User;
   editMode = false;
-  cameraIcon = faCamera;
+  faCamera = faCamera;
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private api: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.auth.user$.subscribe(data => {
+      if (data) {
+        this.editUser = data;
+      }
+    });
+  }
 
-  onToggleEditMode() {
+  reset() {
+    const user = this.auth.user;
+    if (user) {
+      // deep copy
+      this.editUser = Object.assign({}, user);
+    }
+    console.log(user);
+    this.toggleEditMode();
+  }
+
+  async update() {
+    await this.api.updateProfile(this.editUser).catch(err => {
+      console.log(err);
+      this.setEditMode(false);
+    });
+    this.setEditMode(false);
+  }
+
+  setEditMode(edit: boolean) {
+    this.editMode = edit;
+  }
+
+  toggleEditMode() {
     this.editMode = !this.editMode;
   }
 

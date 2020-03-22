@@ -87,8 +87,8 @@ export class ApiService {
     );
   }
 
-  updateProfile(user: User): Promise<void> {
-    return this.afs.doc(`users/${this.auth.user.uid}`).update({ user });
+  updateProfile(user: Partial<User>): Promise<void> {
+    return this.afs.doc(`users/${this.auth.user.uid}`).update(user);
   }
 
   // TODO
