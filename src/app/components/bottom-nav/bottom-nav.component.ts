@@ -6,7 +6,6 @@ import {
   faComments
 } from "@fortawesome/free-solid-svg-icons";
 import { MatIconRegistry } from "@angular/material/icon";
-import { EmployeeFeedComponent } from "src/app/pages/employee-feed/employee-feed.component";
 import { AuthService } from "src/app/services/auth.service";
 import { Role } from "src/app/models/role.enum";
 

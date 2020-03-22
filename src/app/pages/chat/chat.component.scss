@@ -1,11 +1,8 @@
 @import "../../../variables.scss";
 
 .container {
-  margin: 15px;
-  margin-bottom: 56px + 15px;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .chat-container {

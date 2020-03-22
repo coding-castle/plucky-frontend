@@ -1,32 +1,25 @@
-<div class="container">
-  <h1>Hallo {{ (auth.user$ | async)?.displayName }}</h1>
-  <h2>Dies ist dein Profil!</h2>
-  <div class="edit-profile-button">
-    <button mat-button *ngIf="!editState" (click)="setEditMode(true)">
-      Profil bearbeiten
-    </button>
-    <button mat-button color="primary" *ngIf="editState" (click)="update()">
-      Speichern
-    </button>
-    <button mat-button color="warn" *ngIf="editState" (click)="reset()">
-      Verwerfen
-    </button>
-  </div>
-  <span class="error-message" *ngIf="error">{{ error }}</span>
-  <ng-container *ngIf="editFarm">
-    <app-profile-farm
-      [editState]="editState"
-      [showContact]="false"
-      [farm]="editFarm"
-      [owner]="editOwner"
-    ></app-profile-farm>
-  </ng-container>
-  <button
-    class="logout-button"
-    mat-button
-    color="warn"
-    (click)="auth.signOut()"
-  >
-    Logout
+<h1>Hallo {{ (auth.user$ | async)?.displayName }}</h1>
+<h2>Dies ist dein Profil!</h2>
+<div class="edit-profile-button">
+  <button mat-button *ngIf="!editState" (click)="setEditMode(true)">
+    Profil bearbeiten
+  </button>
+  <button mat-button color="primary" *ngIf="editState" (click)="update()">
+    Speichern
+  </button>
+  <button mat-button color="warn" *ngIf="editState" (click)="reset()">
+    Verwerfen
   </button>
 </div>
+<span class="error-message" *ngIf="error">{{ error }}</span>
+<ng-container *ngIf="editFarm">
+  <app-profile-farm
+    [editState]="editState"
+    [showContact]="false"
+    [farm]="editFarm"
+    [owner]="editOwner"
+  ></app-profile-farm>
+</ng-container>
+<button class="logout-button" mat-button color="warn" (click)="auth.signOut()">
+  Logout
+</button>

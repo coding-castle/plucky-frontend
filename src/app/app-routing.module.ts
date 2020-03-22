@@ -1,7 +1,5 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
-import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";

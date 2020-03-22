@@ -1,71 +1,69 @@
-<div class="container">
-  <h1>Hallo Farmer</h1>
-  <h2>Schön, dass du da bist!</h2>
-  <p>
-    MyPlucky ist eine Initiative, die während des wirvsvirus Hackathons der
-    Deutschen Bundesregierung gestartet wurde.
+<h1>Hallo Farmer</h1>
+<h2>Schön, dass du da bist!</h2>
+<p>
+  MyPlucky ist eine Initiative, die während des wirvsvirus Hackathons der
+  Deutschen Bundesregierung gestartet wurde.
+</p>
+
+<mat-divider></mat-divider>
+
+<ng-container *ngIf="!newFarmer">
+  <h3>Profil anzeigen</h3>
+  <p>Du hast ein Profil angelegt.</p>
+  <div class="right-link">
+    <a class="link" routerLink="/farmer-profile">
+      Zu deinem Profil <fa-icon [icon]="faArrowRight"></fa-icon>
+    </a>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="newFarmer">
+  <h3>Profil anlegen</h3>
+  <p class="warning-text">
+    Wir haben festgestellt, dass du noch kein Profil hast. Click unten in der
+    Leiste auf Profil und leg ein Projekt an, um Pluckies für deinen Hof zu
+    finden.
   </p>
+  <div class="right-link">
+    <a class="link" routerLink="/farmer-profile">
+      Profil anlegen <fa-icon [icon]="faArrowRight"></fa-icon>
+    </a>
+  </div>
+</ng-container>
 
-  <mat-divider></mat-divider>
+<mat-divider></mat-divider>
 
-  <ng-container *ngIf="!newFarmer">
-    <h3>Profil anzeigen</h3>
-    <p>Du hast ein Profil angelegt.</p>
-    <div class="right-link">
-      <a class="link" routerLink="/farmer-profile">
-        Zu deinem Profil <fa-icon [icon]="faArrowRight"></fa-icon>
-      </a>
-    </div>
-  </ng-container>
-
-  <ng-container *ngIf="newFarmer">
-    <h3>Profil anlegen</h3>
-    <p class="warning-text">
-      Wir haben festgestellt, dass du noch kein Profil hast. Click unten in der
-      Leiste auf Profil und leg ein Projekt an, um Pluckies für deinen Hof zu
-      finden.
-    </p>
-    <div class="right-link">
-      <a class="link" routerLink="/farmer-profile">
-        Profil anlegen <fa-icon [icon]="faArrowRight"></fa-icon>
-      </a>
-    </div>
-  </ng-container>
-
-  <mat-divider></mat-divider>
-
-  <ng-container *ngIf="!newFarmer">
-    <h3>Bewerber:innen</h3>
-    <ng-container
-      *ngIf="applicants$ | async as applicants; else loadingApplicants"
-    >
-      <ng-container *ngIf="applicants.length > 0">
-        <app-gallery [galleryItems]="getGalleryItems(applicants)"></app-gallery>
-      </ng-container>
+<ng-container *ngIf="!newFarmer">
+  <h3>Bewerber:innen</h3>
+  <ng-container
+    *ngIf="applicants$ | async as applicants; else loadingApplicants"
+  >
+    <ng-container *ngIf="applicants.length > 0">
+      <app-gallery [galleryItems]="getGalleryItems(applicants)"></app-gallery>
     </ng-container>
-    <ng-template #loadingApplicants>
-      <p>Hier tauchen Bewerber:innen auf, sobald es welche gibt.</p>
-    </ng-template>
   </ng-container>
+  <ng-template #loadingApplicants>
+    <p>Hier tauchen Bewerber:innen auf, sobald es welche gibt.</p>
+  </ng-template>
+</ng-container>
 
-  <ng-container *ngIf="newFarmer">
-    <h3>Bewerber:innen</h3>
-    <p class="warning-text">
-      Hier werden dir Erntehelfer angezeigt, die sich bei deiner Farm bewerben
-      wollen, sobald du ein Profil angelegt hast.
-    </p>
-  </ng-container>
+<ng-container *ngIf="newFarmer">
+  <h3>Bewerber:innen</h3>
+  <p class="warning-text">
+    Hier werden dir Erntehelfer angezeigt, die sich bei deiner Farm bewerben
+    wollen, sobald du ein Profil angelegt hast.
+  </p>
+</ng-container>
 
-  <mat-divider></mat-divider>
+<mat-divider></mat-divider>
 
-  <app-checklist
-    [title]="nextStepTitle"
-    [listItems]="newTodos"
-    *ngIf="newFarmer"
-  ></app-checklist>
-  <app-checklist
-    [title]="nextStepTitle"
-    [listItems]="standardTodos"
-    *ngIf="!newFarmer"
-  ></app-checklist>
-</div>
+<app-checklist
+  [title]="nextStepTitle"
+  [listItems]="newTodos"
+  *ngIf="newFarmer"
+></app-checklist>
+<app-checklist
+  [title]="nextStepTitle"
+  [listItems]="standardTodos"
+  *ngIf="!newFarmer"
+></app-checklist>
