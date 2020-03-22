@@ -38,10 +38,10 @@
     <ng-container
       *ngIf="applicants$ | async as applicants; else loadingPluckies"
     >
-      <app-galery
+      <app-gallery
         [title]="title"
-        [galeryItems]="getGalleryItems(applicants)"
-      ></app-galery>
+        [galleryItems]="getGalleryItems(applicants)"
+      ></app-gallery>
     </ng-container>
     <ng-template #loadingPluckies></ng-template>
   </ng-container>

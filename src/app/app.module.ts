@@ -27,7 +27,7 @@ import { EmployeeProfileComponent } from "./pages/employee-profile/employee-prof
 import { ChatComponent } from "./pages/chat/chat.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { FarmComponent } from "./components/farm/farm.component";
-import { GaleryComponent } from "./components/galery/galery.component";
+import { GalleryComponent } from "./components/gallery/gallery.component";
 import { ChecklistComponent } from "./components/checklist/checklist.component";
 import { ProfileFarmComponent } from "./components/profile-farm/profile-farm.component";
 import { WikiComponent } from "./pages/wiki/wiki.component";
@@ -57,14 +57,14 @@ import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail
     ChatComponent,
     NavComponent,
     FarmComponent,
-    GaleryComponent,
+    GalleryComponent,
     ChecklistComponent,
     ProfileFarmComponent,
     WikiComponent,
     FarmDetailComponent,
-    GaleryComponent,
+    GalleryComponent,
     MonthOverviewComponent,
-    GaleryComponent,
+    GalleryComponent,
     MapComponent,
     ChatBubbleComponent,
     EmployeeDetailComponent,
