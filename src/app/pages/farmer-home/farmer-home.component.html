@@ -35,15 +35,17 @@
   <mat-divider></mat-divider>
 
   <ng-container *ngIf="!newFarmer">
+    <h3>Bewerber:innen</h3>
     <ng-container
-      *ngIf="applicants$ | async as applicants; else loadingPluckies"
+      *ngIf="applicants$ | async as applicants; else loadingApplicants"
     >
-      <app-galery
-        [title]="title"
-        [galeryItems]="getGalleryItems(applicants)"
-      ></app-galery>
+      <ng-container *ngIf="applicants.length > 0">
+        <app-gallery [galleryItems]="getGalleryItems(applicants)"></app-gallery>
+      </ng-container>
     </ng-container>
-    <ng-template #loadingPluckies></ng-template>
+    <ng-template #loadingApplicants>
+      <p>Hier tauchen Bewerber:innen auf, sobald es welche gibt.</p>
+    </ng-template>
   </ng-container>
 
   <ng-container *ngIf="newFarmer">

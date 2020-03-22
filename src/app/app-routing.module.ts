@@ -55,31 +55,38 @@ const routes: Routes = [
   },
   {
     path: "farmer-feed",
-    component: FarmerFeedComponent
+    component: FarmerFeedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "employee-feed",
-    component: EmployeeFeedComponent
+    component: EmployeeFeedComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "farmer-profile",
-    component: FarmerProfileComponent
+    component: FarmerProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "employee-profile",
-    component: EmployeeProfileComponent
+    component: EmployeeProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "employee-detail/:uid",
-    component: EmployeeDetailComponent
+    component: EmployeeDetailComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "chat",
-    component: ChatComponent
+    component: ChatComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "wiki",
-    component: WikiComponent
+    component: WikiComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

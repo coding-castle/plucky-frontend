@@ -1,10 +1,9 @@
 <div class="map-container">
-
-  <app-map-autocomplete *ngIf="editable"></app-map-autocomplete>
+  <app-map-autocomplete [farm]="farm" *ngIf="editable"></app-map-autocomplete>
 
   <div *ngIf="!editable">
     <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
-      <agm-marker  [latitude]="lat" [longitude]="lng"></agm-marker>
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
     </agm-map>
   </div>
 </div>

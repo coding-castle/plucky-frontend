@@ -79,7 +79,8 @@ export class AuthService {
       months: [],
       phone: "",
       photoUrl: "",
-      travelRange: 0
+      travelRange: 0,
+      city: ""
     };
 
     return userRef.set(data, { merge: true });

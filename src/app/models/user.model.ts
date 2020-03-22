@@ -8,4 +8,5 @@ export interface User {
   location: string;
   phone: string;
   months: number[];
+  city: string;
 }

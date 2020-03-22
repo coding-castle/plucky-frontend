@@ -39,8 +39,10 @@ export class MapAutocompleteComponent implements OnInit {
     this.zoom = 13;
 
     if (this.farm) {
-      this.lat = this.farm.location.latitude;
-      this.lng = this.farm.location.longitude;
+      console.log("got farm as input");
+      // fallback if a new farm has no location yet, defaults to Lampertheim
+      this.lat = this.farm.location?.latitude || 49.594879;
+      this.lng = this.farm.location?.longitude || 8.46876;
     } else {
       this.lat = 48.7791242;
       this.lng = 9.0371322;
@@ -74,6 +76,8 @@ export class MapAutocompleteComponent implements OnInit {
             this.lat = place.geometry.location.lat();
             this.lng = place.geometry.location.lng();
             this.zoom = 15;
+
+            this.updateFarm(this.lat, this.lng);
           }
         });
       });
@@ -91,12 +95,18 @@ export class MapAutocompleteComponent implements OnInit {
     if (place.geometry === undefined || place.geometry === null) {
       return;
     }
-    let location = new firebase.firestore.GeoPoint(
+
+    // TODO - Set place to farm
+    this.updateFarm(
       place.geometry.location.lat(),
       place.geometry.location.lng()
     );
+  }
 
-    // TODO - Set place to farm
+  updateFarm(lat, lng) {
+    let location = new firebase.firestore.GeoPoint(lat, lng);
+
+    this.farm.location = location;
   }
 
   private setCurrentPosition() {
@@ -105,6 +115,7 @@ export class MapAutocompleteComponent implements OnInit {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
         this.zoom = 12;
+        this.updateFarm(this.lat, this.lng);
       });
     }
   }
