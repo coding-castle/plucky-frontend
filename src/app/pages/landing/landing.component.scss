@@ -11,8 +11,8 @@
   }
   .logo {
     display: flex;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
     border: 1px solid #006600;
     background-image: url("/assets/plucky-03.svg");
@@ -23,14 +23,15 @@
     display: flex;
     justify-content: space-between;
     padding: 0px;
+    margin: 10px;
     width: 100%;
     .sub-action-container {
       display: flex;
       flex-direction: column;
     }
     .action {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,8 +42,9 @@
       border-radius: 5px;
     }
     .infoText {
-      font-size: 8px;
+      font-size: 10px;
       line-height: 1.5;
+      opacity: 1;
     }
   }
 }
