@@ -48,3 +48,5 @@ Thumbs.db
 # Hide Env Vars
 src/**/environment.ts
 src/**/environment.prod.ts
+
+/.firebase
