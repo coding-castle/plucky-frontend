@@ -13,14 +13,14 @@ import { User } from "src/app/models/user.model";
 })
 export class FarmerHomeComponent implements OnInit {
   faArrowRight = faArrowRight;
-  public title = "Pluckies";
+  public title = "Bewerber:innen";
   public nextStepTitle = "Nächste Schritte";
   newFarmer = true;
   public newTodos = [
     { state: false, text: "Leg dein Profil an" },
     { state: false, text: "Finde Pluckies in deiner Nähe" },
     { state: false, text: "Schreibe einem Plucky im Chat" },
-    { state: false, text: "Informiere dich über unsere Initiative" }
+    { state: true, text: "Informiere dich über unsere Initiative" }
   ];
   public standardTodos = [
     { state: true, text: "Leg dein Profil an" },
@@ -51,7 +51,7 @@ export class FarmerHomeComponent implements OnInit {
     return applicants.map(a => ({
       name: a.displayName,
       image: a.photoUrl,
-      url: ""
+      url: `/employee-detail/${a.uid}`
     }));
   }
 }

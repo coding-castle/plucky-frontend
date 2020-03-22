@@ -60,8 +60,8 @@
       <h3>Wo ist unser Betrieb gelegen</h3>
       <app-map
         [editable]="editState"
-        [lat]="farm.location.latitude"
-        [lng]="farm.location.longitude"
+        [lat]="farm.location?.latitude"
+        [lng]="farm.location?.longitude"
       ></app-map>
       <mat-divider></mat-divider>
       <div>
@@ -122,7 +122,11 @@
           <h3>{{ profile?.displayName }}</h3>
           <span>Direkt kontaktieren</span>
         </div>
-        <img class="avatar" [src]="profile?.photoUrl" />
+        <img
+          *ngIf="profile?.photoUrl"
+          class="avatar"
+          [src]="profile?.photoUrl"
+        />
       </div>
     </div>
   </div>

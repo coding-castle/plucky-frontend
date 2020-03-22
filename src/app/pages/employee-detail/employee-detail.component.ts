@@ -22,7 +22,6 @@ export class EmployeeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     let uid = this.route.snapshot.paramMap.get("uid");
-    uid = "nLAwAQr3xzXzbj9nhvQvrN05OaB3"; // TODO Remove
     this.user$ = this.api.getProfile(uid);
   }
 }

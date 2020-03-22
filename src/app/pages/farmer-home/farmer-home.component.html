@@ -18,23 +18,41 @@
     </div>
   </ng-container>
 
-  <mat-divider></mat-divider>
-
-  <ng-container *ngIf="applicants$ | async as applicants; else loadingPluckies">
-    <app-galery
-      [title]="title"
-      [galeryItems]="getGalleryItems(applicants)"
-    ></app-galery>
+  <ng-container *ngIf="newFarmer">
+    <h3>Profil anlegen</h3>
+    <p class="warning-text">
+      Wir haben festgestellt, dass du noch kein Profil hast. Click unten in der
+      Leiste auf Profil und leg ein Projekt an, um Pluckies für deinen Hof zu
+      finden.
+    </p>
+    <div class="right-link">
+      <a class="link" routerLink="/farmer-profile">
+        Profil anlegen <fa-icon [icon]="faArrowRight"></fa-icon>
+      </a>
+    </div>
   </ng-container>
-  <ng-template #loadingPluckies></ng-template>
 
   <mat-divider></mat-divider>
 
-  <p class="noProfile">
-    Wir haben festgestellt, dass du noch kein Profil hast. Click unten in der
-    Leiste auf Profil und leg ein Projekt an, um Pluckies für deinen Hof zu
-    finden.
-  </p>
+  <ng-container *ngIf="!newFarmer">
+    <ng-container
+      *ngIf="applicants$ | async as applicants; else loadingPluckies"
+    >
+      <app-galery
+        [title]="title"
+        [galeryItems]="getGalleryItems(applicants)"
+      ></app-galery>
+    </ng-container>
+    <ng-template #loadingPluckies></ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="newFarmer">
+    <h3>Bewerber:innen</h3>
+    <p class="warning-text">
+      Hier werden dir Erntehelfer angezeigt, die sich bei deiner Farm bewerben
+      wollen, sobald du ein Profil angelegt hast.
+    </p>
+  </ng-container>
 
   <mat-divider></mat-divider>
 

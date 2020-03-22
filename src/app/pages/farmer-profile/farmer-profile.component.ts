@@ -38,6 +38,25 @@ export class FarmerProfileComponent implements OnInit {
           if (data && data.length > 0) {
             this.editFarm = data[0];
             this.resetFarm = data[0];
+          } else if (data && data.length === 0) {
+            // create a new farm
+            // add the current uid to the new farm members
+            const farm: Farm = {
+              applicants: [],
+              confirmedApplicants: [],
+              description: "Hier kannst du eine Beschreibung einfügen",
+              name: "Gib deiner Farm einen Namen",
+              farmTags: [],
+              member: [user.uid],
+              productTags: [],
+              image: "https://i.pravatar.cc/300",
+              tasks: [],
+              months: [],
+              location: null,
+              id: null
+            };
+            this.api.addFarm(farm);
+            this.editState = true;
           }
         });
       }

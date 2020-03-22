@@ -15,6 +15,10 @@ export class GaleryComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  goToItem(item) {
+    this.router.navigateByUrl(item.url);
+  }
+
   onFindMoreClicked() {
     this.router.navigate([this.findMoreRoute]);
   }
