@@ -1,10 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HomeComponent } from "./pages/home/home.component";
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
-import { RegisterFarmerComponent } from "./pages/register-farmer/register-farmer.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
-import { RegisterEmployeeComponent } from "./pages/register-employee/register-employee.component";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { FarmerProfileComponent } from "./pages/farmer-profile/farmer-profile.component";
@@ -37,10 +34,6 @@ const routes: Routes = [
     component: FarmDetailComponent
   },
   {
-    path: "register-farmer",
-    component: RegisterFarmerComponent
-  },
-  {
     path: "farmer",
     component: FarmerHomeComponent,
     canActivate: [AuthGuard]
@@ -49,10 +42,6 @@ const routes: Routes = [
     path: "employee",
     component: EmployeeHomeComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: "register-employee",
-    component: RegisterEmployeeComponent
   },
   {
     path: "farmer-feed",
