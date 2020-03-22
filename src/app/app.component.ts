@@ -24,6 +24,7 @@ export class AppComponent {
   showNav = false;
   showTopBox = false;
   showBotBox = false;
+  showBackground = false;
   // Dont show bottom navigation if any of these routes are active
   dontShowRoutes = ["/landing", "/landing/plucky", "/landing/farmer"];
 
@@ -44,8 +45,10 @@ export class AppComponent {
 
         if (this.topShowRoutes.includes(router.url)) {
           this.showTopBox = true;
+          this.showBackground = true;
         } else {
           this.showTopBox = false;
+          this.showBackground = false;
         }
 
         if (this.botShowRoutes.includes(router.url)) {
