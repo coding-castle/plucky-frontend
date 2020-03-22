@@ -9,6 +9,7 @@ import { AuthService } from "src/app/services/auth.service";
 import { FarmTag, Farm } from "src/app/models/farm.model";
 import { ApiService } from "src/app/services/api.service";
 import { Observable } from "rxjs";
+import { User } from "src/app/models/user.model";
 
 @Component({
   selector: "app-farmer-profile",
@@ -19,6 +20,8 @@ export class FarmerProfileComponent implements OnInit {
   public editState = false;
   editFarm: Farm;
   resetFarm: Farm;
+  editOwner: User;
+  resetOwner: User;
   error = "";
   isNewFarm;
 
@@ -35,7 +38,9 @@ export class FarmerProfileComponent implements OnInit {
     this.auth.user$.subscribe(user => {
       if (user && user.uid) {
         this.farms$ = this.api.getFarmByUser(this.auth.user?.uid);
-
+        // In this component Farmer Profile the authenticated user is also the owner of the farm
+        this.editOwner = Object.assign({}, user);
+        this.resetOwner = Object.assign({}, user);
         this.farms$.subscribe(data => {
           if (data && data.length > 0) {
             this.editFarm = data[0];
@@ -70,6 +75,7 @@ export class FarmerProfileComponent implements OnInit {
   reset() {
     // deep copy
     this.editFarm = Object.assign({}, this.resetFarm);
+    this.editOwner = Object.assign({}, this.resetOwner);
     this.error = "";
     this.setEditMode(false);
   }
@@ -96,6 +102,7 @@ export class FarmerProfileComponent implements OnInit {
       } else {
         await this.api.updateFarm(this.editFarm.id, this.editFarm);
       }
+      await this.api.updateProfile(this.editOwner);
     } catch (error) {
       console.log(error);
     }

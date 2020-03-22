@@ -16,7 +16,9 @@
   <ng-container *ngIf="editFarm">
     <app-profile-farm
       [editState]="editState"
+      [showContact]="false"
       [farm]="editFarm"
+      [owner]="editOwner"
     ></app-profile-farm>
   </ng-container>
   <button
