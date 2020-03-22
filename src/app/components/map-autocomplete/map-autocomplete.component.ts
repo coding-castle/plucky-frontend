@@ -30,14 +30,14 @@ export class MapAutocompleteComponent implements OnInit {
 
   ngOnInit(): void {
     //set google maps defaults
-    this.zoom = 4;
+    this.zoom = 13;
 
     if(this.farm) {
       this.lat = this.farm.location.latitude;
       this.lng = this.farm.location.longitude;
     } else {
-      this.lat = 39.8282;
-      this.lng = -98.5795;
+      this.lat = 48.7791242;
+      this.lng = 9.0371322;
     }
 
     //create search FormControl
@@ -60,12 +60,12 @@ export class MapAutocompleteComponent implements OnInit {
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
+          } else {
+            //set latitude, longitude and zoom
+            this.lat = place.geometry.location.lat();
+            this.lng = place.geometry.location.lng();
+            this.zoom = 15;
           }
-
-          //set latitude, longitude and zoom
-          this.lat = place.geometry.location.lat();
-          this.lng = place.geometry.location.lng();
-          this.zoom = 15;
         });
       });
 
