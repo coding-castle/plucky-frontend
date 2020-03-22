@@ -10,6 +10,7 @@ import "firebase/firestore";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { environment } from "../environments/environment";
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
@@ -76,6 +77,7 @@ import { ChatListComponent } from "./pages/chat-list/chat-list.component";
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AgmCoreModule.forRoot(environment.googleMaps),
     ReactiveFormsModule

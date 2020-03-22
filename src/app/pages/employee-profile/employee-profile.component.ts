@@ -3,6 +3,7 @@ import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { AuthService } from "src/app/services/auth.service";
 import { User } from "src/app/models/user.model";
 import { ApiService } from "src/app/services/api.service";
+import { finalize } from "rxjs/operators";
 
 @Component({
   selector: "app-employee-profile",
@@ -50,7 +51,13 @@ export class EmployeeProfileComponent implements OnInit {
     this.editMode = !this.editMode;
   }
 
-  onImageChanged(event) {
-    alert(event.target.files);
+  async onImageChanged(event) {
+    try {
+      const file = event.target.files[0];
+      const url = await this.api.uploadImage(file);
+      this.editUser.photoUrl = url;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

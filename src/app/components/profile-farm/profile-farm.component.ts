@@ -32,8 +32,14 @@ export class ProfileFarmComponent implements OnInit {
     this.owner$ = this.api.getProfile(this.farm.member[0]);
   }
 
-  onImageChanged(event) {
-    alert(event.target.files);
+  async onImageChanged(event) {
+    try {
+      const file = event.target.files[0];
+      const url = await this.api.uploadImage(file);
+      this.farm.image = url;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   removeTag(tag: string) {

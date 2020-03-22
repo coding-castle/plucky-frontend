@@ -16,7 +16,7 @@
     Profil lädt...
   </ng-template>
   <div class="flex-col-edit" *ngIf="editUser; else loading">
-    <img class="profile-image" src="https://picsum.photos/id/237/100/100" />
+    <img class="profile-image" [src]="editUser.photoUrl" />
 
     <input
       #imageInput
