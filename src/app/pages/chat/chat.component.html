@@ -1,27 +1,30 @@
 <div class="container">
-  <h1>Hallo {{ user }}</h1>
+  <h1>Hallo {{ user.displayName }}</h1>
   <h2>Bewerbung</h2>
-
-  <div class="chat-container">
-    <div class="chat-header">
-      <img class="chat-header-image" src="https://picsum.photos/id/237/80/80" />
-      <div class="chat-header-name">Lorem Ipsum</div>
+  <ng-container *ngIf="chat$ | async as chat">
+    <div class="chat-container">
+      <div class="chat-header">
+        <img class="chat-header-image" [src]="chat[0].partner.photoUrl" />
+        <div class="chat-header-name">{{ chat[0].partner.displayName }}</div>
+      </div>
+      <app-chat-bubble
+        *ngFor="let message of chat[0]?.messages"
+        [message]="message.message"
+        [sender]="message.uid === user.uid"
+        [time]="message.createdAt"
+      ></app-chat-bubble>
     </div>
-    <app-chat-bubble
-      *ngFor="let item of chat"
-      message="{{ item.message }}"
-      type="{{ item.type }}"
-      time="{{ item.time }}"
-    ></app-chat-bubble>
-  </div>
+  </ng-container>
   <mat-form-field>
     <mat-label>Antworten</mat-label>
-    <textarea
-      #messageInput
+    <input
+      [(ngModel)]="userInput"
       matInput
+      autocomplete="off"
+      (keydown.enter)="onSendMessage()"
       placeholder="Sende eine Nachricht..."
-    ></textarea>
-    <mat-icon matSuffix (click)="onSendMessage(messageInput.value)"
+    />
+    <mat-icon matSuffix (click)="onSendMessage()"
       ><fa-icon class="message-input-icon" [icon]="sendIcon"></fa-icon
     ></mat-icon>
   </mat-form-field>

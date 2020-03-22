@@ -70,7 +70,7 @@ const routes: Routes = [
     data: { roles: [Role.Farmer] }
   },
   {
-    path: "chat",
+    path: "chat/:partnerUid",
     component: ChatComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Plucky, Role.Farmer] }

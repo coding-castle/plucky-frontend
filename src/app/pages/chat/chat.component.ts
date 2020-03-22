@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { ActivatedRoute } from "@angular/router";
+import { ApiService } from "src/app/services/api.service";
+import { Chat } from "src/app/models/chat.model";
+import { Observable } from "rxjs";
+import { AuthService } from "src/app/services/auth.service";
+import { User } from "src/app/models/user.model";
 
 @Component({
   selector: "app-chat",
@@ -8,35 +14,34 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 })
 export class ChatComponent implements OnInit {
   sendIcon = faPaperPlane;
-  user = "User";
-  chat = [
-    {
-      message: "This is a test message",
-      type: "chat-bubble-left",
-      time: "00:00"
-    },
-    {
-      message: "This is a test message",
-      type: "chat-bubble-right",
-      time: "00:00"
-    },
-    {
-      message: "This is a test message",
-      type: "chat-bubble-left",
-      time: "00:00"
-    }
-  ];
+  user: User;
+  chat$: Observable<Chat[]>;
+  partnerUid: string;
+  userInput = "";
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+    private api: ApiService,
+    private auth: AuthService
+  ) {}
 
-  ngOnInit(): void {}
-
-  onSendMessage(input) {
-    this.chat.push({
-      message: input,
-      type: "chat-bubble-right",
-      time: "00:00"
+  ngOnInit(): void {
+    this.partnerUid = this.route.snapshot.paramMap.get("partnerUid");
+    this.chat$ = this.api.getChats(this.partnerUid);
+    this.chat$.subscribe(data => {
+      console.log(data);
     });
-    // TODO Dispatch message
+    this.user = this.auth.user;
+  }
+
+  async onSendMessage() {
+    if (this.userInput) {
+      try {
+        await this.api.sendChat(this.partnerUid, this.userInput);
+        this.userInput = "";
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 }

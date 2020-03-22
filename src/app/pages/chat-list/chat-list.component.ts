@@ -19,10 +19,13 @@ export class ChatListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.chat$ = this.api.getChatList();
+    this.chat$ = this.api.getChats();
+    this.chat$.subscribe(data => {
+      console.log(data);
+    });
   }
 
   goToDetail(chat: Chat) {
-    this.router.navigateByUrl(`/chat-detail/${chat.partner.uid}`);
+    this.router.navigateByUrl(`/chat/${chat.partner.uid}`);
   }
 }

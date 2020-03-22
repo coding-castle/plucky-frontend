@@ -8,11 +8,11 @@ import {
   AngularFireStorageReference
 } from "@angular/fire/storage";
 import { switchMap, tap, finalize, map, first } from "rxjs/operators";
-import { Observable, combineLatest, of } from "rxjs";
+import { Observable, combineLatest, of, merge } from "rxjs";
 import { Farm, FarmTag } from "../models/farm.model";
 import { AuthService } from "./auth.service";
 import { User } from "../models/user.model";
-import { Chat } from "../models/chat.model";
+import { Chat, Message } from "../models/chat.model";
 import * as firebase from "firebase";
 
 @Injectable({
@@ -108,14 +108,14 @@ export class ApiService {
     return this.afs.collection<Farm>("farms").valueChanges();
   }
 
-  getChats(): Observable<Chat[]> {
-    return this.afs.collection<Chat>("chats").valueChanges();
-  }
-
-  getChatList() {
+  getChats(partnerUid?: string) {
+    const arrayToCheck = [this.auth.user.uid];
+    if (partnerUid) {
+      arrayToCheck.push(partnerUid);
+    }
     return this.afs
       .collection<Chat>("chats", ref =>
-        ref.where("member", "array-contains", this.auth.user.uid)
+        ref.where("member", "array-contains-any", arrayToCheck)
       )
       .valueChanges()
       .pipe(
@@ -133,9 +133,31 @@ export class ApiService {
               member: memberCopy
             });
           }
+          console.log(chats);
           return chats;
         })
       );
+  }
+
+  async sendChat(partnerUid: string, message: string) {
+    const newMessage: Message = {
+      createdAt: firebase.firestore.Timestamp.now(),
+      message,
+      uid: this.auth.user.uid
+    };
+    const collection = await this.afs
+      .collection<Chat>("chats", ref =>
+        ref.where("member", "array-contains-any", [
+          partnerUid,
+          this.auth.user.uid
+        ])
+      )
+      .get()
+      .toPromise();
+    const docId = collection.docs[0].id;
+    return this.afs.doc(`chats/${docId}`).update({
+      messages: firebase.firestore.FieldValue.arrayUnion(newMessage)
+    });
   }
 
   applyToFarm(farmId: string): Promise<void> {

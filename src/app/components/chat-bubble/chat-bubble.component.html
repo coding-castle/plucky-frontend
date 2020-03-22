@@ -1,4 +1,4 @@
-<div class="{{ type }}">
+<div [class.chat-bubble-left]="!sender" [class.chat-bubble-right]="sender">
   <div class="chat-bubble-message">{{ message }}</div>
-  <div class="chat-bubble-time">{{ time }}</div>
+  <div class="chat-bubble-time">{{ time.toDate() | date }}</div>
 </div>

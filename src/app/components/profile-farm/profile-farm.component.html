@@ -165,6 +165,7 @@
           <div class="contact-name">
             <h3>{{ owner.displayName }}</h3>
             <a [href]="'mailto:' + owner.email">Direkt kontaktieren</a>
+            <a [routerLink]="'/chat/' + owner.uid">Jetzt Chatten</a>
           </div>
           <img *ngIf="owner.photoUrl" class="avatar" [src]="owner.photoUrl" />
         </div>
