@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 50px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.image {
+  width: 50%;
+  align-self: center;
+  background: black;
+  opacity: 0.7;
+  border-radius: 15px;
+  padding: 10px;
+}
