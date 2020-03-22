@@ -117,18 +117,16 @@
           </mat-chip-list>
         </mat-form-field>
       </div>
-      <mat-divider></mat-divider>
-      <div class="contact">
-        <div class="contact-name">
-          <h3>{{ profile?.displayName }}</h3>
-          <span>Direkt kontaktieren</span>
+      <ng-container *ngIf="owner$ | async as owner">
+        <mat-divider></mat-divider>
+        <div class="contact">
+          <div class="contact-name">
+            <h3>{{ owner.displayName }}</h3>
+            <span>Direkt kontaktieren</span>
+          </div>
+          <img *ngIf="owner.photoUrl" class="avatar" [src]="owner.photoUrl" />
         </div>
-        <img
-          *ngIf="profile?.photoUrl"
-          class="avatar"
-          [src]="profile?.photoUrl"
-        />
-      </div>
+      </ng-container>
     </div>
   </div>
 </div>

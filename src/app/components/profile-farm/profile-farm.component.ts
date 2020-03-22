@@ -19,20 +19,17 @@ export class ProfileFarmComponent implements OnInit {
   faTimes = faTimes;
   @Input() editState: boolean;
   @Input() farm: Farm;
-  profile: User;
+  owner$: Observable<User>;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   farmTags$: Observable<FarmTag[]>;
   allTags$: Observable<FarmTag[]>;
-  constructor(private auth: AuthService, private api: ApiService) {
-    auth.user$.subscribe(data => {
-      this.profile = data;
-    });
-  }
+  constructor(private auth: AuthService, private api: ApiService) {}
 
   ngOnInit(): void {
     console.log(this.farm);
     this.farmTags$ = this.api.getFarmTags(this.farm.farmTags);
     this.allTags$ = this.api.getAllTags();
+    this.owner$ = this.api.getProfile(this.farm.member[0]);
   }
 
   onImageChanged(event) {
