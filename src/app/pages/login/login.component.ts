@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   privacyChecked = false;
   name = "";
   confirmPassword = "";
-  registerActive = true;
+  registerActive = false;
   index = 0;
   error = false;
   loading = false;
