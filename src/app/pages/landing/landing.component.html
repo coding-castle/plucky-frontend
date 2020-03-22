@@ -1,7 +1,40 @@
-<h1>Willkommen</h1>
-<div class="logo"></div>
-<h2>Plucky</h2>
-<div class="action-container">
-  <div class="action" (click)="login('plucky')">Plucky</div>
-  <div class="action" (click)="login('farmer')">Farmer</div>
+<div class="container">
+  <h1 class="element">WILLKOMMEN</h1>
+  <div class="logo"></div>
+  <h2 class="element">Plucky</h2>
+  <div class="select infoText">Bitte wähle aus:</div>
+  <div class="action-container">
+    <div class="sub-action-container">
+      <div class="action" (click)="login('plucky')">
+        <h1 class="landingH1">Plucky</h1>
+        <fa-icon [icon]="['fas', icon.carrot]" size="xl" class="icon"></fa-icon>
+      </div>
+      <div class="infoText">
+        <fa-icon [icon]="['fas', icon.infoCircle]" size="xs" class="info-icon"></fa-icon>
+        <div>
+          Was ist ein Plucky?<br /> Pluckies sind hochmotivierte<br /> Studierende, die sich in ihrer<br /> freien Zeit
+          an der frischen<br />Luft körperlich betätigen<br /> und etwas Gutes zur<br /> Gesellschaft beitragen<br />
+          möchten.<br /> Interesse? Dann registriere<br /> dich
+          einfach hier
+        </div>
+
+      </div>
+    </div>
+    <div class="sub-action-container">
+      <div class="action" (click)="login('farmer')">
+        <h1 class="landingH1">Farmer</h1>
+        <fa-icon [icon]="['fas', icon.tractor]" size="xl" class="icon"></fa-icon>
+      </div>
+      <div class="infoText">
+        <fa-icon [icon]="['fas', icon.infoCircle]" size="xs" class="info-icon"></fa-icon>
+        <div>
+          Was ist ein Farmer ?<br /> Farmer sind Landwirte, die<br /> dafür sorgen jeden Tag unsere<br />
+          Supermarktregale mit<br /> leckerem
+          Obst und Gemüse zu<br /> füllen. Hierfür brauchen sie<br /> den Support der Pluckies.<br /> Bust du Landwirt?
+          Dann<br /> registriere
+          dich einfach hier
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
