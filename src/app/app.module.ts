@@ -70,7 +70,7 @@ import { PrivacyComponent } from "./pages/privacy/privacy.component";
     MapAutocompleteComponent,
     ChatBubbleComponent,
     ChatListComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
     ChatBubbleComponent,
     ImprintComponent,
     PrivacyComponent
