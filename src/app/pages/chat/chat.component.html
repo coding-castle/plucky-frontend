@@ -9,9 +9,9 @@
     </div>
     <app-chat-bubble
       *ngFor="let item of chat"
-      title="{{ item.title }}"
       message="{{ item.message }}"
       type="{{ item.type }}"
+      time="{{ item.time }}"
     ></app-chat-bubble>
     <mat-form-field>
       <mat-label>Antworten</mat-label>

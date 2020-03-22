@@ -10,19 +10,19 @@ export class ChatComponent implements OnInit {
   sendIcon = faPaperPlane;
   chat = [
     {
-      title: "Test",
       message: "This is a test message",
-      type: "chat-bubble-left"
+      type: "chat-bubble-left",
+      time: "00:00"
     },
     {
-      title: "Test",
       message: "This is a test message",
-      type: "chat-bubble-right"
+      type: "chat-bubble-right",
+      time: "00:00"
     },
     {
-      title: "Test",
       message: "This is a test message",
-      type: "chat-bubble-left"
+      type: "chat-bubble-left",
+      time: "00:00"
     }
   ];
 
@@ -32,9 +32,9 @@ export class ChatComponent implements OnInit {
 
   onSendMessage(input) {
     this.chat.push({
-      title: "Test",
       message: input,
-      type: "chat-bubble-right"
+      type: "chat-bubble-right",
+      time: "00:00"
     });
     // TODO Dispatch message
   }
