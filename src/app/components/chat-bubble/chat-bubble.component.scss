@@ -1,6 +1,6 @@
 @import "../../../variables.scss";
 
-.speech-bubble {
+.chat-bubble {
   position: relative;
   border-radius: 0.4em;
   background: $custom-primary;
@@ -10,19 +10,19 @@
   margin-bottom: 15px;
 }
 
-.speech-bubble-left {
-  @extend .speech-bubble;
+.chat-bubble-left {
+  @extend .chat-bubble;
   margin-bottom: 35px;
   align-self: flex-start;
 }
 
-.speech-bubble-right {
-  @extend .speech-bubble;
+.chat-bubble-right {
+  @extend .chat-bubble;
   margin-bottom: 35px;
   align-self: flex-end;
 }
 
-%speech-bubble-after-content {
+%chat-bubble-after-content {
   content: "";
   position: absolute;
   width: 0;
@@ -33,18 +33,18 @@
   border-top-color: $custom-primary;
 }
 
-.speech-bubble-left::after {
-  @extend %speech-bubble-after-content;
+.chat-bubble-left::after {
+  @extend %chat-bubble-after-content;
   left: 10%;
   border-bottom: 0;
 }
 
-.speech-bubble-right::after {
-  @extend %speech-bubble-after-content;
+.chat-bubble-right::after {
+  @extend %chat-bubble-after-content;
   right: 10%;
   border-bottom: 0;
 }
 
-.speech-bubble-title {
+.chat-bubble-title {
   padding-bottom: 10px;
 }
