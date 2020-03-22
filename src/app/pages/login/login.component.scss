@@ -33,3 +33,17 @@
     }
   }
 }
+
+.logo {
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+  width: 125px;
+  height: 125px;
+  margin-top: 10px;
+  background-image: url("/assets/logo.svg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: center;
+}
