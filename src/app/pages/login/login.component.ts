@@ -48,13 +48,16 @@ export class LoginComponent implements OnInit {
     console.log("logging in...");
     this.error = false;
     if (this.email && this.password) {
-      await this.auth
-        .emailLogin(this.email.trim(), this.password)
-        .catch(err => this.handleError());
-      if (this.userType === "plucky") {
-        this.router.navigateByUrl("/employee");
-      } else if (this.userType === "farmer") {
-        this.router.navigateByUrl("/farmer");
+      try {
+        await this.auth.emailLogin(this.email.trim(), this.password);
+        if (this.userType === "plucky") {
+          this.router.navigateByUrl("/employee");
+        } else if (this.userType === "farmer") {
+          this.router.navigateByUrl("/farmer");
+        }
+      } catch (error) {
+        console.log(error);
+        this.handleError();
       }
     } else {
       this.handleError();
@@ -73,13 +76,21 @@ export class LoginComponent implements OnInit {
       this.privacyChecked &&
       this.password === this.confirmPassword
     ) {
-      await this.auth
-        .emailRegister(this.email, this.name, this.password, this.userType)
-        .catch(err => this.handleError());
-      if (this.userType === "plucky") {
-        this.router.navigateByUrl("/employee");
-      } else if (this.userType === "farmer") {
-        this.router.navigateByUrl("/farmer");
+      try {
+        await this.auth.emailRegister(
+          this.email,
+          this.name,
+          this.password,
+          this.userType
+        );
+        if (this.userType === "plucky" && !this.error) {
+          this.router.navigateByUrl("/employee");
+        } else if (this.userType === "farmer") {
+          this.router.navigateByUrl("/farmer");
+        }
+      } catch (error) {
+        console.log(error);
+        this.handleError();
       }
     } else {
       console.log("check credentials");
