@@ -40,7 +40,7 @@
       *ngIf="applicants$ | async as applicants; else loadingApplicants"
     >
       <ng-container *ngIf="applicants.length > 0">
-        <app-galery [galeryItems]="getGalleryItems(applicants)"></app-galery>
+        <app-gallery [galleryItems]="getGalleryItems(applicants)"></app-gallery>
       </ng-container>
     </ng-container>
     <ng-template #loadingApplicants>

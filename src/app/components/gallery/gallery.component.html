@@ -1,0 +1,18 @@
+<div class="gallery-container">
+  <h3 class="gallery-title">{{ title }}</h3>
+  <div class="gallery-list">
+    <div
+      class="gallery-element"
+      *ngFor="let item of galleryItems"
+      (click)="goToItem(item)"
+    >
+      <img class="gallery-image" src="{{ item.image }}" />
+      <div class="gallery-text">{{ item.name }}</div>
+    </div>
+  </div>
+  <div class="right-link">
+    <a class="link" [routerLink]="findMoreRoute"
+      >Weitere finden <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon
+    ></a>
+  </div>
+</div>

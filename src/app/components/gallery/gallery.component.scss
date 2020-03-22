@@ -1,17 +1,17 @@
 @import "../../../variables.scss";
-.galery-container {
+.gallery-container {
   display: flex;
   flex-direction: column;
 }
 
-.galery-list {
+.gallery-list {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.galery-element {
+.gallery-element {
   text-align: center;
   cursor: pointer;
   div {
@@ -19,7 +19,7 @@
   }
 }
 
-.galery-image {
+.gallery-image {
   border-radius: 50%;
   width: 100px;
   height: auto;
