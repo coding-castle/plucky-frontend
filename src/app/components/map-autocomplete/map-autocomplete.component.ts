@@ -39,6 +39,7 @@ export class MapAutocompleteComponent implements OnInit {
     this.zoom = 13;
 
     if (this.farm) {
+      console.log("got farm as input");
       this.lat = this.farm.location.latitude;
       this.lng = this.farm.location.longitude;
     } else {
@@ -74,6 +75,8 @@ export class MapAutocompleteComponent implements OnInit {
             this.lat = place.geometry.location.lat();
             this.lng = place.geometry.location.lng();
             this.zoom = 15;
+
+            this.updateFarm(this.lat, this.lng);
           }
         });
       });
@@ -91,12 +94,17 @@ export class MapAutocompleteComponent implements OnInit {
     if (place.geometry === undefined || place.geometry === null) {
       return;
     }
-    let location = new firebase.firestore.GeoPoint(
+
+    // TODO - Set place to farm
+    this.updateFarm(
       place.geometry.location.lat(),
       place.geometry.location.lng()
     );
+  }
 
-    // TODO - Set place to farm
+  updateFarm(lat, lng) {
+    let location = new firebase.firestore.GeoPoint(lat, lng);
+
     this.farm.location = location;
   }
 
@@ -106,6 +114,7 @@ export class MapAutocompleteComponent implements OnInit {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
         this.zoom = 12;
+        this.updateFarm(this.lat, this.lng);
       });
     }
   }
