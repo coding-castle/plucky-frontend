@@ -38,6 +38,8 @@ import { MapComponent } from "./components/map/map.component";
 import { MapAutocompleteComponent } from "./components/map-autocomplete/map-autocomplete.component";
 import { ChatBubbleComponent } from "./components/chat-bubble/chat-bubble.component";
 import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
+import { ImprintComponent } from "./pages/imprint/imprint.component";
+import { PrivacyComponent } from "./pages/privacy/privacy.component";
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail
     ChatBubbleComponent,
     EmployeeDetailComponent,
     MapAutocompleteComponent,
-    ChatBubbleComponent
+    ChatBubbleComponent,
+    ImprintComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

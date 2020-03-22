@@ -16,6 +16,8 @@ import { EmployeeProfileComponent } from "./pages/employee-profile/employee-prof
 import { WikiComponent } from "./pages/wiki/wiki.component";
 import { FarmDetailComponent } from "./pages/farm-detail/farm-detail.component";
 import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
+import { ImprintComponent } from "./pages/imprint/imprint.component";
+import { PrivacyComponent } from "./pages/privacy/privacy.component";
 
 const routes: Routes = [
   {
@@ -87,6 +89,14 @@ const routes: Routes = [
     path: "wiki",
     component: WikiComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "imprint",
+    component: ImprintComponent
+  },
+  {
+    path: "privacy",
+    component: PrivacyComponent
   }
 ];
 
