@@ -7,7 +7,8 @@ import {
   faWineGlassAlt,
   faLemon,
   faTree,
-  faLeaf
+  faLeaf,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -32,6 +33,6 @@ export class AppComponent {
     });
 
     // Import all needed icons here
-    library.addIcons(faWineGlassAlt, faLemon, faTree, faLeaf);
+    library.addIcons(faWineGlassAlt, faLemon, faTree, faLeaf, faArrowRight);
   }
 }

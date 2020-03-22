@@ -20,7 +20,13 @@
 
   <mat-divider></mat-divider>
 
-  <app-galery [title]="title"> </app-galery>
+  <ng-container *ngIf="applicants$ | async as applicants; else loadingPluckies">
+    <app-galery
+      [title]="title"
+      [galeryItems]="getGalleryItems(applicants)"
+    ></app-galery>
+  </ng-container>
+  <ng-template #loadingPluckies></ng-template>
 
   <mat-divider></mat-divider>
 

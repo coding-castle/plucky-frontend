@@ -4,6 +4,7 @@ import { AuthService } from "src/app/services/auth.service";
 import { Observable } from "rxjs";
 import { Farm } from "src/app/models/farm.model";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { User } from "src/app/models/user.model";
 
 @Component({
   selector: "app-farmer-home",
@@ -28,19 +29,29 @@ export class FarmerHomeComponent implements OnInit {
     { state: false, text: "Informiere dich über unsere Initiative" }
   ];
   farm$: Observable<Farm>;
+  applicants$: Observable<User[]>;
   constructor(private api: ApiService, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
       if (user && user.uid) {
         this.api.getFarmByUser(user.uid).subscribe(farm => {
-          if (farm) {
+          if (farm && farm.length > 0) {
             this.newFarmer = false;
+            this.applicants$ = this.api.getApplicantsForFarm(farm[0]);
           } else {
             this.newFarmer = true;
           }
         });
       }
     });
+  }
+
+  getGalleryItems(applicants: User[]) {
+    return applicants.map(a => ({
+      name: a.displayName,
+      image: a.photoUrl,
+      url: ""
+    }));
   }
 }

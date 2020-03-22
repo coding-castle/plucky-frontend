@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 })
 export class GaleryComponent implements OnInit {
   @Input() title: string;
-  @Input() galeryItems: { image: string; name: string }[];
+  @Input() galeryItems: { image: string; name: string; url: string }[];
   @Input() findMoreRoute: string;
 
   constructor(private router: Router) {}

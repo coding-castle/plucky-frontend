@@ -1,17 +1,26 @@
-import {Component, OnInit, Output, EventEmitter, Input, NgModule, ElementRef, ViewChild, NgZone} from "@angular/core";
-import {FormControl} from "@angular/forms";
-import {AgmCoreModule,MapsAPILoader} from "@agm/core";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  NgModule,
+  ElementRef,
+  ViewChild,
+  NgZone
+} from "@angular/core";
+import { FormControl } from "@angular/forms";
+import { AgmCoreModule, MapsAPILoader } from "@agm/core";
 // @ts-ignore
-import {  } from "googlemaps";
+import {} from "googlemaps";
 import { Farm } from "src/app/models/farm.model";
 import * as firebase from "firebase";
 
 @Component({
   selector: "app-map-autocomplete",
   templateUrl: "./map-autocomplete.component.html",
-  styleUrls: ["./map-autocomplete.component.scss"],
+  styleUrls: ["./map-autocomplete.component.scss"]
 })
-
 export class MapAutocompleteComponent implements OnInit {
   @Input() farm: Farm;
 
@@ -23,16 +32,13 @@ export class MapAutocompleteComponent implements OnInit {
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
-  constructor(
-    private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
-  ) {}
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {}
 
   ngOnInit(): void {
     //set google maps defaults
     this.zoom = 4;
 
-    if(this.farm) {
+    if (this.farm) {
       this.lat = this.farm.location.latitude;
       this.lng = this.farm.location.longitude;
     } else {
@@ -48,9 +54,12 @@ export class MapAutocompleteComponent implements OnInit {
 
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
+      let autocomplete = new google.maps.places.Autocomplete(
+        this.searchElementRef.nativeElement,
+        {
+          types: ["address"]
+        }
+      );
 
       autocomplete.addListener("place_changed", () => {
         this.ngZone.run(() => {
@@ -68,14 +77,16 @@ export class MapAutocompleteComponent implements OnInit {
           this.zoom = 15;
         });
       });
-
     });
   }
 
   async setPlace() {
-    let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-      types: ["address"]
-    });
+    let autocomplete = new google.maps.places.Autocomplete(
+      this.searchElementRef.nativeElement,
+      {
+        types: ["address"]
+      }
+    );
     let place: google.maps.places.PlaceResult = autocomplete.getPlace();
     if (place.geometry === undefined || place.geometry === null) {
       return;
@@ -83,14 +94,14 @@ export class MapAutocompleteComponent implements OnInit {
     let location = new firebase.firestore.GeoPoint(
       place.geometry.location.lat(),
       place.geometry.location.lng()
-    )
+    );
 
     // TODO - Set place to farm
   }
 
   private setCurrentPosition() {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
+      navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
         this.zoom = 12;

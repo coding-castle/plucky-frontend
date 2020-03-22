@@ -62,6 +62,12 @@ export class ApiService {
     });
   }
 
+  getApplicantsForFarm(farm: Farm) {
+    return this.afs
+      .collection<User>("users", ref => ref.where("uid", "in", farm.applicants))
+      .valueChanges();
+  }
+
   removeApplicant(applicantUid: string, farmId: string): Promise<void> {
     return this.afs.doc(`farms/${farmId}`).update({
       confirmedApplicants: firebase.firestore.FieldValue.arrayRemove(
