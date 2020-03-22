@@ -36,6 +36,7 @@ import { MonthOverviewComponent } from "./components/month-overview/month-overvi
 import { MapComponent } from "./components/map/map.component";
 import { AgmCoreModule } from "@agm/core";
 import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.component';
+import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
     MonthOverviewComponent,
     GaleryComponent,
     MapComponent,
-    ChatBubbleComponent
+    ChatBubbleComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,
