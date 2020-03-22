@@ -4,6 +4,7 @@ import { Farm } from "src/app/models/farm.model";
 import { ApiService } from "src/app/services/api.service";
 import { Observable } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-farm-detail",
@@ -13,6 +14,7 @@ import { AuthService } from "src/app/services/auth.service";
 export class FarmDetailComponent implements OnInit {
   farm$: Observable<Farm>;
   farm: Farm;
+  faArrowRight = faArrowRight;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,12 +43,16 @@ export class FarmDetailComponent implements OnInit {
   }
 
   applied() {
-    const uid = this.auth.user.uid;
-    if (
-      this.farm.applicants.includes(uid) ||
-      this.farm.confirmedApplicants.includes(uid)
-    ) {
-      return true;
+    if (this.auth.user) {
+      const uid = this.auth.user.uid;
+      if (
+        this.farm.applicants.includes(uid) ||
+        this.farm.confirmedApplicants.includes(uid)
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }

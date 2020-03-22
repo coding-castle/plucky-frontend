@@ -10,7 +10,8 @@ import {
   faLeaf,
   faCarrot,
   faTractor,
-  faInfoCircle
+  faInfoCircle,
+  faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -63,7 +64,8 @@ export class AppComponent {
       faLeaf,
       faCarrot,
       faTractor,
-      faInfoCircle
+      faInfoCircle,
+      faArrowRight
     );
   }
 }

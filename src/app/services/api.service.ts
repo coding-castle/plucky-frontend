@@ -4,7 +4,7 @@ import {
   AngularFirestoreDocument
 } from "@angular/fire/firestore";
 import { switchMap } from "rxjs/operators";
-import { Observable, combineLatest } from "rxjs";
+import { Observable, combineLatest, of } from "rxjs";
 import { Farm, FarmTag } from "../models/farm.model";
 import { AuthService } from "./auth.service";
 import { User } from "../models/user.model";
@@ -36,9 +36,13 @@ export class ApiService {
   }
 
   getFarmTags(tagIds: string[]): Observable<FarmTag[]> {
-    return this.afs
-      .collection<FarmTag>("farmTags", ref => ref.where("id", "in", tagIds))
-      .valueChanges();
+    if (tagIds.length > 0) {
+      return this.afs
+        .collection<FarmTag>("farmTags", ref => ref.where("id", "in", tagIds))
+        .valueChanges();
+    } else {
+      return of(null);
+    }
   }
 
   getAllTags(): Observable<FarmTag[]> {
@@ -60,6 +64,12 @@ export class ApiService {
         applicantUid
       )
     });
+  }
+
+  getApplicantsForFarm(farm: Farm) {
+    return this.afs
+      .collection<User>("users", ref => ref.where("uid", "in", farm.applicants))
+      .valueChanges();
   }
 
   removeApplicant(applicantUid: string, farmId: string): Promise<void> {

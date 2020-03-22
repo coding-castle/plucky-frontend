@@ -7,13 +7,17 @@ import { Router } from "@angular/router";
   styleUrls: ["./galery.component.scss"]
 })
 export class GaleryComponent implements OnInit {
-  @Input() title: String;
-  @Input() galeryItems: Array<String>;
-  @Input() findMoreRoute: String;
+  @Input() title: string;
+  @Input() galeryItems: { image: string; name: string; url: string }[];
+  @Input() findMoreRoute: string;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  goToItem(item) {
+    this.router.navigateByUrl(item.url);
+  }
 
   onFindMoreClicked() {
     this.router.navigate([this.findMoreRoute]);

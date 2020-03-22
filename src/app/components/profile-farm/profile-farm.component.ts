@@ -57,4 +57,14 @@ export class ProfileFarmComponent implements OnInit {
       input.value = "";
     }
   }
+
+  modifyFarmTag(id) {
+    const index = this.farm.farmTags.indexOf(id);
+    if (index > -1) {
+      this.farm.farmTags.splice(index, 1);
+    } else {
+      this.farm.farmTags.push(id);
+    }
+    this.farmTags$ = this.api.getFarmTags(this.farm.farmTags);
+  }
 }

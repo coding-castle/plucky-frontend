@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 .mat-divider {
   background-color: #006600;
   margin: 1rem;
@@ -8,4 +9,23 @@
 }
 .container {
   margin: 15px;
+}
+
+.warning-text {
+  color: $custom-orange;
+}
+
+.right-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  .link {
+    color: $custom-blue;
+    text-align: right;
+    cursor: pointer;
+    fa-icon {
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  }
 }
