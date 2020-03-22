@@ -3,23 +3,24 @@
 .chat-bubble {
   position: relative;
   border-radius: 0.4em;
-  background: $custom-primary;
-  color: white;
   padding: 15px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .chat-bubble-left {
   @extend .chat-bubble;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   align-self: flex-start;
+  background-color: #f8db01;
 }
 
 .chat-bubble-right {
   @extend .chat-bubble;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   align-self: flex-end;
+  background-color: #7bc623;
 }
 
 %chat-bubble-after-content {
@@ -30,21 +31,24 @@
   bottom: 0;
   margin-bottom: -20px;
   border: 20px solid transparent;
-  border-top-color: $custom-primary;
 }
 
 .chat-bubble-left::after {
   @extend %chat-bubble-after-content;
   left: 10%;
   border-bottom: 0;
+  border-top-color: #f8db01;
 }
 
 .chat-bubble-right::after {
   @extend %chat-bubble-after-content;
   right: 10%;
   border-bottom: 0;
+  border-top-color: #7bc623;
 }
 
-.chat-bubble-title {
-  padding-bottom: 10px;
+.chat-bubble-time {
+  margin-top: 10px;
+  text-align: end;
+  font-size: 0.8em;
 }

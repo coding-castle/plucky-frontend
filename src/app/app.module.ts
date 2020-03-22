@@ -17,7 +17,7 @@ import { RegisterEmployeeComponent } from "./pages/register-employee/register-em
 import { EmployeeFeedComponent } from "./pages/employee-feed/employee-feed.component";
 import { FarmerFeedComponent } from "./pages/farmer-feed/farmer-feed.component";
 import { LoginComponent } from "./pages/login/login.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { EmployeeHomeComponent } from "./pages/employee-home/employee-home.component";
 import { FarmerHomeComponent } from "./pages/farmer-home/farmer-home.component";
@@ -36,7 +36,8 @@ import { MonthOverviewComponent } from "./components/month-overview/month-overvi
 import { AgmCoreModule } from "@agm/core";
 import { MapComponent } from "./components/map/map.component";
 import { MapAutocompleteComponent } from "./components/map-autocomplete/map-autocomplete.component";
-import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.component';
+import { ChatBubbleComponent } from "./components/chat-bubble/chat-bubble.component";
+import { EmployeeDetailComponent } from "./pages/employee-detail/employee-detail.component";
 
 @NgModule({
   declarations: [
@@ -65,6 +66,8 @@ import { ChatBubbleComponent } from './components/chat-bubble/chat-bubble.compon
     MonthOverviewComponent,
     GaleryComponent,
     MapComponent,
+    ChatBubbleComponent,
+    EmployeeDetailComponent,
     MapAutocompleteComponent,
     ChatBubbleComponent
   ],
