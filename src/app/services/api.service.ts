@@ -108,35 +108,29 @@ export class ApiService {
     return this.afs.collection<Farm>("farms").valueChanges();
   }
 
+  createChat(partnerUid: string) {
+    const member = {};
+    member[`${this.auth.user.uid}`] = true;
+    member[`${partnerUid}`] = true;
+    return this.afs
+      .collection("chats", ref =>
+        ref
+          .where(`member.${this.auth.user.uid}`, "==", true)
+          .where(`member.${partnerUid}`, "==", true)
+      )
+      .add({ member, messages: [] });
+  }
+
   getChats(partnerUid?: string) {
-    const arrayToCheck = [this.auth.user.uid];
-    if (partnerUid) {
-      arrayToCheck.push(partnerUid);
-    }
     return this.afs
       .collection<Chat>("chats", ref =>
-        ref.where("member", "array-contains-any", arrayToCheck)
+        partnerUid
+          ? ref
+              .where(`member.${this.auth.user.uid}`, "==", true)
+              .where(`member.${partnerUid}`, "==", true)
+          : ref.where(`member.${this.auth.user.uid}`, "==", true)
       )
-      .valueChanges()
-      .pipe(
-        switchMap(async data => {
-          const chats: Chat[] = [];
-          for (let i = 0; i < data.length; i++) {
-            const indexOfMe = data[i].member.indexOf(this.auth.user.uid);
-            const memberCopy = Object.assign({}, data[i].member);
-            data[i].member.splice(indexOfMe, 1);
-            const partnerUid = data[i].member[0];
-            const partner = await this.getProfilePromise(partnerUid);
-            chats.push({
-              messages: data[i].messages,
-              partner,
-              member: memberCopy
-            });
-          }
-          console.log(chats);
-          return chats;
-        })
-      );
+      .valueChanges();
   }
 
   async sendChat(partnerUid: string, message: string) {
@@ -147,10 +141,9 @@ export class ApiService {
     };
     const collection = await this.afs
       .collection<Chat>("chats", ref =>
-        ref.where("member", "array-contains-any", [
-          partnerUid,
-          this.auth.user.uid
-        ])
+        ref
+          .where(`member.${this.auth.user.uid}`, "==", true)
+          .where(`member.${partnerUid}`, "==", true)
       )
       .get()
       .toPromise();

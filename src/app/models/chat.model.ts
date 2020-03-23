@@ -1,9 +1,9 @@
 import { User } from "./user.model";
 
 export interface Chat {
-  partner: User;
+  partner?: User;
   messages: Message[];
-  member: string[];
+  member: Object;
 }
 
 export interface Message {

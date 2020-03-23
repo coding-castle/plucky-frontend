@@ -4,6 +4,7 @@ import { Chat } from "src/app/models/chat.model";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { AuthService } from "src/app/services/auth.service";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "app-chat-list",
@@ -19,10 +20,18 @@ export class ChatListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.chat$ = this.api.getChats();
-    this.chat$.subscribe(data => {
-      console.log(data);
-    });
+    this.chat$ = this.api.getChats().pipe(
+      switchMap(async data => {
+        for (let i = 0; i < data.length; i++) {
+          const element = data[i];
+          const partnerUid = Object.keys(element.member).filter(
+            uid => uid !== this.auth.user.uid
+          )[0];
+          element.partner = await this.api.getProfilePromise(partnerUid);
+        }
+        return data;
+      })
+    );
   }
 
   goToDetail(chat: Chat) {
