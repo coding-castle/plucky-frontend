@@ -4,7 +4,11 @@
   </mat-card-header>
   <mat-card-content>
     <div class="card-content-container">
-      <img [src]="farm.image" *ngIf="farm.image" />
+      <div
+        *ngIf="farm.image"
+        class="avatar"
+        [style.background-image]="'url(' + farm.image + ')'"
+      ></div>
       <div class="image-placeholder" *ngIf="!farm.image"></div>
       <div>
         <p>

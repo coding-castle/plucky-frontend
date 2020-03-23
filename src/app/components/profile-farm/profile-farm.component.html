@@ -5,7 +5,11 @@
       <mat-divider></mat-divider>
       <div class="image-title">
         <div class="image-container">
-          <img *ngIf="farm?.image" class="avatar" [src]="farm?.image" />
+          <div
+            *ngIf="farm?.image"
+            class="avatar"
+            [style.background-image]="'url(' + farm?.image + ')'"
+          ></div>
           <input
             #imageInput
             type="file"
@@ -79,7 +83,11 @@
           />
         </mat-form-field>
         <div class="image-container">
-          <img *ngIf="owner.photoUrl" class="avatar" [src]="owner.photoUrl" />
+          <div
+            *ngIf="owner.photoUrl"
+            class="avatar"
+            [style.background-image]="'url(' + owner.photoUrl + ')'"
+          ></div>
           <input
             #imageInputOwner
             type="file"
@@ -167,7 +175,11 @@
             <a [href]="'mailto:' + owner.email">Direkt kontaktieren</a>
             <a [routerLink]="'/chat/' + owner.uid">Jetzt Chatten</a>
           </div>
-          <img *ngIf="owner.photoUrl" class="avatar" [src]="owner.photoUrl" />
+          <div
+            *ngIf="owner.photoUrl"
+            class="avatar"
+            [style.background-image]="'url(' + owner.photoUrl + ')'"
+          ></div>
         </div>
       </ng-container>
     </div>

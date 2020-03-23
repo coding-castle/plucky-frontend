@@ -4,7 +4,11 @@
   <ng-container *ngIf="chat$ | async as chat">
     <div class="chat-container">
       <div class="chat-header">
-        <img class="chat-header-image" [src]="chat[0].partner.photoUrl" />
+        <div
+          *ngIf="chat[0].partner.photoUrl"
+          class="avatar"
+          [style.background-image]="'url(' + chat[0].partner.photoUrl + ')'"
+        ></div>
         <div class="chat-header-name">{{ chat[0].partner.displayName }}</div>
       </div>
       <app-chat-bubble

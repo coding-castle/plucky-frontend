@@ -36,6 +36,8 @@
 .chat-bubble-left::after {
   @extend %chat-bubble-after-content;
   left: 10%;
+  top: -20px;
+  transform: rotate(180deg);
   border-bottom: 0;
   border-top-color: #f8db01;
 }

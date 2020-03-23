@@ -26,11 +26,11 @@
   margin-top: 1rem;
 }
 
-.profile-image {
-  border-radius: 50%;
+.avatar {
   width: 100px;
-  height: auto;
+  height: 100px;
   align-self: center;
+  margin-bottom: 1rem;
 }
 
 .slider-label {
@@ -44,6 +44,7 @@
 }
 
 .edit-profile-image-button {
+  cursor: pointer;
   padding: 10px;
   align-self: center;
   display: flex;

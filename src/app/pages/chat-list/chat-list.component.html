@@ -2,22 +2,21 @@
   <h1>Chats</h1>
 
   <ng-container *ngIf="chat$ | async as chats; else loading">
-    <div class="chat-list-container" *ngFor="let chat of chats">
+    <div
+      class="chat-list-container"
+      *ngFor="let chat of chats"
+      (click)="goToDetail(chat)"
+    >
       <mat-card class="chat-item">
-        <div class="chat-header">
-          <img class="chat-image" [src]="chat.partner.photoUrl" />
-          <div class="chat-name">{{ chat.partner.displayName }}</div>
-        </div>
-        <div class="chat-content">
-          <mat-card-actions>
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="goToDetail(chat)"
-            >
-              ÖFFNEN
-            </button>
-          </mat-card-actions>
+        <div
+          *ngIf="chat.partner.photoUrl"
+          class="avatar"
+          [style.background-image]="'url(' + chat.partner.photoUrl + ')'"
+        ></div>
+        <div class="chat-name">{{ chat.partner.displayName }}</div>
+        <div class="flex-spacer"></div>
+        <div class="chat-date">
+          {{ chat.messages.sort()[0].createdAt.toDate() | date }}
         </div>
       </mat-card>
     </div>

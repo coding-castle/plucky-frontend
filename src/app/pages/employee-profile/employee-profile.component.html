@@ -15,7 +15,11 @@
   Profil lädt...
 </ng-template>
 <div class="flex-col-edit" *ngIf="editUser; else loading">
-  <img class="profile-image" [src]="editUser.photoUrl" />
+  <div
+    *ngIf="editUser.photoUrl"
+    class="avatar"
+    [style.background-image]="'url(' + editUser.photoUrl + ')'"
+  ></div>
 
   <input
     #imageInput

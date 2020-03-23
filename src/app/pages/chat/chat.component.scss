@@ -11,19 +11,19 @@
   border: solid #f0f0f0 1px;
   border-radius: 2em;
   padding: 10px;
+  padding-bottom: 50px;
 }
 
 .chat-header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 2rem;
 }
 
-.chat-header-image {
-  border-radius: 50%;
+.avatar {
   width: 100px;
-  height: auto;
+  height: 100px;
 }
 
 .chat-header-name {

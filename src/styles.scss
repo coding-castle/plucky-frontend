@@ -44,4 +44,16 @@ body {
     max-width: 720px;
     margin: 0 auto;
   }
+  .avatar {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .flex-spacer {
+    flex-grow: 1;
+  }
 }

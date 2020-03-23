@@ -34,6 +34,10 @@ export class ChatListComponent implements OnInit {
     );
   }
 
+  getBackgroundUrl(url: string) {
+    return `url('${url}')`;
+  }
+
   goToDetail(chat: Chat) {
     this.router.navigateByUrl(`/chat/${chat.partner.uid}`);
   }
