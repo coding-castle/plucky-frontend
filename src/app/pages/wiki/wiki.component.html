@@ -1,6 +1,6 @@
 <div *ngIf="plucky; else elseBlock">
   <div class="container">
-    <h1>Hallo Plucky</h1>
+    <!-- <h1>Hallo Plucky</h1>
     <h2>Willkommen beim Wiki</h2>
     <p>Hier kannst du dich über uns und unsere Motivation, aber auch über die Arbeit, die dich erwarten wird. Es gibt
       hier Tipps und Tricks. Viel Freude beim Lesen</p>
@@ -15,12 +15,12 @@
       <button mat-icon-button *ngIf="!collapsed" (click)="collapsed=true" class="close">
         <fa-icon [icon]="chevronUp"></fa-icon>
       </button>
-    </mat-card>
+    </mat-card> -->
     <div *ngFor="let item of items">
       <mat-card>
         <img class="image" [src]="item.image">
         <h3>{{item.title}}</h3>
-        <p>{{item.preBody}}</p>
+        <div>{{item.preBody}}</div>
         <div *ngIf="!item.collapseState">{{item.body}}</div>
         <button mat-icon-button *ngIf="item.collapseState" (click)="item.collapseState=false" class="expand">
           <fa-icon [icon]="chevronDown"></fa-icon>
@@ -34,7 +34,7 @@
 </div>
 <ng-template #elseBlock>
   <div class="container">
-    <h1>Hallo Farmer</h1>
+    <!-- <h1>Hallo Farmer</h1>
     <h2>Willkommen beim Wiki</h2>
     <p>Hier kannst du dich über uns und unsere Motivation, aber auch über die Arbeit, die dich erwarten wird. Es gibt
       hier Tipps und Tricks. Viel Freude beim Lesen</p>
@@ -45,12 +45,12 @@
       <div *ngIf="!collapsed">Noch mehr BlaBlaBla</div>
       <button mat-icon-button *ngIf="collapsed" (click)="collapsed=false" class="expand"> Weiterlesen</button>
       <button mat-icon-button *ngIf="!collapsed" (click)="collapsed=true" class="close"> Schließen </button>
-    </mat-card>
+    </mat-card> -->
     <div *ngFor="let item of items">
       <mat-card>
         <img class="image" [src]="item.image">
         <h3>{{item.title}}</h3>
-        <p>{{item.preBody}}</p>
+        <div>{{item.preBody}}</div>
         <div *ngIf="!item.collapseState">{{item.body}}</div>
         <button mat-icon-button *ngIf="item.collapseState" (click)="item.collapseState=false" class="expand">
           <fa-icon [icon]="chevronDown"></fa-icon>
