@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { MatIconRegistry } from "@angular/material/icon";
-import { faAmbulance } from "@fortawesome/free-solid-svg-icons";
+import { faAmbulance, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Router, NavigationEnd } from "@angular/router";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import {
@@ -11,7 +11,8 @@ import {
   faCarrot,
   faTractor,
   faInfoCircle,
-  faArrowRight
+  faArrowRight,
+  faChevronUp
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -65,7 +66,9 @@ export class AppComponent {
       faCarrot,
       faTractor,
       faInfoCircle,
-      faArrowRight
+      faArrowRight,
+      faChevronUp,
+      faChevronDown
     );
   }
 }
